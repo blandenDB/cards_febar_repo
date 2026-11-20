@@ -24,6 +24,12 @@ How the synthetic Arkterus Bank dataset is built. All customers are synthetic; t
 - Chapel Hill household payments (missing) filled from Raleigh's median for the same employment status, within plus or minus 20% (student $405 to $607, employed $732 to $1,098, self-employed $746 to $1,120, unemployed $1,075 to $1,613, retired $1,101 to $1,651).
 - Other zero payments stay at 0: these customers have no mortgage or rent payment (home paid off, or someone else pays their rent).
 
+## 2a. Two source systems
+
+- Customer data comes from the customer system (ecif) and campaign data from the campaign system (crm), each landing as daily files at 12:01 am.
+- crm uses its own customer key; a cross-reference table maps it to the ecif customer ID.
+- crm calls the Silver card "Standard"; the pipeline conforms it to Silver.
+
 ## 3. Accounts and balances
 
 - Account mix by generation (checking only / checking and savings / checking, savings and money market): Gen Z 90/8/2, Millennials 86/10/4, Gen X 68/25/7, Boomers 58/33/9, Silent 48/40/12.

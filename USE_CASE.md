@@ -4,7 +4,7 @@
 
 ## 1. One-line outcome
 
-[YOUR WORDS] Arkterus Bank finds, in-house and every morning, the customer cohorts whose card acceptance is growing more than 10% a year, and targets its next campaigns at them, lifting Card Product Penetration Rate by Tier from about 10% today to 12% [ASSUMPTION] without paying a vendor to pick the targets.
+[YOUR WORDS] Arkterus Bank finds, in-house and every morning, the customer cohorts whose card acceptance is growing more than 10% a year, and shows they convert better than the vendor's targets: Card Product Penetration Rate by Tier rises from about 10% to 12% [ASSUMPTION], worth about $7M a year more toward the expansion plan.
 
 ## 2. The problem, in the customer's words
 
@@ -44,10 +44,10 @@ Illustrative, on the synthetic dataset. Every number carries its assumption.
 |---|---|---|---|---|
 | Card Product Penetration Rate by Tier (accepted / qualified targeted) | about 10% overall; by tier measured in the build | to 12% overall | [ASSUMPTION] targeting the growing cohorts lifts acceptance by 20% relative | 20% more new cards from the same campaign volume |
 | Card revenue toward expansion | up to $35M (35% of $100M) | plus 20% | [ASSUMPTION] card revenue scales with new cards | about $7M a year more toward expansion |
-| Vendor fee | about $1.2M a year [ASSUMPTION] | retired after one parallel campaign cycle | [ASSUMPTION] in-house model matches or beats the vendor on the out-of-time test | about $1.2M a year |
+| Vendor fee | about $1.2M a year [ASSUMPTION] | run alongside the vendor for one campaign cycle and compare; retire it only if the in-house targets win | [ASSUMPTION] in-house model beats the vendor's targets on the out-of-time test | up to about $1.2M a year, after the parallel cycle |
 | Data team time on vendor inputs | about 7,500 hours a year [ASSUMPTION] | down 70% | [ASSUMPTION] pipeline replaces manual pulls and validation | about 5,000 hours a year returned to analysis (capacity, not cash) |
 
-The 6-month win: the bank can identify demographic cohorts whose acceptance is consistently growing above 10% a year. Stop if the in-house model cannot beat a simple baseline on held-out months (set in `EVAL_PROTOCOL.md` before any results).
+The 6-month win: the bank finds the demographic cohorts whose acceptance is consistently growing above 10% a year, and shows they convert better than the vendor's targets, worth about $7M a year more toward expansion [ASSUMPTION]. The test also compares the model with and without the public cost-of-living data, so the cost-of-living story is measured, not asserted. Stop if the in-house targets cannot beat the vendor-style baseline on held-out months (rules set in `EVAL_PROTOCOL.md` before any results).
 
 ## 7. The data
 
@@ -58,7 +58,7 @@ The 6-month win: the bank can identify demographic cohorts whose acceptance is c
 | Public macro data | Monthly metro and state prices: gasoline, vehicles, food at home, other staples and discretionary | about 24 months x 8 metros x 6 series | Monthly |
 
 What is messy:
-- The two systems name the same things differently (customer key, card names such as "Standard" in crm versus "Silver" in ecif) [ASSUMPTION].
+- The two systems name the same things differently: crm uses its own customer key, mapped to the ecif customer ID through a cross-reference, and calls the Silver card "Standard". Today analysts reconcile this by hand before every vendor file.
 - City spellings are inconsistent ("Winston-salem"), and one city has no household payment data.
 - Some customers have a zero household payment (paid-off home or rent paid by someone else), which must not be read as missing.
 - Daily files can arrive late or be resent, which creates duplicates [ASSUMPTION].
@@ -68,11 +68,11 @@ What is messy:
 
 [YOUR WORDS]
 - **Lakeflow:** lands the 12:01 am ecif and crm files and the macro data, conforms the two systems and applies quality rules, replacing the manual pulls.
-- **Unity Catalog:** governs who sees what (analysts see cohorts, not identifiers), tags personal data, and keeps protected attributes out of targeting.
-- **Lakebase:** serves the daily target list and offer recommendations to the campaign team's app with low latency, and stores the team's review decisions.
-- **ML or GenAI:** scores each qualified customer's likelihood to accept each offer, explains the top reasons in plain English, and flags cohorts growing more than 10% a year.
-- **Genie:** lets the CDO and analysts ask how penetration by tier, cohort and city is changing, and how it tracks the cost of living.
-- **App:** the campaign team's workspace: the next campaign's target list by tier and offer, with reasons, and a view of growing cohorts for the CDO's monthly report.
+- **Unity Catalog:** governs who sees what (analysts see cohorts, not identifiers), tags personal data, and supports fair lending practice: protected attributes (age, marital status, gender) are tagged and excluded from the targeting model's features, and are used only to monitor outcomes across groups [CHECK: ECOA and Regulation B guidance on prescreened credit offers].
+- **Lakebase:** serves the daily target list to the campaign team's app and stores their accept or exclude decisions on each target before a campaign goes out. That human review step is the reason for an operational database: the decisions are written back, audited and fed into the next day's analysis.
+- **ML or GenAI:** scores each qualified customer's likelihood to accept each offer without using protected attributes, explains the top reasons in plain English, and flags cohorts growing more than 10% a year. Tested on later months it never saw, against a vendor-style baseline, with and without the cost-of-living data.
+- **Genie:** opens on the CDO's familiar view, new cards by city, then lets the CDO and analysts drill into penetration by tier and cohort and ask how it tracks the cost of living.
+- **App:** opens on new cards by city (the CDO's monthly report today), then breaks it down by tier and cohort to show the growing cohorts; the campaign team reviews the next campaign's target list by tier and offer, with reasons, and accepts or excludes each target.
 
 ## 9. What we will NOT build
 

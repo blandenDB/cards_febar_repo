@@ -64,3 +64,27 @@
   The headline group is urban core, suburban and suburban-style metro. One mass affluent flag drives every chart, Genie answer and the app.
 - **Options considered:** cost-adjusted bands; 1.5x to 4x city median income; one $50,000 to $150,000 band. Three market types (urban core, suburban, other) or the finer labels above.
 - **Why:** [YOUR WORDS]
+
+## 2026-11-20: Use case framing
+
+- **Decision:** the 6-month win is finding cohorts growing above 10% a year and showing they convert better than the vendor's targets, worth about $7M a year toward expansion. The in-house model runs alongside the vendor for one campaign cycle before any vendor change. The test compares the model with and without public cost-of-living data. The app and Genie open on new cards by city, then break it down by tier and cohort.
+- **Options considered:** win as cohort identification only; win tied to vendor comparison and value. Replace the vendor outright, or a parallel cycle first.
+- **Why:** [YOUR WORDS]
+
+## 2026-11-20: Lakebase role
+
+- **Decision:** Lakebase serves the daily target list to the campaign team and stores their accept or exclude decisions per target before each campaign; decisions flow back into the next day's analysis.
+- **Options considered:** a read-only synced serving table; serving plus a human review step written back.
+- **Why:** [YOUR WORDS]
+
+## 2026-11-20: Fair lending
+
+- **Decision:** protected attributes (age, marital status, gender) are tagged in Unity Catalog and excluded from the targeting model's features; they are used only to monitor outcomes across groups. Evidence proves the exclusion.
+- **Options considered:** use all attributes in the model; exclude protected attributes from targeting and monitor outcomes.
+- **Why:** [YOUR WORDS]
+
+## 2026-11-20: Two source systems with conforming
+
+- **Decision:** customer data from ecif and campaign data from crm, with different customer keys (mapped through a cross-reference) and different card names ("Standard" in crm, "Silver" in ecif), conformed by the pipeline.
+- **Options considered:** one source; two sources with a real conforming step.
+- **Why:** [YOUR WORDS]
