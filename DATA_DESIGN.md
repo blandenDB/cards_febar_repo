@@ -22,7 +22,7 @@ How the synthetic Arkterus Bank dataset is built. All customers are synthetic; t
 
 - City spelling standardized ("Winston-Salem").
 - Chapel Hill household payments (missing) filled from Raleigh's median for the same employment status, within plus or minus 20% (student $405 to $607, employed $732 to $1,098, self-employed $746 to $1,120, unemployed $1,075 to $1,613, retired $1,101 to $1,651).
-- Other zero payments: (to be decided).
+- Other zero payments stay at 0: these customers have no mortgage or rent payment (home paid off, or someone else pays their rent).
 
 ## 3. Accounts and balances
 
