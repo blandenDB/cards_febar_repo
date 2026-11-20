@@ -8,3 +8,4 @@
 | 2026-11-20 | Drafted USE_CASE.md from the discovery answers (Q6 unanswered, so marked as assumptions) | (none) | Draft awaiting the author's approval and rewrite |
 | 2026-11-20 | Applied the author's answers to the use case challenge | (none) | Win tied to beating the vendor's targets; parallel vendor cycle; Lakebase review step; protected attributes excluded from the model; two-system conforming; city-first views |
 | 2026-11-20 | Harmonized the entry card name | (none) | "Standard" removed; both systems use Silver; customer key mismatch remains the conforming step |
+| 2026-11-20 | Wrote build decisions, EVAL_PROTOCOL.md (committed before any data) and BUILD_PLAN.md | (none) | Awaiting the author's approval of BUILD_PLAN.md |
