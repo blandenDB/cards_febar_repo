@@ -28,7 +28,7 @@ How the synthetic Arkterus Bank dataset is built. All customers are synthetic; t
 
 - Customer data comes from the customer system (ecif) and campaign data from the campaign system (crm), each landing as daily files at 12:01 am.
 - crm uses its own customer key; a cross-reference table maps it to the ecif customer ID.
-- crm calls the Silver card "Standard"; the pipeline conforms it to Silver.
+- Both systems use the same card names: Silver, Gold, Platinum, Cashback.
 
 ## 3. Accounts and balances
 

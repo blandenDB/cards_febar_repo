@@ -20,7 +20,7 @@
 
   | Card | Annual fee | Rewards | Min credit score | Min income | Min 6-month avg deposit | APR |
   |---|---|---|---|---|---|---|
-  | Silver (Standard) | $0 | (none) | 650 | $40,000 | $1,000 | 18.99% to 25.99% |
+  | Silver | $0 | (none) | 650 | $40,000 | $1,000 | 18.99% to 25.99% |
   | Gold | $95 | Everyday cashback and points (groceries, non-luxury retail) | 700 | $50,000 | $2,500 | 14.99% to 25.99% |
   | Platinum | $195 | 4% to 6% cashback on travel, entertainment and luxury retail | 750 | $125,000 | $5,000 | 12.99% to 25.99% |
   | Cashback | $50 | 2% on all purchases | 650 | $50,000 | (none) | 15.99% to 25.99% |
@@ -85,6 +85,6 @@
 
 ## 2026-11-20: Two source systems with conforming
 
-- **Decision:** customer data from ecif and campaign data from crm, with different customer keys (mapped through a cross-reference) and different card names ("Standard" in crm, "Silver" in ecif), conformed by the pipeline.
+- **Decision:** customer data from ecif and campaign data from crm, with different customer keys (mapped through a cross-reference), conformed by the pipeline. Card names are harmonized: both systems call the entry card Silver (no "Standard").
 - **Options considered:** one source; two sources with a real conforming step.
 - **Why:** [YOUR WORDS]

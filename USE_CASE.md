@@ -58,7 +58,7 @@ The 6-month win: the bank finds the demographic cohorts whose acceptance is cons
 | Public macro data | Monthly metro and state prices: gasoline, vehicles, food at home, other staples and discretionary | about 24 months x 8 metros x 6 series | Monthly |
 
 What is messy:
-- The two systems name the same things differently: crm uses its own customer key, mapped to the ecif customer ID through a cross-reference, and calls the Silver card "Standard". Today analysts reconcile this by hand before every vendor file.
+- The two systems key customers differently: crm uses its own customer key, mapped to the ecif customer ID through a cross-reference. Today analysts reconcile this by hand before every vendor file. Both systems name the cards the same way (Silver, Gold, Platinum, Cashback).
 - City spellings are inconsistent ("Winston-salem"), and one city has no household payment data.
 - Some customers have a zero household payment (paid-off home or rent paid by someone else), which must not be read as missing.
 - Daily files can arrive late or be resent, which creates duplicates [ASSUMPTION].
