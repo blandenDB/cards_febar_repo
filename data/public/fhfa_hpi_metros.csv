@@ -1,0 +1,421 @@
+source,area,series_id,series,month,value
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2019-01-01,299.78
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2019-04-01,304.24
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2019-07-01,306.80
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2019-10-01,311.19
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2020-01-01,312.83
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2020-04-01,316.44
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2020-07-01,322.39
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2020-10-01,329.85
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2021-01-01,339.44
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2021-04-01,359.56
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2021-07-01,383.18
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2021-10-01,399.86
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2022-01-01,416.26
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2022-04-01,447.81
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2022-07-01,464.56
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2022-10-01,466.77
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2023-01-01,464.84
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2023-04-01,480.50
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2023-07-01,490.69
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2023-10-01,482.75
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2024-01-01,481.10
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2024-04-01,500.98
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2024-07-01,510.10
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2024-10-01,516.29
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2025-01-01,510.50
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2025-04-01,515.33
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2025-07-01,506.25
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2025-10-01,515.99
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2026-01-01,516.61
+FHFA HPI all-transactions NSA,Asheville,11700,house_price_index,2026-04-01,522.34
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2019-01-01,162.43
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2019-04-01,163.93
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2019-07-01,169.58
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2019-10-01,171.39
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2020-01-01,172.18
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2020-04-01,173.29
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2020-07-01,176.60
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2020-10-01,181.01
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2021-01-01,187.15
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2021-04-01,197.17
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2021-07-01,213.27
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2021-10-01,221.06
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2022-01-01,231.36
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2022-04-01,253.53
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2022-07-01,262.05
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2022-10-01,265.78
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2023-01-01,258.60
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2023-04-01,278.03
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2023-07-01,275.11
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2023-10-01,273.93
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2024-01-01,289.02
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2024-04-01,290.39
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2024-07-01,292.74
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2024-10-01,288.30
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2025-01-01,302.19
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2025-04-01,295.31
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2025-07-01,302.67
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2025-10-01,299.08
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2026-01-01,309.59
+FHFA HPI all-transactions NSA,Burlington,15500,house_price_index,2026-04-01,311.26
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2019-01-01,328.29
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2019-04-01,333.75
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2019-07-01,337.26
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2019-10-01,339.05
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2020-01-01,345.17
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2020-04-01,347.76
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2020-07-01,355.36
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2020-10-01,361.06
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2021-01-01,371.03
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2021-04-01,394.58
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2021-07-01,417.95
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2021-10-01,435.78
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2022-01-01,459.36
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2022-04-01,491.66
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2022-07-01,510.91
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2022-10-01,504.69
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2023-01-01,516.42
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2023-04-01,533.62
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2023-07-01,551.55
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2023-10-01,560.64
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2024-01-01,563.82
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2024-04-01,583.71
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2024-07-01,583.30
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2024-10-01,596.76
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2025-01-01,610.61
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2025-04-01,608.97
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2025-07-01,606.47
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2025-10-01,608.26
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2026-01-01,628.38
+FHFA HPI all-transactions NSA,Charleston-North Charleston,16700,house_price_index,2026-04-01,637.78
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2019-01-01,223.51
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2019-04-01,227.85
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2019-07-01,230.74
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2019-10-01,233.00
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2020-01-01,237.43
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2020-04-01,240.01
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2020-07-01,245.00
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2020-10-01,251.45
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2021-01-01,258.42
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2021-04-01,275.06
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2021-07-01,293.75
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2021-10-01,307.89
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2022-01-01,323.85
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2022-04-01,348.69
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2022-07-01,362.89
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2022-10-01,360.70
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2023-01-01,361.91
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2023-04-01,370.78
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2023-07-01,378.30
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2023-10-01,381.53
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2024-01-01,386.48
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2024-04-01,394.05
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2024-07-01,394.34
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2024-10-01,397.85
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2025-01-01,399.87
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2025-04-01,406.52
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2025-07-01,408.12
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2025-10-01,410.22
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2026-01-01,411.21
+FHFA HPI all-transactions NSA,Charlotte-Concord-Gastonia,16740,house_price_index,2026-04-01,412.42
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2019-01-01,185.08
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2019-04-01,187.38
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2019-07-01,190.58
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2019-10-01,192.13
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2020-01-01,192.61
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2020-04-01,195.20
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2020-07-01,199.48
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2020-10-01,202.11
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2021-01-01,206.79
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2021-04-01,218.52
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2021-07-01,230.52
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2021-10-01,236.05
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2022-01-01,246.42
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2022-04-01,263.57
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2022-07-01,272.55
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2022-10-01,277.35
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2023-01-01,274.28
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2023-04-01,287.11
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2023-07-01,293.90
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2023-10-01,291.71
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2024-01-01,295.42
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2024-04-01,303.74
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2024-07-01,310.69
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2024-10-01,313.24
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2025-01-01,312.17
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2025-04-01,319.90
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2025-07-01,321.69
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2025-10-01,326.05
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2026-01-01,330.16
+FHFA HPI all-transactions NSA,Columbia,17900,house_price_index,2026-04-01,331.32
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2019-01-01,229.03
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2019-04-01,230.78
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2019-07-01,232.55
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2019-10-01,234.11
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2020-01-01,238.31
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2020-04-01,239.98
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2020-07-01,244.39
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2020-10-01,247.60
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2021-01-01,251.64
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2021-04-01,269.85
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2021-07-01,287.75
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2021-10-01,300.33
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2022-01-01,314.40
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2022-04-01,350.00
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2022-07-01,358.97
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2022-10-01,351.31
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2023-01-01,356.95
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2023-04-01,368.36
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2023-07-01,367.24
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2023-10-01,369.55
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2024-01-01,376.42
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2024-04-01,383.43
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2024-07-01,389.17
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2024-10-01,387.03
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2025-01-01,384.18
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2025-04-01,391.26
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2025-07-01,394.05
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2025-10-01,399.41
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2026-01-01,397.55
+FHFA HPI all-transactions NSA,Durham-Chapel Hill,20500,house_price_index,2026-04-01,398.18
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2019-01-01,168.70
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2019-04-01,173.20
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2019-07-01,178.85
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2019-10-01,177.65
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2020-01-01,181.78
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2020-04-01,186.07
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2020-07-01,184.78
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2020-10-01,188.95
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2021-01-01,190.71
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2021-04-01,195.47
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2021-07-01,207.77
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2021-10-01,220.20
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2022-01-01,216.63
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2022-04-01,232.02
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2022-07-01,245.20
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2022-10-01,242.48
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2023-01-01,240.89
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2023-04-01,242.52
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2023-07-01,259.32
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2023-10-01,251.17
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2024-01-01,247.77
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2024-04-01,259.86
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2024-07-01,266.04
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2024-10-01,268.59
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2025-01-01,277.85
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2025-04-01,265.74
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2025-07-01,285.22
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2025-10-01,281.32
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2026-01-01,284.63
+FHFA HPI all-transactions NSA,Florence,22500,house_price_index,2026-04-01,284.42
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2019-01-01,166.66
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2019-04-01,171.65
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2019-07-01,173.32
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2019-10-01,175.17
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2020-01-01,176.92
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2020-04-01,180.29
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2020-07-01,182.81
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2020-10-01,186.47
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2021-01-01,191.70
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2021-04-01,201.95
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2021-07-01,213.50
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2021-10-01,222.03
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2022-01-01,232.25
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2022-04-01,248.74
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2022-07-01,257.02
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2022-10-01,257.29
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2023-01-01,261.45
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2023-04-01,268.08
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2023-07-01,274.86
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2023-10-01,272.24
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2024-01-01,282.15
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2024-04-01,285.62
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2024-07-01,292.74
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2024-10-01,292.43
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2025-01-01,298.39
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2025-04-01,298.52
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2025-07-01,301.74
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2025-10-01,304.02
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2026-01-01,304.06
+FHFA HPI all-transactions NSA,Greensboro-High Point,24660,house_price_index,2026-04-01,313.17
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2019-01-01,214.33
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2019-04-01,218.63
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2019-07-01,222.46
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2019-10-01,224.93
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2020-01-01,227.78
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2020-04-01,230.00
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2020-07-01,232.96
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2020-10-01,238.29
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2021-01-01,242.72
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2021-04-01,256.36
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2021-07-01,270.88
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2021-10-01,283.35
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2022-01-01,297.44
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2022-04-01,317.82
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2022-07-01,328.65
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2022-10-01,329.02
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2023-01-01,333.21
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2023-04-01,340.91
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2023-07-01,350.71
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2023-10-01,355.13
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2024-01-01,359.77
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2024-04-01,369.87
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2024-07-01,369.84
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2024-10-01,376.39
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2025-01-01,381.29
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2025-04-01,387.03
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2025-07-01,391.65
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2025-10-01,392.09
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2026-01-01,395.07
+FHFA HPI all-transactions NSA,Greenville-Anderson,24860,house_price_index,2026-04-01,399.74
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2019-01-01,240.65
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2019-04-01,243.49
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2019-07-01,244.30
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2019-10-01,250.13
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2020-01-01,251.78
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2020-04-01,253.73
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2020-07-01,257.57
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2020-10-01,267.82
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2021-01-01,271.37
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2021-04-01,289.80
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2021-07-01,311.20
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2021-10-01,324.61
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2022-01-01,343.99
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2022-04-01,359.14
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2022-07-01,385.63
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2022-10-01,377.19
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2023-01-01,405.05
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2023-04-01,402.82
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2023-07-01,427.24
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2023-10-01,429.99
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2024-01-01,433.55
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2024-04-01,422.74
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2024-07-01,444.10
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2024-10-01,446.59
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2025-01-01,462.53
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2025-04-01,462.30
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2025-07-01,463.85
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2025-10-01,461.96
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2026-01-01,470.53
+FHFA HPI all-transactions NSA,Hilton Head Island-Bluffton-Port Royal,25940,house_price_index,2026-04-01,474.59
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2019-01-01,205.78
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2019-04-01,211.61
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2019-07-01,213.15
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2019-10-01,215.11
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2020-01-01,220.67
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2020-04-01,220.81
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2020-07-01,223.17
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2020-10-01,229.88
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2021-01-01,234.89
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2021-04-01,248.97
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2021-07-01,265.68
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2021-10-01,279.53
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2022-01-01,294.13
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2022-04-01,312.88
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2022-07-01,332.75
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2022-10-01,331.12
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2023-01-01,327.50
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2023-04-01,343.26
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2023-07-01,349.82
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2023-10-01,359.27
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2024-01-01,355.14
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2024-04-01,357.03
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2024-07-01,357.95
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2024-10-01,363.30
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2025-01-01,370.52
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2025-04-01,375.61
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2025-07-01,379.06
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2025-10-01,374.10
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2026-01-01,378.93
+FHFA HPI all-transactions NSA,Myrtle Beach-Conway-North Myrtle Beach,34820,house_price_index,2026-04-01,378.71
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2019-01-01,211.99
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2019-04-01,214.39
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2019-07-01,216.57
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2019-10-01,218.70
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2020-01-01,221.67
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2020-04-01,223.85
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2020-07-01,227.56
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2020-10-01,231.89
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2021-01-01,236.23
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2021-04-01,253.43
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2021-07-01,272.28
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2021-10-01,287.71
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2022-01-01,304.51
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2022-04-01,331.43
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2022-07-01,338.88
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2022-10-01,329.52
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2023-01-01,330.84
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2023-04-01,343.68
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2023-07-01,343.51
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2023-10-01,345.51
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2024-01-01,349.57
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2024-04-01,356.57
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2024-07-01,358.39
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2024-10-01,359.10
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2025-01-01,364.19
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2025-04-01,363.18
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2025-07-01,365.53
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2025-10-01,363.12
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2026-01-01,367.54
+FHFA HPI all-transactions NSA,Raleigh-Cary,39580,house_price_index,2026-04-01,367.16
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2019-01-01,232.94
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2019-04-01,239.60
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2019-07-01,241.54
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2019-10-01,246.28
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2020-01-01,251.24
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2020-04-01,251.01
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2020-07-01,257.10
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2020-10-01,263.51
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2021-01-01,271.55
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2021-04-01,288.44
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2021-07-01,308.88
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2021-10-01,320.60
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2022-01-01,338.35
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2022-04-01,368.99
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2022-07-01,382.07
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2022-10-01,381.19
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2023-01-01,397.00
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2023-04-01,403.73
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2023-07-01,408.53
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2023-10-01,408.90
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2024-01-01,423.17
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2024-04-01,425.03
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2024-07-01,426.81
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2024-10-01,434.06
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2025-01-01,433.70
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2025-04-01,444.08
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2025-07-01,448.66
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2025-10-01,450.65
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2026-01-01,453.48
+FHFA HPI all-transactions NSA,Wilmington,48900,house_price_index,2026-04-01,460.50
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2019-01-01,172.86
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2019-04-01,174.56
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2019-07-01,177.09
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2019-10-01,179.31
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2020-01-01,181.11
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2020-04-01,183.71
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2020-07-01,187.47
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2020-10-01,192.27
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2021-01-01,196.83
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2021-04-01,206.97
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2021-07-01,221.00
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2021-10-01,229.06
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2022-01-01,237.80
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2022-04-01,256.94
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2022-07-01,263.79
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2022-10-01,266.27
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2023-01-01,267.13
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2023-04-01,281.85
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2023-07-01,287.43
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2023-10-01,281.69
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2024-01-01,293.00
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2024-04-01,297.73
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2024-07-01,298.27
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2024-10-01,304.21
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2025-01-01,305.96
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2025-04-01,310.54
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2025-07-01,312.64
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2025-10-01,315.42
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2026-01-01,315.41
+FHFA HPI all-transactions NSA,Winston-Salem,49180,house_price_index,2026-04-01,320.66
