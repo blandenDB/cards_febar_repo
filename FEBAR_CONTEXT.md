@@ -4,8 +4,8 @@
 
 I am building my own FE Bar submission: a working prototype that solves **Bank Credit Card Adoption Rates by Tier** for **Arkterus Bank** in Banking.
 
-- Executive sponsor: EVP Data & Analytics
-- Domain owner: CDO
+- Executive sponsor: CDO
+- Domain owner: EVP Data & Analytics
 - Success metric: **Card Product Penetration Rate by Tier**
 
 ## 2. Non-negotiable FE Bar rules
