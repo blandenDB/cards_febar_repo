@@ -88,3 +88,72 @@
 - **Decision:** customer data from ecif and campaign data from crm, with different customer keys (mapped through a cross-reference), conformed by the pipeline. Card names are harmonized: both systems call the entry card Silver (no "Standard").
 - **Options considered:** one source; two sources with a real conforming step.
 - **Why:** [YOUR WORDS]
+
+## 2026-11-20: Build design decisions (Prompt 3)
+
+[REWRITE IN YOUR WORDS] Each entry below records the choice, the alternative and the reason as drafted; rewrite the reasons yourself.
+
+### Ingestion
+- **Decision:** daily ecif and crm files land in a Unity Catalog volume (12:01 am) and are read with Auto Loader into Lakeflow streaming tables.
+- **Alternative:** a managed connector reading the source databases directly.
+- **Why:** [REWRITE IN YOUR WORDS] Files replay late and resent deliveries, are quick to build, and match how the bank receives extracts today.
+
+### Sources
+- **Decision:** two sources merged (ecif customer data, crm campaign data through a customer key cross-reference) plus public price data.
+- **Alternative:** one source.
+- **Why:** [REWRITE IN YOUR WORDS] Conforming two systems is the manual work the data team does today.
+
+### Public price data
+- **Decision:** real public series downloaded once and committed: BLS CPI South region (food at home, gasoline, new and used vehicles, other staples and discretionary), EIA Lower Atlantic gasoline prices, FHFA house price index by metro.
+- **Alternative:** generated series.
+- **Why:** [REWRITE IN YOUR WORDS] Real public data makes the cost-of-living link credible; city differences come from the house price index because federal price indexes are not published for these metros.
+
+### Data quality
+- **Decision:** quarantine unmatched crm keys, unknown card or offer codes, solicitation dates outside the window and credit scores outside 300 to 850; warn on employed customers with income under $10,000 and on missing payments outside Chapel Hill; fail the update on an empty file, a changed layout or more than 5% unmatched crm keys; drop duplicates from resent files. Planted issues: a resent crm file, about 1% unmatched crm keys, a few impossible credit scores, one late file.
+- **Alternative:** warn on everything.
+- **Why:** [REWRITE IN YOUR WORDS]
+
+### Governance personas
+- **Decision:** D&A analysts see all rows with address and SSN tokens masked, and protected attributes only in the fairness view; the campaign team sees target lists for their assigned region only, without protected attributes; the CDO sees totals by city, tier and cohort only. The model reads a view that excludes age, marital status and gender.
+- **Alternative:** two personas (analysts and campaign team).
+- **Why:** [REWRITE IN YOUR WORDS]
+
+### Access test identity
+- **Decision:** a dedicated non-admin service principal runs the access test.
+- **Alternative:** a second human user.
+- **Why:** [REWRITE IN YOUR WORDS] Workspace accounts cannot be created on this sandbox; a service principal worked in the previous build.
+
+### Lakebase pattern
+- **Decision:** a synced table serves the target list (owner-only serving copy, access enforced again in Postgres); the app writes accept or exclude decisions to a Postgres table; a job task copies decisions back to Delta nightly.
+- **Alternative:** a job task upserts the target list into Postgres and keeps human edits.
+- **Why:** [REWRITE IN YOUR WORDS]
+
+### Intelligent step
+- **Decision:** both: one trained acceptance model per offer without protected attributes, plus ai_query explanations of each target's top reasons, plus a cohort growth flag above 10% a year.
+- **Alternative:** an explainable points score with explanations, no model.
+- **Why:** [REWRITE IN YOUR WORDS]
+
+### AI output evaluation
+- **Decision:** an LLM judge scores 200 explanations for groundedness, no mention of protected attributes and relevance; 95% each, set in advance.
+- **Alternative:** manual review of 50 against a checklist.
+- **Why:** [REWRITE IN YOUR WORDS]
+
+### How results are judged
+- **Decision:** `EVAL_PROTOCOL.md`, committed before any data or results: customer and time holdout, vendor-style rule baseline, top-20% acceptance by tier, 1.2x bar, cost-of-living and cohort growth claim rules.
+- **Alternative:** (as recommended; no alternative chosen).
+- **Why:** [REWRITE IN YOUR WORDS]
+
+### App
+- **Decision:** Streamlit with four screens: new cards by city with drill-down to tier and cohort; growing cohorts; campaign target review with accept or exclude; customer detail with reasons.
+- **Alternative:** FastAPI with a React front end.
+- **Why:** [REWRITE IN YOUR WORDS]
+
+### Trigger
+- **Decision:** a daily schedule at 12:30 am, 30 minutes after the files land.
+- **Alternative:** a file arrival trigger with manual fallback.
+- **Why:** [REWRITE IN YOUR WORDS] The file arrival trigger never fired in this workspace in the previous build.
+
+### Campaign window
+- **Decision:** the latest 24 complete months covered by the public price data (for example December 2024 to November 2026); year 1 and year 2 follow that window.
+- **Alternative:** calendar years 2024 and 2025.
+- **Why:** [REWRITE IN YOUR WORDS]
