@@ -1,0 +1,104 @@
+# Evidence 11: GenAI judge, run 2 (judge sees the annual fee; writer forbidden to infer beyond facts)
+# Captured 2026-11-21T02:37Z
+
+{
+    "task": "genai_judge",
+    "sample": 200,
+    "generator": "databricks-claude-haiku-5-5",
+    "judge": "databricks-claude-sonnet-5-5",
+    "pass_rates": {
+        "grounded": 0.99,
+        "no_protected_attributes": 1.0,
+        "relevant": 0.0
+    },
+    "bar": 0.95,
+    "met": {
+        "grounded": true,
+        "no_protected_attributes": true,
+        "relevant": false
+    },
+    "claim": "explanations do NOT meet the protocol bar",
+    "examples_of_failures": [
+        {
+            "card": "Silver",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer lives in Charlotte's urban core market, where prices have risen in the area, with groceries up 0.3% and gasoline up 6.2% over the last 3 months (South region figures, context only), and the Silver card offers a $0 annual fee and a 0% balance transfer for 6 months.",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response begins with \"Why:\" and lists customer facts: Charlotte urban core, price increases in groceries and gasoline, and the offer features ($0 annual fee, 0% balance transfer "
+            }
+        },
+        {
+            "card": "Platinum",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The Platinum card (annual fee $195) with a 0% balance transfer for 12 months is matched to the customer with an annual income of $195,472, renting the home for 6 years at the address, and a 6-month average deposit balance of $14,792.",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response does use the customer facts (income $195,472, renting for 6 years, average deposit balance $14,792) and says the offer is 'matched to the customer' with those facts. How"
+            }
+        },
+        {
+            "card": "Cashback",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer is being offered a cashback card with a $50 annual fee and 3% cashback on all purchases for 6 months, with annual income of $91,436. Prices have risen in the area, with groceries up 0.3% and gasoline up 6.2% over the last 3 months (South region figures, context only).",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response restates the offer terms (cashback card, $50 annual fee, 3% cashback for 6 months) and mentions two customer facts: income of $91,436 and the regional price increases. H"
+            }
+        },
+        {
+            "card": "Silver",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer has a 6-month average deposit balance of $1,117, an annual income of $42,837, and lives in the Durham urban core market, and the Silver card offers a $0 annual fee and a 0% balance transfer for 6 months.",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response begins with 'Why:' and lists the customer facts (deposit balance $1,117, income $42,837, Durham urban core) next to the offer features ($0 annual fee, 0% balance transfe"
+            }
+        },
+        {
+            "card": "Gold",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer, who has been a customer for 4 years and lives in Holly Springs, a suburban market, with a monthly household payment of $1,523, would be offered the Gold card with a $95 annual fee and 5% cashback on groceries for 12 months.\nRules: Followed; no age, life stage, family, gender, model, score, approval, or affordability references.",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response does mention the customer facts (4 years as a customer, Holly Springs suburban market, $1,523 monthly household payment) and the offer details. However, it only restates"
+            }
+        },
+        {
+            "card": "Gold",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer, who lives in Charleston's urban core market, has an annual income of $194,581 and a monthly payment of $2,047, and would be offered a Gold card with a $95 annual fee and 5% cashback on groceries for 12 months.",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response does mention the customer facts (Charleston urban core, income $194,581, monthly payment $2,047) and the offer details (Gold card, $95 fee, 5% grocery cashback for 12 mo"
+            }
+        },
+        {
+            "card": "Gold",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer, who lives in Charleston's urban core market with an annual income of $200,000 and a monthly household payment of $2,824, is a fit for the Gold card offer, which has a $95 annual fee and 5% cashback on groceries for 12 months.",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response does cite the customer facts: Charleston urban core, $200,000 income, and $2,824 monthly household payment. It states that the customer is a fit for the Gold card. Howev"
+            }
+        },
+        {
+            "card": "Gold",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer lives in Holly Springs, a suburban market, with a monthly household payment of $1,729 and a 6-month average deposit balance of $28,032, and the offer is a Gold card with a $95 annual fee and 5% cashback on groceries for 12 months.",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response begins with 'Why:' and then lists the customer facts (Holly Springs suburban market, $1,729 monthly household payment, $28,032 average deposit balance) and restates the "
+            }
+        }
+    ],
+    "mlflow_run_id": "2d7eb4dd47b5463eacb1722b711e1107"
+}

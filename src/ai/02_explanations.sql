@@ -8,7 +8,11 @@ COMMENT 'Explanation for each top target of the next campaign, written by databr
 AS
 WITH t AS (
   SELECT s.target_id, s.campaign_region, s.card_product, s.offer_code, c.offer_description, r.annual_fee,
-         concat_ws('; ', s.reason_1, s.reason_2, s.reason_3) AS facts
+         concat_ws('; ',
+           concat('meets the published ', s.card_product, ' card requirements (credit score ', r.min_credit_score, '+, income $',
+                  format_number(r.min_income, 0), '+', IF(r.min_avg6_deposit > 0, concat(', 6-month average deposits $', format_number(r.min_avg6_deposit, 0), '+'), ''), ')'),
+           concat('ranked in the top ', CAST(ceil(100.0 * s.rank_in_tier / s.tier_size) AS INT), '% of qualified customers most likely to respond to ', s.card_product, ' offers'),
+           s.reason_1, s.reason_2, s.reason_3) AS facts
   FROM c360_bank.cards.gold_target_scores s
   JOIN c360_bank.cards.silver_campaigns c ON c.offer_code = s.offer_code
   JOIN c360_bank.cards.silver_card_rules r ON r.card_product = s.card_product
@@ -23,9 +27,10 @@ prompts AS (
     'Why: <one or two sentences explaining why this offer fits the customer; refer to the person as "the customer">\n',
     'Rules: Do not mention or hint at age, generation, life stage, marital status, family, children or gender. ',
     'Do not mention models, scores or probabilities. Do not say the customer is approved or creditworthy. ',
+    'Explain the fit using the facts: the customer meets the card requirements and ranks among the most likely responders, ',
+    'and name the customer facts behind that ranking. ',
     'Do not infer anything beyond the facts: nothing about ability to pay, affordability, absorbing the fee, spending habits, ',
     'existing balances or debts, financial needs or goals, or what the offer would help the customer do. ',
-    'State the offer and the facts, and connect them only with words like "with" or "and". ',
     'If a fact is about prices in the area, present it only as context (for example "prices have risen in the area"), ',
     'never as the reason the customer will accept. If the facts are few, write a shorter reason that only restates them.') AS prompt
   FROM t
@@ -35,7 +40,7 @@ gen AS (
   FROM prompts
 )
 SELECT target_id, campaign_region, card_product, offer_code, facts,
-       NULLIF(TRIM(response.result), '') AS explanation, response.errorMessage AS generation_error,
+       NULLIF(TRIM(regexp_extract(response.result, '(Why:[^\\n]*)', 1)), '') AS explanation, response.errorMessage AS generation_error,
        'databricks-claude-haiku-5-5' AS llm_endpoint, current_timestamp() AS generated_at
 FROM gen;
 
