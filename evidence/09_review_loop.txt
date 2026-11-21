@@ -1,0 +1,44 @@
+# Evidence 09: review loop (app -> Lakebase -> Unity Catalog -> Genie)
+# Captured 2026-11-21T03:53Z
+
+## 1. Decision recorded in the app (Target review form, tools/test_app.py)
+{
+  "decision_recorded": true,
+  "target_id": "cd84a89a-5bda-4643-91a3-6e732730b2e0-GLD_GROC5",
+  "reasons_listed": 3,
+  "history_rows": 1,
+  "latest_decision": "exclude"
+}
+
+## 2. Copied from Lakebase app.target_reviews to Unity Catalog (job cards_daily task reviews_back)
+{"task": "reviews_to_uc", "status": "ok", "lakebase_rows": 1, "uc_rows_before": 0, "uc_rows_after": 1, "decisions": {"exclude": 1}}
+
+## 3. In Unity Catalog (reviewer pseudonymized; region row filter)
+## SELECT target_id, campaign_region, card_product, decision, reason, reviewer_key, created_at FROM c36
+target_id                                       campaign_region  card_product  decision  reason                                                    reviewer_key         created_at              
+----------------------------------------------  ---------------  ------------  --------  --------------------------------------------------------  -------------------  ------------------------
+cd84a89a-5bda-4643-91a3-6e732730b2e0-GLD_GROC5  Triangle         Gold          exclude   demo review: already holds a competitor card (synthetic)  reviewer_4541e834e5  2026-11-21T03:51:27.674Z
+
+## SELECT * FROM c360_bank.cards.v_review_summary
+campaign_region  tier  decision  reviews  last_review_at          
+---------------  ----  --------  -------  ------------------------
+Triangle         Gold  exclude   1        2026-11-21T03:51:27.674Z
+
+
+## 4. Genie (space cards_cdo) answers from v_review_summary
+Question: How have campaign reviewers decided on the next campaign's targets so far, by region and tier?
+Genie SQL:
+SELECT
+  `campaign_region`,
+  `tier`,
+  `decision`,
+  SUM(`reviews`) AS `reviews`,
+  MAX(`last_review_at`) AS `last_review_at`
+FROM `c360_bank`.`cards`.`v_review_summary`
+WHERE `campaign_region` IS NOT NULL
+  AND `tier` IS NOT NULL
+  AND `decision` IS NOT NULL
+GROUP BY `campaign_region`, `tier`, `decision`
+ORDER BY `campaign_region`, `tier`, `decision`
+Genie answer:
+So far, for campaign region **Triangle** and tier **Gold**, reviewers have made **1** **exclude** decision, with the latest review recorded at **2026-11-21 03:51:27.674Z**. In the visible data, **Triangle / Gold** is the only reviewed region-tier combination shown, so decisions so far are entirely **exclude** for that combination.

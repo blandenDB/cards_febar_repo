@@ -1,0 +1,13 @@
+resources:
+  apps:
+    cards_app:
+      name: cards-campaigns
+      description: Card adoption by tier - new cards by city, growing cohorts, next campaign target review (synthetic data)
+      source_code_path: ../src/app
+      resources:
+        - name: lakebase
+          description: Lakebase database with the app views and target_reviews
+          postgres:
+            branch: projects/cards-lakebase/branches/production
+            database: projects/cards-lakebase/branches/production/databases/db-zvvp-um1i8xv4ye
+            permission: CAN_CONNECT_AND_CREATE

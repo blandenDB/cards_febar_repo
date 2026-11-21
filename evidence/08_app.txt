@@ -1,0 +1,23 @@
+# Evidence 08: Databricks App cards-campaigns (Streamlit on Lakebase)
+# Captured 2026-11-21T03:53Z
+
+## App status (databricks apps get)
+{
+  "name": "cards-campaigns",
+  "url": "https://cards-campaigns-7474657021109872.aws.databricksapps.com",
+  "compute_status": {
+    "message": "App compute is running.",
+    "state": "ACTIVE"
+  },
+  "app_status": {
+    "message": "App has status: App is running",
+    "state": "RUNNING"
+  }
+}
+active deployment: 01f1e55ee1881549b736c34f9f319ded SUCCEEDED 2026-11-21T03:51:57Z
+resources: [('lakebase', ['postgres'])]
+
+## App test (tools/test_app.py with Streamlit AppTest against the real Lakebase views, acting as the roster reviewer)
+{"step": "app_test", "city_page": {"metrics": {"New cards": "4,954", "Qualified customers targeted": "79,075", "Card Product Penetration Rate": "6.3%"}, "charts": 1, "tables": 2}, "cohorts_page": {"rows": 5, "charts": 1}, "review_page": {"mix_rows": 5, "mix_flags": ["Boomers", "Gen X", "Gen Z", "Silent"], "targets_listed": 200}, "decision_recorded": true, "detail_page": {"target_id": "cd84a89a-5bda-4643-91a3-6e732730b2e0-GLD_GROC5", "reasons_listed": 3, "history_rows": 1, "latest_decision": "exclude"}, "exceptions": 0, "status": "ok"}
+
+Screens: (1) New cards by city with drill-down to tier and cohort, (2) Growing cohorts, (3) Target review with the age-group fairness check and accept or exclude, (4) Target detail with reasons and review history.

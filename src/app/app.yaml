@@ -1,0 +1,4 @@
+command: ["streamlit", "run", "app.py"]
+env:
+  - name: LAKEBASE_ENDPOINT
+    value: projects/cards-lakebase/branches/production/endpoints/primary
