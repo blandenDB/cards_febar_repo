@@ -1,0 +1,21 @@
+resources:
+  jobs:
+    cards_setup:
+      name: cards_setup
+      description: One-time setup for the cards build; generates the synthetic source files (fixed seed, rewrites the raw folders)
+      tasks:
+        - task_key: generate
+          environment_key: default
+          spark_python_task:
+            python_file: ../src/data/generate.py
+            parameters:
+              - --seed_dir
+              - /Volumes/${var.catalog}/${var.schema}/${resources.volumes.seed.name}
+              - --raw_dir
+              - /Volumes/${var.catalog}/${var.schema}/${resources.volumes.raw.name}
+              - --seed
+              - "20261120"
+      environments:
+        - environment_key: default
+          spec:
+            client: "2"

@@ -18,6 +18,8 @@ How the synthetic Arkterus Bank dataset is built. All customers are synthetic; t
 - **Adjusted customers:** in Winston-Salem, 45% of married homeowners aged 30 to 50 earning $50,000 to $125,000 with credit scores at 700 or below (about 226) get scores of 701 to 760 and payments of $1,000 to $1,500 by move-in year.
 - **Total:** 180,644 customers. Column `record_origin` (`source`, `added_synthetic`, `adjusted`) and `origin_group` mark every row.
 
+- **Generations** use the source table's age bands (age in 2026): Gen Z 18 to 28, Millennials 29 to 45, Gen X 46 to 58, Boomers 59 to 68, Silent 69 and over.
+
 ## 2. Cleanup
 
 - City spelling standardized ("Winston-Salem").
