@@ -1,0 +1,84 @@
+# Evidence 11: GenAI judge, run 4 (ranking factors labelled in the facts)
+# Captured 2026-11-21T03:03Z
+
+{
+    "task": "genai_judge",
+    "sample": 200,
+    "generator": "databricks-claude-haiku-5-5",
+    "judge": "databricks-claude-sonnet-5-5",
+    "pass_rates": {
+        "grounded": 1.0,
+        "no_protected_attributes": 1.0,
+        "relevant": 0.97
+    },
+    "bar": 0.95,
+    "met": {
+        "grounded": true,
+        "no_protected_attributes": true,
+        "relevant": true
+    },
+    "claim": "explanations meet the protocol bar",
+    "examples_of_failures": [
+        {
+            "card": "Platinum",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response is only 'Why: The customer', which is an incomplete fragment. It gives no explanation and cites none of the customer facts, such as the credit score of 824, the 6-year t"
+            }
+        },
+        {
+            "card": "Silver",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer meets the published Silver card requir",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response is truncated: \"Why: The customer meets the published Silver card requir\". It starts to say the customer meets the published requirements, but it cuts off mid-word. It ne"
+            }
+        },
+        {
+            "card": "Platinum",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer meets the published Platinum card requirements and ranks",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response is truncated: \"Why: The customer meets the published Platinum card requirements and ranks\". It starts to use customer facts by saying the customer meets the published re"
+            }
+        },
+        {
+            "card": "Silver",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer meets the published Silver card requirements and ranks in the top 1% of qualified",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response is truncated: \"Why: The customer meets the published Silver card requirements and ranks in the top 1% of qualified\". It does use two customer facts, meeting the Silver r"
+            }
+        },
+        {
+            "card": "Platinum",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer meets the published Platinum card requirements and ran",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response is cut off after \"Why: The customer meets the published Platinum card requirements and ran\". It does begin an explanation, and the fact that the customer meets the publi"
+            }
+        },
+        {
+            "card": "Platinum",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer meets the published Platinum card requirements (credit score of 750 or more, income of $125,000 or more, and 6-month average deposits of $5,000 or more) and ranks in the top 6% of qualified customers most likely to resp",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response begins with 'Why:' and cites the customer meeting the published Platinum requirements and ranking in the top 6% of qualified customers likely to respond. These come from"
+            }
+        }
+    ],
+    "mlflow_run_id": "78c65e0d8f0f4d64881d3906886618eb"
+}

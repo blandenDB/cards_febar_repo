@@ -39,10 +39,23 @@ gen AS (
   SELECT *, ai_query('databricks-claude-haiku-5-5', prompt, modelParameters => named_struct('max_tokens', 1000), failOnError => false) AS response
   FROM prompts
 )
-SELECT target_id, campaign_region, card_product, offer_code, facts,
+SELECT target_id, campaign_region, card_product, offer_code, facts, prompt,
        NULLIF(TRIM(regexp_replace(split(response.result, 'Rules:')[0], '\\s+', ' ')), '') AS explanation, response.errorMessage AS generation_error,
        'databricks-claude-haiku-5-5' AS llm_endpoint, current_timestamp() AS generated_at
 FROM gen;
+
+-- One retry for replies that came back incomplete (no closing punctuation); any still incomplete are
+-- left blank so the app shows the reasons instead of a broken sentence.
+MERGE INTO c360_bank.cards.gold_target_explanations e
+USING (
+  SELECT target_id, NULLIF(TRIM(regexp_replace(split(r.result, 'Rules:')[0], '\\s+', ' ')), '') AS retry_explanation
+  FROM (SELECT target_id, ai_query('databricks-claude-haiku-5-5', prompt, modelParameters => named_struct('max_tokens', 1000), failOnError => false) AS r
+        FROM c360_bank.cards.gold_target_explanations
+        WHERE explanation IS NULL OR explanation NOT RLIKE '[.!?)]$')
+) x ON e.target_id = x.target_id
+WHEN MATCHED THEN UPDATE SET
+  e.explanation = CASE WHEN x.retry_explanation RLIKE '[.!?)]$' THEN x.retry_explanation END,
+  e.generation_error = CASE WHEN x.retry_explanation RLIKE '[.!?)]$' THEN 'retried once' ELSE 'incomplete after retry' END;
 
 ALTER TABLE c360_bank.cards.gold_target_explanations SET ROW FILTER c360_bank.cards.cards_region_filter ON (campaign_region);
 ALTER TABLE c360_bank.cards.gold_target_explanations ALTER COLUMN facts COMMENT 'Facts given to the model; the explanation must not go beyond these';
@@ -54,5 +67,5 @@ WHEN MATCHED THEN UPDATE SET s.explanation = e.explanation;
 -- Fail the task if more than 5% of generations errored, so a silent failure cannot pass as success.
 SELECT IF(sum(IF(explanation IS NULL, 1, 0)) > 0.05 * count(*),
           raise_error(concat('Explanation generation failed for ', sum(IF(explanation IS NULL, 1, 0)), ' of ', count(*), ' rows')),
-          concat('ok: ', count(explanation), ' of ', count(*), ' explanations generated')) AS generation_check
+          concat('ok: ', count(explanation), ' of ', count(*), ' explanations generated; ', count_if(generation_error = 'retried once'), ' retried once; ', count_if(generation_error = 'incomplete after retry'), ' left blank')) AS generation_check
 FROM c360_bank.cards.gold_target_explanations;
