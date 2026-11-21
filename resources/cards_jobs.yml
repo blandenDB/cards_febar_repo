@@ -83,6 +83,28 @@ resources:
             warehouse_id: ${var.warehouse_id}
             file:
               path: ../src/governance/03_target_scores_policy.sql
+        - task_key: explanations
+          depends_on:
+            - task_key: target_scores_policy
+          sql_task:
+            warehouse_id: ${var.warehouse_id}
+            file:
+              path: ../src/ai/02_explanations.sql
+        - task_key: genai_judge
+          depends_on:
+            - task_key: explanations
+          environment_key: judge
+          spark_python_task:
+            python_file: ../src/ai/03_genai_judge.py
+            parameters:
+              - --catalog
+              - ${var.catalog}
+              - --schema
+              - ${var.schema}
+              - --experiment
+              - ${resources.experiments.cards_acceptance.name}
+              - --judge-endpoint
+              - ${var.judge_endpoint}
       environments:
         - environment_key: default
           spec:
@@ -93,3 +115,8 @@ resources:
             dependencies:
               - mlflow>=3.1
               - scikit-learn>=1.4
+        - environment_key: judge
+          spec:
+            client: "2"
+            dependencies:
+              - mlflow[databricks]>=3.1

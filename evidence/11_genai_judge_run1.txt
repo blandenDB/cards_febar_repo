@@ -1,0 +1,110 @@
+# Evidence 11: GenAI judge, run 1
+# Job cards_daily run 1018033036919375, task genai_judge; captured 2026-11-21T02:26Z
+
+{
+    "task": "genai_judge",
+    "sample": 200,
+    "generator": "databricks-claude-haiku-5-5",
+    "judge": "databricks-claude-sonnet-5-5",
+    "pass_rates": {
+        "grounded": 0.085,
+        "no_protected_attributes": 1.0,
+        "relevant": 0.825
+    },
+    "bar": 0.95,
+    "met": {
+        "grounded": false,
+        "no_protected_attributes": true,
+        "relevant": false
+    },
+    "claim": "explanations do NOT meet the protocol bar",
+    "examples_of_failures": [
+        {
+            "card": "Silver",
+            "failed": [
+                "grounded",
+                "relevant"
+            ],
+            "explanation": "Why: The customer, who lives in the Charlotte urban core, is a good fit for a card with no annual fee and a 0% balance transfer for 6 months, which gives time to pay down transferred balances without interest. Prices have risen in the area, with gasoline up 6.2% and groceries up 0.3% over the last three months (South region figures, offered as context only).",
+            "rationale": {
+                "grounded": "The guideline says the response may only state facts that appear in the offer and customer facts, and may not invent numbers, rates, fees, promotions, life events or other details. The offer is a Silver card with a 0% balance transfer for 6 months. The customer facts are a credit score of 834, resid",
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response does try to tie the offer to the customer. It mentions that the customer lives in the Charlotte urban core, and that the 0% balance transfer for 6 months gives time to p"
+            }
+        },
+        {
+            "card": "Platinum",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer's annual income of $195,472, six years at the same rented address, and $14,792 six-month average deposit balance suggest the customer can comfortably absorb the $195 annual fee, and a 12-month 0% balance transfer could help the customer manage existing balances.",
+            "rationale": {
+                "grounded": "The guideline requires the response to state only facts found in the offer and customer facts, without inventing numbers, rates, fees, promotions, life events, or other details. The offer lists a Platinum card with a 0% balance transfer for 12 months. The customer facts list an income of $195,472, r"
+            }
+        },
+        {
+            "card": "Cashback",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer's annual income of $91,436 and the offer's 3% cashback on all purchases for 6 months could make the card a fit for everyday spending, with the $50 annual fee to weigh against the rewards. Prices have risen in the area, with gasoline up 6.2% and groceries up 0.3% over the last 3 months (South region figures, context only).",
+            "rationale": {
+                "grounded": "The guideline requires the response to state only facts found in the offer and customer facts, with no invented numbers, rates, fees, promotions, or life events. The response correctly repeats the annual income of $91,436, the 3% cashback on all purchases for 6 months, gasoline up 6.2%, groceries up"
+            }
+        },
+        {
+            "card": "Silver",
+            "failed": [
+                "grounded",
+                "relevant"
+            ],
+            "explanation": "Why: The customer has a $1,117 six-month average deposit balance with the bank and an annual income of $42,837, and lives in Durham's urban core market, so a Silver card with a $0 annual fee and a 6-month 0% balance transfer is a reasonable offer to present.",
+            "rationale": {
+                "grounded": "The guideline requires the response to state only facts found in the offer and customer facts, with no invented numbers, rates, fees, promotions, or other details. The offer is a Silver card with 0% balance transfer for 6 months. The customer facts are a 6-month average deposit balance of $1,117, an",
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response cites all three customer facts: the $1,117 six-month average deposit balance, the $42,837 annual income, and the Durham urban core location. It then concludes that the S"
+            }
+        },
+        {
+            "card": "Gold",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer has been with the bank for 4 years and makes monthly payments of $1,523, so the 5% grocery cashback for 12 months could offer useful value that the customer may weigh against the $95 annual fee.",
+            "rationale": {
+                "grounded": "The guideline says the response may only state facts that appear in the offer and customer facts, and it must not invent numbers, rates, fees, promotions, life events or other details. The offer is a Gold card with 5% cashback on groceries for 12 months. The customer facts are: lives in Holly Spring"
+            }
+        },
+        {
+            "card": "Gold",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer's annual income of $194,581 and monthly household payment of $2,047 suggest the $95 annual fee is small relative to their finances, and the 5% grocery cashback for 12 months applies to everyday spending for a customer in the Charleston urban core market.",
+            "rationale": {
+                "grounded": "The guideline says the response may only state facts that appear in the offer and customer facts, and it must not invent numbers, rates, fees, promotions, life events or other details. The offer is a Gold card with 5% cashback on groceries for 12 months. The customer facts are a monthly household pa"
+            }
+        },
+        {
+            "card": "Gold",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer has an annual income of $200,000, makes a monthly payment of $2,824, and lives in Charleston's urban core market, so the 5% grocery cashback for 12 months may be useful relative to the $95 annual fee. Prices have risen in the area, which is relevant context for grocery spending.",
+            "rationale": {
+                "grounded": "The guideline requires that the response state only facts found in the offer and customer facts, without inventing numbers, rates, fees, promotions, life events, or other details. The offer and customer facts include: Gold card, 5% cashback on groceries for 12 months, Charleston (urban core market),"
+            }
+        },
+        {
+            "card": "Gold",
+            "failed": [
+                "grounded",
+                "relevant"
+            ],
+            "explanation": "Why: The customer keeps a 6-month average deposit balance of $28,032 and has a monthly payment of $1,729, so the 5% grocery cashback for 12 months may be useful for regular spending, and the $95 annual fee applies. The customer lives in the suburban Holly Springs market.",
+            "rationale": {
+                "grounded": "The guideline requires the response to state only facts that appear in the offer and customer facts, with no invented numbers, rates, fees, promotions, life events, or other details. The offer contains a Gold card with 5% cashback on groceries for 12 months. The customer facts are: lives in Holly Sp",
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response does cite the customer facts: the $28,032 six-month average deposit balance, the $1,729 monthly payment, and the suburban Holly Springs location. It links the monthly pa"
+            }
+        }
+    ],
+    "mlflow_run_id": "889b0f3be4e4445392e7380dc3e6a7ad"
+}

@@ -98,8 +98,10 @@ def fact(group, r):
         "annual_income": f"annual income {money(r.annual_income)}",
         "avg6_total_balance": f"6-month average deposit balance {money(r.avg6_total_balance)}",
         "monthly_household_pmt": f"monthly household payment {money(r.monthly_household_pmt)}",
-        "cost_of_living": f"grocery prices {pct(r.food_at_home_3m_change)} and gasoline prices {pct(r.gasoline_3m_change)} over the last 3 months (South region)",
-        "house_prices": f"local house prices {pct(r.house_price_yoy)} over the last year",
+        "cost_of_living": (f"prices have {'risen' if (r.food_at_home_3m_change + r.gasoline_3m_change) > 0 else 'fallen'} in the area: "
+                           f"groceries {pct(r.food_at_home_3m_change)} and gasoline {pct(r.gasoline_3m_change)} over the last 3 months (South region figures; context, not a proven driver)"),
+        "house_prices": (f"home prices in the area have {'risen' if r.house_price_yoy > 0 else 'fallen'} {pct(r.house_price_yoy)} over the last year "
+                         f"(context, not a proven driver)"),
         "city": f"lives in {r.city} ({r.market_type.replace('_', ' ')} market)",
         "mass_affluent": "in the mass affluent income band for the local cost of living" if r.mass_affluent else "below the mass affluent band for the local cost of living",
         "accounts": f"{int(r.n_accounts)} deposit account(s) with the bank",
