@@ -13,6 +13,17 @@ AS SELECT solicitation_id, customer_id, offer_code, card_product, sent_date, sen
 FROM c360_bank.cards.gold_features
 WHERE c360_bank.cards.cards_is_analyst();
 
+CREATE OR REPLACE VIEW c360_bank.cards.v_next_campaign_features
+COMMENT 'Next campaign scoring input: gold_next_campaign_features without protected attributes; data owners and D&A analysts only'
+AS SELECT target_id, customer_id, offer_code, card_product, sent_month, campaign_month,
+  city, state, zip_code, campaign_region, market_type, low_cost_market, urban_suburban, mass_affluent,
+  annual_income, credit_score, monthly_household_pmt, own_rent_home, employment_status, residence_year, years_at_residence,
+  tenure_years, preferred_channel, n_accounts, has_savings, has_money_market, avg6_total_balance,
+  food_at_home_3m_change, gasoline_3m_change, cpi_all_items_yoy, used_vehicles_yoy, new_vehicles_yoy,
+  gasoline_usd_per_gallon, cpi_interpolated, house_price_yoy
+FROM c360_bank.cards.gold_next_campaign_features
+WHERE c360_bank.cards.cards_is_analyst();
+
 -- Protected attributes, for the fairness monitor only. Analysts and owners only.
 CREATE OR REPLACE VIEW c360_bank.cards.v_fairness_features
 COMMENT 'Protected attributes per solicitation for fairness monitoring only (never a model input); data owners and D&A analysts only'
@@ -51,4 +62,8 @@ ALTER MATERIALIZED VIEW c360_bank.cards.gold_features ALTER COLUMN age_at_solici
 ALTER MATERIALIZED VIEW c360_bank.cards.gold_features ALTER COLUMN generation SET TAGS ('cards_protected_attribute' = 'age');
 ALTER MATERIALIZED VIEW c360_bank.cards.gold_features ALTER COLUMN marital_status SET TAGS ('cards_protected_attribute' = 'marital_status');
 ALTER MATERIALIZED VIEW c360_bank.cards.gold_features ALTER COLUMN gender SET TAGS ('cards_protected_attribute' = 'gender');
+ALTER MATERIALIZED VIEW c360_bank.cards.gold_next_campaign_features ALTER COLUMN age_at_solicitation SET TAGS ('cards_protected_attribute' = 'age');
+ALTER MATERIALIZED VIEW c360_bank.cards.gold_next_campaign_features ALTER COLUMN generation SET TAGS ('cards_protected_attribute' = 'age');
+ALTER MATERIALIZED VIEW c360_bank.cards.gold_next_campaign_features ALTER COLUMN marital_status SET TAGS ('cards_protected_attribute' = 'marital_status');
+ALTER MATERIALIZED VIEW c360_bank.cards.gold_next_campaign_features ALTER COLUMN gender SET TAGS ('cards_protected_attribute' = 'gender');
 ALTER TABLE c360_bank.cards.cards_entitlements SET TAGS ('cards_sensitivity' = 'access_control');

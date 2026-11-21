@@ -63,7 +63,33 @@ resources:
             warehouse_id: ${var.warehouse_id}
             file:
               path: ../src/governance/02_views_and_tags.sql
+        - task_key: train_and_score
+          depends_on:
+            - task_key: views_and_tags
+          environment_key: ml
+          spark_python_task:
+            python_file: ../src/ai/01_train_and_score.py
+            parameters:
+              - --catalog
+              - ${var.catalog}
+              - --schema
+              - ${var.schema}
+              - --experiment
+              - ${resources.experiments.cards_acceptance.name}
+        - task_key: target_scores_policy
+          depends_on:
+            - task_key: train_and_score
+          sql_task:
+            warehouse_id: ${var.warehouse_id}
+            file:
+              path: ../src/governance/03_target_scores_policy.sql
       environments:
         - environment_key: default
           spec:
             client: "2"
+        - environment_key: ml
+          spec:
+            client: "2"
+            dependencies:
+              - mlflow>=3.1
+              - scikit-learn>=1.4

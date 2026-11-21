@@ -73,3 +73,38 @@ SELECT *,
   coalesce(try_divide(rate_p3, rate_p1) - 1 > 0.10 AND try_divide(rate_p4, rate_p2) - 1 > 0.10
            AND least(n_p1, n_p2, n_p3, n_p4) >= 200, false) AS growing_above_10pct
 FROM w;
+
+CREATE OR REFRESH MATERIALIZED VIEW gold_next_campaign_features
+COMMENT 'Next campaign (November 2026): one row per customer x offer the customer qualifies for today, with the same point-in-time features as gold_features. Includes protected attributes for fairness monitoring only; the model reads v_next_campaign_features.'
+AS
+WITH c AS (SELECT * FROM silver_customers),
+avg6 AS (
+  SELECT customer_id, avg(total_balance) AS avg6_total_balance FROM silver_balances_monthly
+  WHERE month >= DATE'2026-05-01' AND month < DATE'2026-11-01' GROUP BY customer_id
+),
+acc AS (
+  SELECT customer_id, count(*) AS n_accounts, count_if(product = 'savings') > 0 AS has_savings,
+         count_if(product = 'money_market') > 0 AS has_money_market
+  FROM silver_accounts WHERE open_date < DATE'2026-11-01' GROUP BY customer_id
+),
+offers AS (SELECT DISTINCT offer_code, card_product FROM silver_campaigns)
+SELECT
+  concat(c.customer_id, '-', o.offer_code) AS target_id, c.customer_id, o.offer_code, o.card_product,
+  DATE'2026-11-01' AS sent_month, 25 AS campaign_month,
+  c.city, c.state, c.zip_code, c.campaign_region, c.market_type, c.low_cost_market, c.urban_suburban, c.mass_affluent,
+  c.annual_income, c.credit_score, c.monthly_household_pmt, c.own_rent_home, c.employment_status,
+  c.residence_year, 2026 - c.residence_year AS years_at_residence,
+  datediff(DATE'2026-11-01', c.customer_since) / 365.25 AS tenure_years, c.preferred_channel,
+  coalesce(acc.n_accounts, 0) AS n_accounts, coalesce(acc.has_savings, false) AS has_savings,
+  coalesce(acc.has_money_market, false) AS has_money_market, a.avg6_total_balance,
+  m.food_at_home_3m_change, m.gasoline_3m_change, m.cpi_all_items_yoy, m.used_vehicles_yoy, m.new_vehicles_yoy,
+  m.gasoline_usd_per_gallon, m.cpi_interpolated, h.house_price_yoy,
+  c.age AS age_at_solicitation, c.generation, c.marital_status, c.gender
+FROM c
+CROSS JOIN offers o
+JOIN silver_card_rules r ON r.card_product = o.card_product
+LEFT JOIN avg6 a ON a.customer_id = c.customer_id
+LEFT JOIN acc ON acc.customer_id = c.customer_id
+LEFT JOIN silver_macro_monthly m ON m.metro_area = c.metro_area AND m.month = DATE'2026-10-01'
+LEFT JOIN silver_macro_monthly h ON h.metro_area = c.metro_area AND h.month = DATE'2026-08-01'
+WHERE c.credit_score >= r.min_credit_score AND c.annual_income >= r.min_income AND coalesce(a.avg6_total_balance, 0) >= r.min_avg6_deposit;

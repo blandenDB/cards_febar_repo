@@ -1,0 +1,48 @@
+# Evidence 04: acceptance model and target scores
+# Job cards_daily run 866083388288369, task train_and_score; captured 2026-11-21T01:02Z
+
+## Run summary (task stdout)
+{"task": "train_and_score", "train_rows": 46610, "test_rows": 3901, "auc_by_offer": {"SIL_BT6": {"model": 0.5694, "model_no_macro": 0.5917, "baseline": 0.4832, "n_test": 1424, "accepts_test": 90}, "GLD_GROC5": {"model": 0.6271, "model_no_macro": 0.6429, "baseline": 0.4833, "n_test": 1077, "accepts_test": 77}, "PLT_BT12": {"model": 0.602, "model_no_macro": 0.5862, "baseline": 0.4535, "n_test": 107, "accepts_test": 9}, "PLT_TE5": {"model": 0.4815, "model_no_macro": 0.1728, "baseline": 0.9259, "n_test": 82, "accepts_test": 1}, "CB_ALL3": {"model": 0.5981, "model_no_macro": 0.581, "baseline": 0.454, "n_test": 1211, "accepts_test": 77}}, "top20_by_tier": [{"tier": "Silver", "n_test": 1424, "top20_n": 285, "base_rate": 0.0632, "model_top20_rate": 0.0842, "baseline_top20_rate": 0.0632, "model_no_macro_top20_rate": 0.0842, "ratio_vs_baseline": 1.333}, {"tier": "Gold", "n_test": 1077, "top20_n": 215, "base_rate": 0.0715, "model_top20_rate": 0.1256, "baseline_top20_rate": 0.0605, "model_no_macro_top20_rate": 0.1302, "ratio_vs_baseline": 2.077}, {"tier": "Platinum", "n_test": 189, "top20_n": 38, "base_rate": 0.0529, "model_top20_rate": 0.1053, "baseline_top20_rate": 0.0526, "model_no_macro_top20_rate": 0.1053, "ratio_vs_baseline": 2.0}, {"tier": "Cashback", "n_test": 1211, "top20_n": 242, "base_rate": 0.0636, "model_top20_rate": 0.0785, "baseline_top20_rate": 0.0413, "model_no_macro_top20_rate": 0.0661, "ratio_vs_baseline": 1.9}], "pooled_model_top20_rate": 0.0949, "pooled_baseline_top20_rate": 0.0551, "pooled_ratio": 1.721, "tiers_at_or_above_baseline": 4, "auc_pooled": 0.6044, "auc_pooled_no_macro": 0.6053, "auc_gain_from_prices": -0.0009, "claims": {"beats_vendor_style_list": true, "cost_of_living_improves_targeting": false}, "fairness_flags": [{"attribute": "generation", "group_value": "boomer", "n_test_qualified": 770, "selected_top20": 39, "selection_share": 0.0506, "adverse_impact_ratio": 0.164, "flag_below_0_8": true}, {"attribute": "generation", "group_value": "gen_x", "n_test_qualified": 1288, "selected_top20": 308, "selection_share": 0.2391, "adverse_impact_ratio": 0.773, "flag_below_0_8": true}, {"attribute": "generation", "group_value": "gen_z", "n_test_qualified": 220, "selected_top20": 34, "selection_share": 0.1545, "adverse_impact_ratio": 0.5, "flag_below_0_8": true}, {"attribute": "generation", "group_value": "silent", "n_test_qualified": 362, "selected_top20": 9, "selection_share": 0.0249, "adverse_impact_ratio": 0.08, "flag_below_0_8": true}, {"attribute": "marital_status", "group_value": "single", "n_test_qualified": 1138, "selected_top20": 219, "selection_share": 0.1924, "adverse_impact_ratio": 0.792, "flag_below_0_8": true}, {"attribute": "marital_status", "group_value": "widowed", "n_test_qualified": 151, "selected_top20": 24, "selection_share": 0.1589, "adverse_impact_ratio": 0.654, "flag_below_0_8": true}], "registered_model": "c360_bank.cards.cards_acceptance_model", "model_version": "1", "eval_run_id": "407042481c1e4e15b200de154cd1a592", "targets_scored": 198291, "top20_targets": 39657, "reason_1_mix": {"cost_of_living": 48229, "credit_score": 39549, "city": 38368, "annual_income": 24542, "monthly_household_pmt": 14228, "avg6_total_balance": 12861, "home": 7273, "house_prices": 6662, "tenure": 5357, "employment": 958, "mass_affluent": 261, "accounts": 3}, "features": ["annual_income", "credit_score", "monthly_household_pmt", "residence_year", "years_at_residence", "tenure_years", "n_accounts", "has_savings", "has_money_market", "avg6_total_balance", "mass_affluent", "urban_suburban", "low_cost_market", "month_of_year", "food_at_home_3m_change", "gasoline_3m_change", "cpi_all_items_yoy", "used_vehicles_yoy", "new_vehicles_yoy", "gasoline_usd_per_gallon", "house_price_yoy", "city", "market_type", "own_rent_home", "employment_status", "preferred_channel", "campaign_region"]}
+
+## Target list for the next campaign (gold_target_scores)
+card_product  offer_code  targets  top20_targets  avg_score  avg_score_top20  model_version
+------------  ----------  -------  -------------  ---------  ---------------  -------------
+Cashback      CB_ALL3     65422    13084          0.0623     0.08             1            
+Gold          GLD_GROC5   39996    7999           0.0623     0.11             1            
+Platinum      PLT_BT12    5238     2084           0.0902     0.1854           1            
+Platinum      PLT_TE5     5238     11             0.0021     0.1492           1            
+Silver        SIL_BT6     82397    16479          0.0626     0.0918           1            
+
+## Top reason mix (reason_1_code)
+reason_1_code          targets
+---------------------  -------
+cost_of_living         48229  
+credit_score           39549  
+city                   38368  
+annual_income          24542  
+monthly_household_pmt  14228  
+avg6_total_balance     12861  
+home                   7273   
+house_prices           6662   
+tenure                 5357   
+employment             958    
+mass_affluent          261    
+accounts               3      
+
+## Sample top targets (synthetic customers)
+target_id                                       card_product  offer_code  city           score   rank_in_tier  reason_1                                            reason_2                                                                              reason_3                               
+----------------------------------------------  ------------  ----------  -------------  ------  ------------  --------------------------------------------------  ------------------------------------------------------------------------------------  ---------------------------------------
+ac48de10-f3ba-4814-9bb6-d2a03746db7e-CB_ALL3    Cashback      CB_ALL3     Greensboro     0.1509  1             6-month average deposit balance $1,761              lives in Greensboro (suburban style metro market)                                     customer for 8 year(s)                 
+2f4d7d4a-53e7-4d02-88ff-eea5fb33740c-CB_ALL3    Cashback      CB_ALL3     Greensboro     0.1421  2             6-month average deposit balance $1,805              lives in Greensboro (suburban style metro market)                                     customer for 8 year(s)                 
+78a38855-6ae0-454a-a070-f2f4fbdba69f-GLD_GROC5  Gold          GLD_GROC5   Holly Springs  0.3002  1             lives in Holly Springs (suburban market)            grocery prices +0.3% and gasoline prices +6.2% over the last 3 months (South region)  owns the home, 1 year(s) at the address
+17821bd9-2243-457b-889a-cfc9251c988d-GLD_GROC5  Gold          GLD_GROC5   Holly Springs  0.296   2             lives in Holly Springs (suburban market)            grocery prices +0.3% and gasoline prices +6.2% over the last 3 months (South region)  monthly household payment $1,799       
+600f7787-abe2-4be4-9919-e2d68d0d09c0-PLT_BT12   Platinum      PLT_BT12    Durham         0.7631  1             6-month average deposit balance $82,503             monthly household payment $1,817                                                      annual income $295,464                 
+e10ea0c4-e32c-492a-92cd-360c71e48da9-PLT_BT12   Platinum      PLT_BT12    Charleston     0.7455  2             monthly household payment $2,080                    6-month average deposit balance $7,647                                                customer for 17 year(s)                
+d15ea827-d274-45c7-90db-8caf118d2687-SIL_BT6    Silver        SIL_BT6     Greenville     0.2179  1             lives in Greenville (fast growing mid size market)  6-month average deposit balance $75,176                                               credit score 690                       
+dcf77ce0-c245-435e-ada7-9ac5bae07abc-SIL_BT6    Silver        SIL_BT6     Charleston     0.2047  2             lives in Charleston (urban core market)             grocery prices +0.3% and gasoline prices +6.2% over the last 3 months (South region)  annual income $40,030                  
+
+## Row filter attached
+table_name          filter_name                          target_columns 
+------------------  -----------------------------------  ---------------
+gold_target_scores  c360_bank.cards.cards_region_filter  campaign_region
+

@@ -16,3 +16,7 @@ resources:
       schema_name: ${resources.schemas.cards.name}
       name: seed
       comment: Generator inputs (authored synthetic customer profile, public price CSVs) and generator ground truth; never read by the pipeline
+
+  experiments:
+    cards_acceptance:
+      name: /Users/${workspace.current_user.userName}/cards_acceptance
