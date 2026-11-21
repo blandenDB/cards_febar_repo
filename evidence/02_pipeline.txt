@@ -1,6 +1,6 @@
 # Evidence 02: Lakeflow pipeline cards_pipeline
-# Update 1 (initial load, March 2026 file not yet arrived): ada53beb-30c9-4e3c-aef7-03e12bf884d2
-# Update 2: job cards_daily (land_files landed crm_solicitations_202603.csv, then pipeline refresh), 2026-11-21T00:26Z
+# Update 1: full refresh after regeneration (March 2026 file not yet arrived): 690b4578-e36e-40e9-8a43-3ef6b621211f
+# Update 2: job cards_daily (land_files landed crm_solicitations_202603.csv, then pipeline refresh), 2026-11-21T00:38Z
 
 =================== AFTER UPDATE 1 (before the late file) ===================
 ## Row counts by layer
@@ -96,15 +96,15 @@ first_month  last_month  metros  interpolated_months  interpolated_month
 ## Qualified solicitations and acceptance (metric inputs)
 solicitations  qualified  acceptance_all  penetration_rate_qualified
 -------------  ---------  --------------  --------------------------
-171503         74512      0.1001          0.0989                    
+171503         74512      0.0596          0.0625                    
 
 ## Card Product Penetration Rate by Tier (accepted / qualified targeted)
 tier      qualified_targeted  accepted  penetration_rate
 --------  ------------------  --------  ----------------
-Cashback  22975               2345      0.1021          
-Gold      20989               2059      0.0981          
-Platinum  3874                331       0.0854          
-Silver    26674               2631      0.0986          
+Cashback  22975               1386      0.0603          
+Gold      20989               1341      0.0639          
+Platinum  3874                416       0.1074          
+Silver    26674               1515      0.0568          
 
 ## Expectation results from the pipeline event log (latest update)
 dataset                             expectation                passed  failed
@@ -115,6 +115,11 @@ c360_bank.cards.silver_customers    payment_present            180604  0
 c360_bank.cards.silver_load_checks  layout_unchanged           1       0     
 c360_bank.cards.silver_load_checks  no_empty_files             1       0     
 c360_bank.cards.silver_load_checks  xref_match_rate            1       0     
+
+## Reconciliation with generator ground truth (seed volume; never read by the pipeline)
+planted_unmapped_xref  quarantined_unmapped_xref  planted_bad_credit_scores  quarantined_customers  qualified_flag_agrees  solicitations_compared  accepted_flag_agrees
+---------------------  -------------------------  -------------------------  ---------------------  ---------------------  ----------------------  --------------------
+1814                   1724                       40                         40                     171503                 171503                  171503              
 
 
 =================== AFTER UPDATE 2 (late file processed) ===================
@@ -212,15 +217,15 @@ first_month  last_month  metros  interpolated_months  interpolated_month
 ## Qualified solicitations and acceptance (metric inputs)
 solicitations  qualified  acceptance_all  penetration_rate_qualified
 -------------  ---------  --------------  --------------------------
-178790         77635      0.0998          0.0986                    
+178790         77635      0.0593          0.0624                    
 
 ## Card Product Penetration Rate by Tier (accepted / qualified targeted)
 tier      qualified_targeted  accepted  penetration_rate
 --------  ------------------  --------  ----------------
-Cashback  23958               2448      0.1022          
-Gold      21852               2139      0.0979          
-Platinum  4044                346       0.0856          
-Silver    27781               2724      0.0981          
+Cashback  23958               1440      0.0601          
+Gold      21852               1395      0.0638          
+Platinum  4044                436       0.1078          
+Silver    27781               1570      0.0565          
 
 ## Expectation results from the pipeline event log (latest update)
 dataset                             expectation                passed  failed
@@ -236,4 +241,18 @@ c360_bank.cards.silver_load_checks  xref_match_rate            1       0
 planted_unmapped_xref  quarantined_unmapped_xref  planted_bad_credit_scores  quarantined_customers  qualified_flag_agrees  solicitations_compared  accepted_flag_agrees
 ---------------------  -------------------------  -------------------------  ---------------------  ---------------------  ----------------------  --------------------
 1814                   1814                       40                         40                     178790                 178790                  178790              
+
+
+## Featured segments and generations: acceptance by campaign year (pipeline tables)
+segment                                 n       year1   year1_mar_sep  year2 
+--------------------------------------  ------  ------  -------------  ------
+Platinum 0% balance transfer segment    1862    0.1934  0.1989         0.1878
+Same segment, travel and entertainment  881     0.0394  NULL           0.0067
+Gold grocery segment                    1757    0.152   NULL           0.1871
+Generation: gen_z                       24987   0.0455  NULL           0.0473
+Generation: boomer                      29350   0.0415  NULL           0.043 
+Generation: silent                      13457   0.028   NULL           0.0263
+Generation: gen_x                       50313   0.0692  NULL           0.0682
+Generation: millennial                  60683   0.0704  NULL           0.0743
+All solicitations                       178790  0.0586  NULL           0.0601
 

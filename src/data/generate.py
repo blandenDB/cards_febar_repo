@@ -281,19 +281,19 @@ def main(a):
     def in_range(lo, hi, pos):
         return lo + (hi - lo) * np.clip(pos, 0, 1)
     sp = seg_plat & qualified
-    pbt = np.where(year2, in_range(0.06, 0.16, macro_pos), np.where((cal >= 3) & (cal <= 9), in_range(0.12, 0.16, macro_pos), in_range(0.08, 0.10, macro_pos)))
+    pbt = np.where(year2, in_range(0.15, 0.24, macro_pos), np.where((cal >= 3) & (cal <= 9), in_range(0.18, 0.24, macro_pos), in_range(0.15, 0.17, macro_pos)))
     p = np.where(sp & (offer == "PLT_BT12"), pbt, p)
     p = np.where(sp & (offer == "PLT_TE5"), np.where(year2, in_range(0.003, 0.009, macro_pos), in_range(0.01, 0.03, 1 - macro_pos)), p)
     season = np.select([(cal >= 4) & (cal <= 9), cal == 11, cal == 12], [0.2 + (cal - 4) / 5 * 0.7, 0.8, 1.0], 0.3)
     gpos = 0.6 * season + 0.4 * macro_pos
     sg = seg_gold & qualified & (offer == "GLD_GROC5")
-    p = np.where(sg, np.where(year2, in_range(0.12, 0.15, gpos), in_range(0.08, 0.10, gpos)), p)
+    p = np.where(sg, np.where(year2, in_range(0.17, 0.19, gpos), in_range(0.14, 0.16, gpos)), p)
     ss = seg_silv & qualified & (offer == "SIL_BT6")
     p = np.where(ss, rng.uniform(0.18, 0.22, n), p)
     named = sp & np.isin(offer, ["PLT_BT12", "PLT_TE5"]) | sg | ss
-    # Calibrate the unnamed segments so overall acceptance (all solicitations) lands near 10%
+    # Calibrate the unnamed segments so overall acceptance (all solicitations) lands near 6%
     free = ~named & ~fixed
-    target = 0.10 * n
+    target = 0.06 * n
     f = (target - p[~free].sum()) / p[free].sum()
     p = np.where(free, np.minimum(p * f, 0.45), p)
     accepted = rng.random(n) < p

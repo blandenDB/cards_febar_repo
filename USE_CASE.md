@@ -4,7 +4,7 @@
 
 ## 1. One-line outcome
 
-[YOUR WORDS] Arkterus Bank finds, in-house and every morning, the customer cohorts whose card acceptance is growing more than 10% a year, and shows they convert better than the vendor's targets: Card Product Penetration Rate by Tier rises from about 10% to 12% [ASSUMPTION], worth about $7M a year more toward the expansion plan.
+[YOUR WORDS] Arkterus Bank finds, in-house and every morning, the customer cohorts whose card acceptance is growing more than 10% a year, and shows they convert better than the vendor's targets: Card Product Penetration Rate by Tier rises from about 6% to 7.2% [ASSUMPTION], worth about $7M a year more toward the expansion plan.
 
 ## 2. The problem, in the customer's words
 
@@ -42,7 +42,7 @@ Illustrative, on the synthetic dataset. Every number carries its assumption.
 
 | Value driver | Current baseline | Expected change | Assumption | Illustrative value |
 |---|---|---|---|---|
-| Card Product Penetration Rate by Tier (accepted / qualified targeted) | about 10% overall; by tier measured in the build | to 12% overall | [ASSUMPTION] targeting the growing cohorts lifts acceptance by 20% relative | 20% more new cards from the same campaign volume |
+| Card Product Penetration Rate by Tier (accepted / qualified targeted) | about 6% overall; by tier measured in the build | to 7.2% overall | [ASSUMPTION] targeting the growing cohorts lifts acceptance by 20% relative | 20% more new cards from the same campaign volume |
 | Card revenue toward expansion | up to $35M (35% of $100M) | plus 20% | [ASSUMPTION] card revenue scales with new cards | about $7M a year more toward expansion |
 | Vendor fee | about $1.2M a year [ASSUMPTION] | run alongside the vendor for one campaign cycle and compare; retire it only if the in-house targets win | [ASSUMPTION] in-house model beats the vendor's targets on the out-of-time test | up to about $1.2M a year, after the parallel cycle |
 | Data team time on vendor inputs | about 7,500 hours a year [ASSUMPTION] | down 70% | [ASSUMPTION] pipeline replaces manual pulls and validation | about 5,000 hours a year returned to analysis (capacity, not cash) |

@@ -51,13 +51,13 @@ Columns generated per solicitation: date sent, card, offer, accepted or declined
 
 ## 5. Acceptance patterns
 
-Overall acceptance is about 10%; segments not listed are set so the total lands there.
+Overall acceptance is about 6%; segments not listed are set so the total lands there.
 
 | Segment | Offer | Year 1 | Year 2 | Notes |
 |---|---|---|---|---|
-| Millennial and Gen X, Platinum-qualified, payment above $1,400, in Cary, Raleigh, Charlotte, Greenville, Durham, Wilmington, Charleston | Platinum 0% balance transfer | 12% to 16% (March to September) | 6% to 16% | |
+| Millennial and Gen X, Platinum-qualified, payment above $1,400, in Cary, Raleigh, Charlotte, Greenville, Durham, Wilmington, Charleston | Platinum 0% balance transfer | 18% to 24% (March to September), 15% to 17% other months | 15% to 24% | |
 | Same segment | Platinum travel and entertainment | 1% to 3% | under 1% | |
-| Married homeowners aged 30 to 50, income $50,000 to $125,000, credit score 700+, payment above $1,000, in Apex, Holly Springs, Greensboro, Winston-Salem | Gold groceries | 8% to 10% | 12% to 15% | Rising April to September and again November to early December |
+| Married homeowners aged 30 to 50, income $50,000 to $125,000, credit score 700+, payment above $1,000, in Apex, Holly Springs, Greensboro, Winston-Salem | Gold groceries | 14% to 16% | 17% to 19% | Rising April to September and again November to early December |
 | Renters aged 28 to 35, credit score 680 to 740, in Charleston, Wilmington, Myrtle Beach | Silver balance transfer | 18% to 22% | 18% to 22% | |
 | Over 58, 2+ accounts, credit score above 700 | Any | 1% to 1.5% | 1% to 1.5% | |
 | Other Boomers | Any | 4% to 6% | 4% to 6% | High end in Raleigh and Charlotte |
