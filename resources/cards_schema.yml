@@ -1,0 +1,18 @@
+resources:
+  schemas:
+    cards:
+      catalog_name: ${var.catalog}
+      name: ${var.schema}
+      comment: FE Bar credit card adoption by tier build for Arkterus Bank (synthetic data only)
+
+  volumes:
+    raw:
+      catalog_name: ${var.catalog}
+      schema_name: ${resources.schemas.cards.name}
+      name: raw
+      comment: Daily source files as landed from the customer system (ecif), the campaign system (crm) and public price data
+    seed:
+      catalog_name: ${var.catalog}
+      schema_name: ${resources.schemas.cards.name}
+      name: seed
+      comment: Generator inputs (authored synthetic customer profile, public price CSVs) and generator ground truth; never read by the pipeline
