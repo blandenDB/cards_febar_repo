@@ -1,8 +1,8 @@
 # Evidence 12: access test with a real non-admin identity
-# Captured 2026-11-21T01:48:23Z by tools/access_test.py. Synthetic data; user identities redacted.
+# Captured 2026-11-21T03:37:02Z by tools/access_test.py. Synthetic data; user identities redacted.
 
 Principal: service principal 'cards-access-tester' (application ID 77758809-8131-4dd9-8d5d-6ffc54d4548a); workspace admin: False; workspace entitlements: ['databricks-sql-access']
-UC grants: USE CATALOG c360_bank, USE SCHEMA cards, SELECT on silver_customer_identifiers, v_model_features, v_fairness_features, v_cdo_summary, v_cohort_growth, gold_target_scores. SQL warehouse: CAN_USE.
+UC grants: USE CATALOG c360_bank, USE SCHEMA cards, SELECT on silver_customer_identifiers, v_model_features, v_fairness_features, v_cdo_summary, v_cohort_growth, v_price_trends, v_review_summary, gold_target_scores. SQL warehouse: CAN_USE.
 Personas are set by the data owner in cards_entitlements, not by the principal.
 
 ==================== dna_analyst ====================
@@ -30,12 +30,17 @@ rows_visible
 ## CDO totals view
 rows_visible  new_cards
 ------------  ---------
-2016          10626    
+12871         4954     
 
 ## CDO cohort growth view
 cohorts_visible  growing_cohorts
 ---------------  ---------------
 260              5              
+
+## CDO price and review views (Genie data sources)
+price_rows  review_rows
+----------  -----------
+476         0          
 
 ## read gold_penetration_by_tier directly (not granted)
 DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
@@ -94,6 +99,11 @@ cohorts_visible  growing_cohorts
 ---------------  ---------------
 0                0              
 
+## CDO price and review views (Genie data sources)
+price_rows  review_rows
+----------  -----------
+0           0          
+
 ## read gold_penetration_by_tier directly (not granted)
 DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
 
@@ -139,12 +149,17 @@ rows_visible
 ## CDO totals view
 rows_visible  new_cards
 ------------  ---------
-2016          10626    
+12871         4954     
 
 ## CDO cohort growth view
 cohorts_visible  growing_cohorts
 ---------------  ---------------
 260              5              
+
+## CDO price and review views (Genie data sources)
+price_rows  review_rows
+----------  -----------
+476         0          
 
 ## read gold_penetration_by_tier directly (not granted)
 DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
@@ -196,6 +211,11 @@ rows_visible  new_cards
 cohorts_visible  growing_cohorts
 ---------------  ---------------
 0                0              
+
+## CDO price and review views (Genie data sources)
+price_rows  review_rows
+----------  -----------
+0           0          
 
 ## read gold_penetration_by_tier directly (not granted)
 DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:

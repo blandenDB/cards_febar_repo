@@ -1,0 +1,7 @@
+resources:
+  genie_spaces:
+    cards_cdo:
+      title: Card adoption by tier (CDO and Data & Analytics)
+      description: Ask about new cards and Card Product Penetration Rate by city, tier and cohort, growing cohorts, public price trends and campaign review decisions. Synthetic customer data; totals only.
+      warehouse_id: ${var.warehouse_id}
+      file_path: ../src/genie/cards_cdo.geniespace.json

@@ -1,5 +1,5 @@
 # Evidence 03: Unity Catalog governance for c360_bank.cards
-# Captured 2026-11-21T00:54Z by tools/run_sql.py tools/queries/03_governance.sql (after job cards_daily tasks access_policies and views_and_tags)
+# Captured 2026-11-21T03:38Z by tools/run_sql.py tools/queries/03_governance.sql
 
 ## Policy functions
 routine_name           has_body  comment                                                                                                                                               
@@ -18,7 +18,10 @@ silver_customer_identifiers  ssn_last4_token  c360_bank.cards.cards_mask_identif
 ## Row filters
 table_name                   filter_name                          target_columns 
 ---------------------------  -----------------------------------  ---------------
+gold_target_explanations     c360_bank.cards.cards_region_filter  campaign_region
+gold_target_scores           c360_bank.cards.cards_region_filter  campaign_region
 silver_customer_identifiers  c360_bank.cards.cards_region_filter  campaign_region
+target_reviews               c360_bank.cards.cards_region_filter  campaign_region
 
 ## Column tags (PII and protected attributes)
 table_name                   column_name          tag_name                   tag_value     
@@ -27,6 +30,10 @@ gold_features                age_at_solicitation  cards_protected_attribute  age
 gold_features                gender               cards_protected_attribute  gender        
 gold_features                generation           cards_protected_attribute  age           
 gold_features                marital_status       cards_protected_attribute  marital_status
+gold_next_campaign_features  age_at_solicitation  cards_protected_attribute  age           
+gold_next_campaign_features  gender               cards_protected_attribute  gender        
+gold_next_campaign_features  generation           cards_protected_attribute  age           
+gold_next_campaign_features  marital_status       cards_protected_attribute  marital_status
 silver_customer_identifiers  address_token        pii                        address       
 silver_customer_identifiers  ssn_last4_token      pii                        ssn           
 silver_customers             age                  cards_protected_attribute  age           
@@ -36,10 +43,14 @@ silver_customers             generation           cards_protected_attribute  age
 silver_customers             marital_status       cards_protected_attribute  marital_status
 
 ## Table tags
-table_name                   tag_name             tag_value     
----------------------------  -------------------  --------------
-cards_entitlements           cards_sensitivity    access_control
-silver_customer_identifiers  data_classification  pii           
+table_name                   tag_name             tag_value              
+---------------------------  -------------------  -----------------------
+cards_entitlements           cards_sensitivity    access_control         
+gold_fairness_monitor        cards_sensitivity    fairness_monitor       
+gold_target_scores           cards_sensitivity    targeting_output       
+serving_campaign_roster      cards_sensitivity    access_control         
+serving_target_list          cards_sensitivity    serving_copy_owner_only
+silver_customer_identifiers  data_classification  pii                    
 
 ## Fair lending: columns of the model input view (no age, generation, marital status, gender, date of birth)
 ordinal_position  column_name              data_type

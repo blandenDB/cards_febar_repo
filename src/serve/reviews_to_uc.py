@@ -45,6 +45,8 @@ def main():
         spark.createDataFrame(df).createOrReplaceTempView("rv")
         spark.sql(f"MERGE INTO {fq}.target_reviews t USING rv s ON t.review_id = s.review_id WHEN MATCHED THEN UPDATE SET * WHEN NOT MATCHED THEN INSERT *")
     after = spark.table(f"{fq}.target_reviews").count()
+    spark.sql(f"""INSERT OVERWRITE {fq}.target_review_totals
+        SELECT campaign_region, card_product, decision, count(*), max(created_at) FROM {fq}.target_reviews GROUP BY ALL""")
     print(json.dumps({"task": "reviews_to_uc", "status": "ok", "lakebase_rows": int(len(df)), "uc_rows_before": before,
                       "uc_rows_after": after, "decisions": df["decision"].value_counts().to_dict() if len(df) else {}}))
 

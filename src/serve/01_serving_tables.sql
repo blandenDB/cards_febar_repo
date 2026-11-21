@@ -52,11 +52,11 @@ SELECT concat(campaign_region, '|', card_product, '|', generation) AS mix_id, ca
 FROM g;
 
 CREATE OR REPLACE TABLE c360_bank.cards.serving_city_summary
-COMMENT 'Totals only: new cards and penetration rate by month, city, tier and cohort (from gold_penetration_by_tier), for the app'
+COMMENT 'Totals only: new cards (accepted offers from qualified customers) and qualified targets by month, city, tier and cohort, for the app'
 TBLPROPERTIES ('delta.enableChangeDataFeed' = 'true')
 AS SELECT concat(CAST(month AS STRING), '|', city, '|', tier, '|', generation, '|', CAST(mass_affluent AS STRING)) AS summary_id,
           month, city, market_type, tier, generation AS cohort_generation, mass_affluent,
-          targeted, qualified_targeted, new_cards, accepted_qualified
+          targeted, qualified_targeted, accepted_qualified AS new_cards, accepted_qualified
    FROM c360_bank.cards.gold_penetration_by_tier;
 
 CREATE OR REPLACE TABLE c360_bank.cards.serving_cohort_growth
@@ -67,3 +67,15 @@ AS SELECT concat(generation, '|', market_type, '|', CAST(mass_affluent AS STRING
 
 ALTER TABLE c360_bank.cards.serving_target_list SET TAGS ('cards_sensitivity' = 'serving_copy_owner_only');
 ALTER TABLE c360_bank.cards.serving_campaign_roster SET TAGS ('cards_sensitivity' = 'access_control');
+
+-- Review outcomes for the CDO and Genie (totals only). target_reviews carries the region row filter,
+-- so totals are kept in their own table (rewritten by reviews_to_uc.py) and exposed through a gated view.
+CREATE TABLE IF NOT EXISTS c360_bank.cards.target_review_totals (
+  campaign_region STRING COMMENT 'Campaign region', tier STRING COMMENT 'Card tier', decision STRING COMMENT 'accept or exclude',
+  reviews BIGINT COMMENT 'Number of review decisions', last_review_at TIMESTAMP COMMENT 'Most recent decision'
+) COMMENT 'Totals of campaign team review decisions, rewritten nightly from target_reviews';
+
+CREATE OR REPLACE VIEW c360_bank.cards.v_review_summary
+COMMENT 'Campaign team review decisions on next campaign targets by region, tier and decision (totals only); data owners, D&A analysts and the CDO'
+AS SELECT * FROM c360_bank.cards.target_review_totals
+WHERE c360_bank.cards.cards_current_persona() IN ('data_owner', 'dna_analyst', 'cdo');

@@ -1,0 +1,148 @@
+# Evidence 07: Genie space (CDO and Data & Analytics) and benchmark evaluations
+# Captured 2026-11-21T03:35:53Z by tools/genie_evidence.py
+
+Genie space 01f1e55c4c5d176cb2dc15ceb85022f1: tables c360_bank.cards.v_cdo_summary, c360_bank.cards.v_cohort_growth, c360_bank.cards.v_price_trends, c360_bank.cards.v_review_summary; 7 sample questions, 3 example SQLs, 10 benchmark questions. Bar: 8 of 10 correct.
+
+## Benchmark evaluation runs (oldest first)
+01f1e55c52a51e49998b215082ec860b  2026-11-21T03:33:31Z  DONE  correct 10/10  needs_review 0
+
+## Latest run 01f1e55c52a51e49998b215082ec860b: per question
+
+Q: What was the gasoline price per gallon in October 2026?
+assessment: GOOD 
+Genie SQL:
+SELECT MAX(`gasoline_usd_per_gallon`) AS `gasoline_usd_per_gallon`
+FROM `c360_bank`.`cards`.`v_price_trends`
+WHERE `month` = DATE'2026-10-01'
+  AND `gasoline_usd_per_gallon` IS NOT NULL
+
+Q: Which tiers have cohorts growing above 10% a year, and how many in each?
+assessment: GOOD 
+Genie SQL:
+SELECT `tier`, COUNT(*) AS `cohorts_growing_above_10pct`
+FROM `c360_bank`.`cards`.`v_cohort_growth`
+WHERE `growing_above_10pct` = TRUE
+  AND `tier` IS NOT NULL
+GROUP BY `tier`
+ORDER BY `cohorts_growing_above_10pct` DESC, `tier`
+
+Q: How many cohorts are growing above 10% a year?
+assessment: GOOD 
+Genie SQL:
+SELECT COUNT(*) AS `cohorts_growing_above_10pct`
+FROM `c360_bank`.`cards`.`v_cohort_growth`
+WHERE `growing_above_10pct` = TRUE
+
+Q: What is the penetration rate by generation across all tiers?
+assessment: GOOD 
+Genie SQL:
+SELECT
+  `generation`,
+  SUM(`qualified_targeted`) AS `qualified_targeted`,
+  SUM(`new_cards`) AS `new_cards`,
+  ROUND(try_divide(SUM(`new_cards`),SUM(`qualified_targeted`)), 4) AS `penetration_rate`
+FROM `c360_bank`.`cards`.`v_cdo_summary`
+WHERE `generation` IS NOT NULL
+GROUP BY `generation`
+HAVING SUM(`qualified_targeted`) > 0
+ORDER BY `generation`
+
+Q: Which 5 cities had the most new cards?
+assessment: GOOD 
+Genie SQL:
+WITH `city_totals` AS (
+  SELECT
+    `city`,
+    SUM(`new_cards`) AS `new_cards`
+  FROM `c360_bank`.`cards`.`v_cdo_summary`
+  WHERE `city` IS NOT NULL
+  GROUP BY `city`
+), `ranked_cities` AS (
+  SELECT
+    `city`,
+    `new_cards`,
+    RANK() OVER (ORDER BY `new_cards` DESC) AS `city_rank`
+  FROM `city_totals`
+)
+SELECT
+  `city`,
+  `new_cards`
+FROM `ranked_cities`
+WHERE `city_rank` <= 5
+ORDER BY `city_rank`, `city`
+
+Q: What is the penetration rate for mass affluent customers compared with other customers?
+assessment: GOOD 
+Genie SQL:
+SELECT
+  `mass_affluent`,
+  SUM(`qualified_targeted`) AS `qualified_targeted`,
+  SUM(`new_cards`) AS `new_cards`,
+  ROUND(try_divide(SUM(`new_cards`),SUM(`qualified_targeted`)), 4) AS `penetration_rate`
+FROM `c360_bank`.`cards`.`v_cdo_summary`
+WHERE `mass_affluent` IS NOT NULL
+GROUP BY `mass_affluent`
+ORDER BY `mass_affluent`
+
+Q: How many new cards were issued in total?
+assessment: GOOD 
+Genie SQL:
+SELECT SUM(`new_cards`) AS `total_new_cards`
+FROM `c360_bank`.`cards`.`v_cdo_summary`
+
+Q: What is the Card Product Penetration Rate by tier?
+assessment: GOOD 
+Genie SQL:
+SELECT
+  `tier`,
+  SUM(`qualified_targeted`) AS `qualified_targeted`,
+  SUM(`new_cards`) AS `new_cards`,
+  ROUND(try_divide(SUM(`new_cards`),SUM(`qualified_targeted`)), 4) AS `penetration_rate`
+FROM `c360_bank`.`cards`.`v_cdo_summary`
+WHERE `tier` IS NOT NULL
+GROUP BY `tier`
+ORDER BY `tier`
+
+Q: How many new cards were issued in each month of 2026?
+assessment: GOOD 
+Genie SQL:
+SELECT `month`, SUM(`new_cards`) AS `new_cards`
+FROM `c360_bank`.`cards`.`v_cdo_summary`
+WHERE `month` IS NOT NULL
+  AND `month` >= DATE'2026-01-01'
+  AND `month` < DATE'2027-01-01'
+GROUP BY `month`
+ORDER BY `month`
+
+Q: What is the Gold penetration rate in Apex?
+assessment: GOOD 
+Genie SQL:
+SELECT SUM(v_cdo_summary.qualified_targeted) AS qualified_targeted, SUM(v_cdo_summary.new_cards) AS new_cards, ROUND(try_divide(SUM(v_cdo_summary.new_cards), SUM(v_cdo_summary.qualified_targeted)), 4) AS penetration_rate FROM c360_bank.cards.v_cdo_summary WHERE v_cdo_summary.tier = 'Gold' AND v_cdo_summary.city = 'Apex'
+
+## Live conversation check (cost-of-living instruction)
+Question: Do rising grocery prices drive Gold card acceptance? Show monthly Gold penetration next to the 3-month change in grocery prices.
+Genie SQL:
+SELECT
+  s.month,
+  SUM(s.qualified_targeted) AS qualified_targeted,
+  SUM(s.new_cards) AS new_cards,
+  ROUND(try_divide(SUM(s.new_cards), SUM(s.qualified_targeted)), 4) AS gold_penetration_rate,
+  MAX(p.food_at_home_3m_change) AS food_at_home_3m_change
+FROM c360_bank.cards.v_cdo_summary s
+LEFT JOIN c360_bank.cards.v_price_trends p
+  ON p.month = s.month
+ AND p.metro_area = s.metro_area
+WHERE s.tier = 'Gold'
+  AND s.month IS NOT NULL
+  AND p.food_at_home_3m_change IS NOT NULL
+GROUP BY s.month
+ORDER BY s.month
+Genie answer:
+The monthly data does **not show a clear pattern** that rising grocery prices consistently move with Gold card penetration, so this supports only an **association, not a proven driver**. Examples include:
+- **2025-02:** Gold penetration was **0.0680** with grocery prices up **0.0110** over 3 months
+- **2025-06:** Gold penetration was **0.0768** with grocery prices up just **0.0018**
+- **2025-09:** Gold penetration was **0.0554** while grocery prices were up **0.0112**
+- **2026-05:** Gold penetration was **0.0851** with grocery prices up **0.0047**
+- **2026-06:** Gold penetration reached its high of **0.0894** while grocery prices were up **0.0113**
+
+Across all **24 months**, Gold penetration ranged from **0.0476** to **0.0894** while the 3-month grocery price change ranged from **0.0008** to **0.0113**, with both high and low penetration appearing at both higher and lower grocery inflation levels.

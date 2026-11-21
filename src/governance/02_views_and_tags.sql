@@ -32,16 +32,25 @@ AS SELECT solicitation_id, customer_id, card_product, offer_code, campaign_month
 FROM c360_bank.cards.gold_features
 WHERE c360_bank.cards.cards_is_analyst();
 
--- The CDO's view: totals only.
+-- The CDO's view: totals only. "New cards" counts accepted offers from qualified customers (cards that can be issued).
 CREATE OR REPLACE VIEW c360_bank.cards.v_cdo_summary
-COMMENT 'New cards and Card Product Penetration Rate by month, city and tier (totals only, no customer rows); data owners, D&A analysts and the CDO'
-AS SELECT month, city, market_type, tier,
-  sum(targeted) AS targeted, sum(qualified_targeted) AS qualified_targeted, sum(new_cards) AS new_cards,
-  sum(accepted_qualified) AS accepted_qualified,
-  try_divide(sum(accepted_qualified), sum(qualified_targeted)) AS penetration_rate
-FROM c360_bank.cards.gold_penetration_by_tier
+COMMENT 'New cards and Card Product Penetration Rate (accepted qualified / qualified targeted) by month, city, tier, generation and mass affluent flag; totals only, no customer rows; data owners, D&A analysts and the CDO'
+AS SELECT p.month, p.city, d.metro_area, r.campaign_region, p.market_type, p.tier, p.generation, p.mass_affluent,
+  sum(p.targeted) AS targeted, sum(p.qualified_targeted) AS qualified_targeted, sum(p.accepted_qualified) AS new_cards,
+  try_divide(sum(p.accepted_qualified), sum(p.qualified_targeted)) AS penetration_rate
+FROM c360_bank.cards.gold_penetration_by_tier p
+LEFT JOIN c360_bank.cards.silver_city_dim d ON d.city = p.city
+LEFT JOIN c360_bank.cards.silver_campaign_regions r ON r.city = p.city
 WHERE c360_bank.cards.cards_current_persona() IN ('data_owner', 'dna_analyst', 'cdo')
 GROUP BY ALL;
+
+-- Public price data (South region CPI, Lower Atlantic gasoline, metro house prices); not customer data.
+CREATE OR REPLACE VIEW c360_bank.cards.v_price_trends
+COMMENT 'Monthly public price data by metro area: food at home and gasoline CPI (South region), gasoline dollars per gallon (Lower Atlantic), house price index (FHFA metro); October 2025 CPI interpolated (not published)'
+AS SELECT month, metro_area, cpi_all_items, cpi_food_at_home, cpi_gasoline, gasoline_usd_per_gallon, cpi_used_vehicles, cpi_new_vehicles,
+  food_at_home_3m_change, gasoline_3m_change, cpi_all_items_yoy, house_price_index, house_price_yoy, cpi_interpolated
+FROM c360_bank.cards.silver_macro_monthly
+WHERE month >= DATE'2024-01-01' AND c360_bank.cards.cards_current_persona() IN ('data_owner', 'dna_analyst', 'cdo');
 
 CREATE OR REPLACE VIEW c360_bank.cards.v_cohort_growth
 COMMENT 'Cohort acceptance growth (generation x market type x mass affluent x tier), totals only; data owners, D&A analysts and the CDO'

@@ -19,7 +19,8 @@ from databricks.sdk.service.iam import AccessControlRequest, PermissionLevel
 FQ = "c360_bank.cards"
 SP_NAME = "cards-access-tester"
 EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@databricks\.com")
-GRANTED = ["silver_customer_identifiers", "v_model_features", "v_fairness_features", "v_cdo_summary", "v_cohort_growth"]
+GRANTED = ["silver_customer_identifiers", "v_model_features", "v_fairness_features", "v_cdo_summary", "v_cohort_growth",
+           "v_price_trends", "v_review_summary"]
 OPTIONAL = ["gold_target_scores"]  # added once the ML stage exists
 
 QUERIES = [
@@ -35,6 +36,7 @@ QUERIES = [
     ("fairness view rows (protected attributes, analysts only)", f"SELECT count(*) AS rows_visible FROM {FQ}.v_fairness_features"),
     ("CDO totals view", f"SELECT count(*) AS rows_visible, sum(new_cards) AS new_cards FROM {FQ}.v_cdo_summary"),
     ("CDO cohort growth view", f"SELECT count(*) AS cohorts_visible, count_if(growing_above_10pct) AS growing_cohorts FROM {FQ}.v_cohort_growth"),
+    ("CDO price and review views (Genie data sources)", f"SELECT (SELECT count(*) FROM {FQ}.v_price_trends) AS price_rows, (SELECT count(*) FROM {FQ}.v_review_summary) AS review_rows"),
     ("read gold_penetration_by_tier directly (not granted)", f"SELECT count(*) AS n FROM {FQ}.gold_penetration_by_tier"),
     ("target list rows by region", f"SELECT campaign_region, count(*) AS rows_visible FROM {FQ}.gold_target_scores GROUP BY 1 ORDER BY 1"),
     ("read gold_features directly (not granted)", f"SELECT count(*) AS n FROM {FQ}.gold_features"),
