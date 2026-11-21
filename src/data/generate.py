@@ -158,6 +158,13 @@ def main(a):
     for city, n in (("Apex", 700), ("Holly Springs", 600)):
         groups.append(added(rng, n, "gold_suburb", city, "NC", zips[city], (30, 50), (75_000, 125_000), (700, 800),
                             (["married", "single", "divorced", "widowed"], [0.55, 0.30, 0.12, 0.03]), (["own"], [1.0]), (1050, 2200), (2020, 2025)))
+    # Gold grocery segment boost (added before run 3, EVAL_PROTOCOL.md change note)
+    def ws_pmt(n, res):
+        return 1000 + (np.asarray(res) - 2020) / 5 * 500 + rng.uniform(0, 150, n)
+    for city, n, pmt, res in (("Greensboro", 120, gso_pmt, (2021, 2025)), ("Winston-Salem", 120, ws_pmt, (2020, 2025)),
+                              ("Apex", 60, (1050, 2200), (2020, 2025)), ("Holly Springs", 55, (1050, 2200), (2020, 2025))):
+        groups.append(added(rng, n, "gold_segment_boost", city, "NC", zips.get(city) or zips["Winston-salem"], (30, 50), (50_000, 125_000), (700, 800),
+                            (["married", "single", "divorced", "widowed"], [0.55, 0.30, 0.12, 0.03]), (["own"], [1.0]), pmt, res))
     hp_zip = {"27609": ("Raleigh", "NC"), "28211": ("Charlotte", "NC"), "28207": ("Charlotte", "NC"),
               "28405": ("Wilmington", "NC"), "28411": ("Wilmington", "NC"), "29401": ("Charleston", "SC"), "29407": ("Charleston", "SC")}
     hz = rng.choice(list(hp_zip), 300)
@@ -206,7 +213,7 @@ def main(a):
     chk0 = monthly_in * rng.uniform(0.4, 1.2, len(cust))
     sav0 = np.where(cust.has_savings, inc / 12 * rng.uniform(1, 4, len(cust)) * boost, 0.0)
     mm0 = np.where(cust.has_mm, inc / 12 * rng.uniform(3, 8, len(cust)) * boost, 0.0)
-    floor = cust.origin_group.map({"platinum_bt": 5500, "high_payer": 20000, "gold_suburb": 2700, "greensboro_homeowner_gold_fit": 2700}).fillna(0).values
+    floor = cust.origin_group.map({"platinum_bt": 5500, "high_payer": 20000, "gold_suburb": 2700, "greensboro_homeowner_gold_fit": 2700, "gold_segment_boost": 2700}).fillna(0).values
     scale = np.where((chk0 + sav0 + mm0) < floor, floor / np.maximum(chk0 + sav0 + mm0, 1) * rng.uniform(1.05, 1.6, len(cust)), 1.0)
     chk0, sav0, mm0 = chk0 * scale, sav0 * scale, mm0 * scale
     bal_rows, avg6 = [], {}

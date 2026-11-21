@@ -5,18 +5,19 @@ How the synthetic Arkterus Bank dataset is built. All customers are synthetic; t
 ## 1. Population
 
 - **Base:** a synthetic demographic profile table authored for this demo (175,885 customers in North Carolina and South Carolina, 21 cities, 51 ZIPs). Every customer has a checking account and no bank credit card, and was targeted by a card campaign in the last 24 months.
-- **Added customers:** 4,759, generated to give the key segments enough rows to learn from:
+- **Added customers:** 5,114, generated to give the key segments enough rows to learn from:
 
   | Group | Customers | Profile |
   |---|---|---|
   | Platinum balance transfer | 2,159 (Raleigh 650, Charlotte 1,020, Durham 489) | Millennial and Gen X; Platinum-qualified; household payment above $1,400 |
   | Greensboro homeowners | 1,000 | Mixed profiles (about 30% fit the Gold grocery segment); payment by move-in year (below) |
   | Apex and Holly Springs Gold | 700 and 600 | Gold grocery segment profile; income $75,000 to $125,000; moved in 2020 to 2025; marital status mixed |
-  | High payers | 300 | Payment $7,000 to $15,000 a month; income $250,000 to $600,000; credit score 720 to 850; mostly Millennial and Gen X homeowners; moved in 2021 to 2025; ZIPs 27609, 28211, 28207, 28405, 28411, 29401, 29407 |
+  | Gold segment boost | 355 (Greensboro 120, Winston-Salem 120, Apex 60, Holly Springs 55) | Gold grocery segment profile; moved in 2020 to 2025 (Greensboro 2021 to 2025, payments by its yearly medians); marital status mixed |
+| High payers | 300 | Payment $7,000 to $15,000 a month; income $250,000 to $600,000; credit score 720 to 850; mostly Millennial and Gen X homeowners; moved in 2021 to 2025; ZIPs 27609, 28211, 28207, 28405, 28411, 29401, 29407 |
 
   Greensboro payment medians by move-in year (drawn within plus or minus 20%): 2021 $1,250, 2022 $1,588, 2023 $1,996, 2024 $2,035, 2025 $2,185. Residency duration = 2025 minus move-in year.
 - **Adjusted customers:** in Winston-Salem, 45% of homeowners who moved in 0 to 5 years ago, aged 30 to 50, earning $50,000 to $125,000 with credit scores at 700 or below (about 226) get scores of 701 to 760 and payments of $1,000 to $1,500 by move-in year.
-- **Total:** 180,644 customers. Column `record_origin` (`source`, `added_synthetic`, `adjusted`) and `origin_group` mark every row.
+- **Total:** 180,999 customers. Column `record_origin` (`source`, `added_synthetic`, `adjusted`) and `origin_group` mark every row.
 
 - **Generations** use the source table's age bands (age in 2026): Gen Z 18 to 28, Millennials 29 to 45, Gen X 46 to 58, Boomers 59 to 68, Silent 69 and over.
 

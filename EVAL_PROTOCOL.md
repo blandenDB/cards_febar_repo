@@ -70,3 +70,9 @@ A result below any bar means no claim for that question. The result is recorded 
 - **Change:** for run 2, calendar month of year is removed from the features of both models (with and without price data). Reason: the price series are region-wide, so in a 6-month test window month of year identifies each month as well as the prices do, and the comparison in section 7 cannot separate them.
 - **Also changed before run 2:** the synthetic data's planted segments no longer use marital status (fair lending review); see `DATA_DESIGN.md`. The bars in sections 6 to 10 are unchanged.
 - Any cost-of-living claim from run 2 is reported as a follow-up test added after run 1, next to the run 1 result.
+
+### 2026-11-20: data change before run 3 (runs 1 and 2 kept)
+
+- **Run 2 result (kept):** beats the vendor-style list (pooled 1.65x, 4 of 4 tiers); cost-of-living claim not met (test ROC AUC 0.5732 with price features, 0.5761 without); 8 cohorts meet the growth rule. Evidence: `evidence/*_run2.txt`.
+- **Change:** 355 synthetic customers matching the Gold grocery segment are added (Greensboro 120, Winston-Salem 120, Apex 60, Holly Springs 55) so the segment is more visible in Genie and the app. Purpose is demo visibility, not the claims; the bars in sections 6 to 10 are unchanged.
+- Run 3 results are reported as on revised data, next to runs 1 and 2.
