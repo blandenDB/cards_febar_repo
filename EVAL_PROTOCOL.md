@@ -76,3 +76,8 @@ A result below any bar means no claim for that question. The result is recorded 
 - **Run 2 result (kept):** beats the vendor-style list (pooled 1.65x, 4 of 4 tiers); cost-of-living claim not met (test ROC AUC 0.5732 with price features, 0.5761 without); 8 cohorts meet the growth rule. Evidence: `evidence/*_run2.txt`.
 - **Change:** 355 synthetic customers matching the Gold grocery segment are added (Greensboro 120, Winston-Salem 120, Apex 60, Holly Springs 55) so the segment is more visible in Genie and the app. Purpose is demo visibility, not the claims; the bars in sections 6 to 10 are unchanged.
 - Run 3 results are reported as on revised data, next to runs 1 and 2.
+
+### 2026-11-20: data change before run 4 (runs 1 to 3 kept)
+
+- **Run 3 result (kept):** beats the vendor-style list (pooled 1.74x, 4 of 4 tiers); cost-of-living claim met (test ROC AUC 0.5866 vs 0.5728, +0.0138) after not being met in runs 1 and 2. The gap is within chance variation for a test set of about 3,800 qualified offers, so across runs the cost-of-living result is treated as inconclusive. Evidence: `evidence/*_run3.txt`.
+- **Change:** 622 more Gold segment customers in Apex and 514 in Holly Springs (author's request, demo visibility); income for the Apex and Holly Springs boost set to $75,000 to $125,000 to match the mass affluent band for those suburbs. Bars unchanged.
