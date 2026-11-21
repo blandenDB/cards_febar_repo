@@ -1,0 +1,32 @@
+# Evidence 10: evaluation protocol results (run 3, revised data; runs 1 and 2 kept)
+# Job cards_daily run 9627249771150, task train_and_score; captured 2026-11-21T01:38Z
+
+## EVAL_PROTOCOL.md results (sections 6 and 7), table cards_eval_results
+tier      n_test  top20_n  base_rate  model_top20_rate  baseline_top20_rate  model_no_macro_top20_rate  ratio_vs_baseline
+--------  ------  -------  ---------  ----------------  -------------------  -------------------------  -----------------
+Cashback  1214    243      0.0577     0.0494            0.037                0.0576                     1.333            
+Gold      1055    211      0.0768     0.128             0.0616               0.128                      2.077            
+Platinum  203     41       0.1084     0.2439            0.0732               0.1951                     3.333            
+Silver    1340    268      0.0604     0.097             0.0672               0.0821                     1.444            
+
+## SELECT DISTINCT pooled_model_top20_rate, pooled_baseline_top20_rate, pooled_ratio, tiers_at_or_above
+pooled_model_top20_rate  pooled_baseline_top20_rate  pooled_ratio  tiers_at_or_above_baseline  auc_pooled  auc_pooled_no_macro  auc_gain_from_prices  claim_beats_vendor_style_list  claim_cost_of_living  mlflow_run_id                     evaluated_at            
+-----------------------  --------------------------  ------------  --------------------------  ----------  -------------------  --------------------  -----------------------------  --------------------  --------------------------------  ------------------------
+0.0983                   0.0564                      1.744         4                           0.5866      0.5728               0.0138                true                           true                  0d2ff8db8fb14361aaad1e507ca0f6fc  2026-11-21T01:37:41.744Z
+
+## Cohort growth claim (section 8): cohorts growing above 10% a year in both the training and test periods, at least 200 qualified solicitations each
+generation  market_type           mass_affluent  tier      n_p1  n_p2  n_p3  n_p4  rate_p1  rate_p2  rate_p3  rate_p4  growth_train  growth_test
+----------  --------------------  -------------  --------  ----  ----  ----  ----  -------  -------  -------  -------  ------------  -----------
+gen_x       urban_core            true           Cashback  484   444   468   483   0.0517   0.0586   0.0662   0.0663   0.282         0.131      
+gen_x       urban_core            false          Cashback  568   550   582   587   0.0423   0.0527   0.0601   0.063    0.423         0.195      
+millennial  suburban_style_metro  true           Cashback  340   325   323   300   0.0441   0.0769   0.0681   0.0933   0.544         0.213      
+boomer      urban_core            false          Gold      209   224   200   219   0.0191   0.0268   0.025    0.032    0.306         0.193      
+gen_x       urban_core            true           Gold      504   510   538   562   0.0536   0.0588   0.0706   0.0872   0.318         0.482      
+millennial  urban_core            true           Platinum  247   280   254   260   0.1174   0.1107   0.1299   0.1615   0.107         0.459      
+gen_x       urban_core            true           Silver    275   292   262   261   0.0473   0.0753   0.084    0.1226   0.776         0.627      
+
+## SELECT count(*) AS cohorts, count_if(least(n_p1, n_p2, n_p3, n_p4) >= 200) AS cohorts_with_enough_vo
+cohorts  cohorts_with_enough_volume  growing_above_10pct
+-------  --------------------------  -------------------
+260      30                          7                  
+

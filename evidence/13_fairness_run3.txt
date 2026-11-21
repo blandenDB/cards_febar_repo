@@ -1,0 +1,21 @@
+# Evidence 13: fairness monitor (run 3)
+# Job cards_daily run 9627249771150, task train_and_score; captured 2026-11-21T01:39Z
+
+## Fairness monitor (section 9): share of test-set qualified customers selected into the top 20%, by protected group
+attribute       group_value  n_test_qualified  selected_top20  selection_share  adverse_impact_ratio  flag_below_0_8  evaluated_at            
+--------------  -----------  ----------------  --------------  ---------------  --------------------  --------------  ------------------------
+generation      silent       369               11              0.0298           0.09                  true            2026-11-21T01:37:47.745Z
+generation      boomer       750               53              0.0707           0.213                 true            2026-11-21T01:37:47.745Z
+generation      gen_z        247               46              0.1862           0.561                 true            2026-11-21T01:37:47.745Z
+generation      gen_x        1213              244             0.2012           0.606                 true            2026-11-21T01:37:47.745Z
+generation      millennial   1233              409             0.3317           1.0                   false           2026-11-21T01:37:47.745Z
+marital_status  widowed      144               25              0.1736           0.716                 true            2026-11-21T01:37:47.745Z
+marital_status  married      2224              436             0.196            0.808                 false           2026-11-21T01:37:47.745Z
+marital_status  single       1139              228             0.2002           0.825                 false           2026-11-21T01:37:47.745Z
+marital_status  divorced     305               74              0.2426           1.0                   false           2026-11-21T01:37:47.745Z
+
+## Model input contains no protected attribute (columns of v_model_features named like a protected attribute)
+protected_columns_in_model_input
+--------------------------------
+0                               
+

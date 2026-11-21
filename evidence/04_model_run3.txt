@@ -1,0 +1,48 @@
+# Evidence 04: acceptance model and target scores (run 3, revised data: +355 Gold segment customers)
+# Job cards_daily run 9627249771150, task train_and_score; captured 2026-11-21T01:38Z
+
+## Run summary (task stdout)
+{"task": "train_and_score", "train_rows": 46698, "test_rows": 3812, "auc_by_offer": {"SIL_BT6": {"model": 0.6219, "model_no_macro": 0.5622, "baseline": 0.5034, "n_test": 1340, "accepts_test": 81}, "GLD_GROC5": {"model": 0.6236, "model_no_macro": 0.6052, "baseline": 0.4915, "n_test": 1055, "accepts_test": 81}, "PLT_BT12": {"model": 0.6421, "model_no_macro": 0.6126, "baseline": 0.4832, "n_test": 127, "accepts_test": 20}, "PLT_TE5": {"model": 0.777, "model_no_macro": 0.6689, "baseline": 0.0946, "n_test": 76, "accepts_test": 2}, "CB_ALL3": {"model": 0.4734, "model_no_macro": 0.4995, "baseline": 0.5012, "n_test": 1214, "accepts_test": 70}}, "top20_by_tier": [{"tier": "Silver", "n_test": 1340, "top20_n": 268, "base_rate": 0.0604, "model_top20_rate": 0.097, "baseline_top20_rate": 0.0672, "model_no_macro_top20_rate": 0.0821, "ratio_vs_baseline": 1.444}, {"tier": "Gold", "n_test": 1055, "top20_n": 211, "base_rate": 0.0768, "model_top20_rate": 0.128, "baseline_top20_rate": 0.0616, "model_no_macro_top20_rate": 0.128, "ratio_vs_baseline": 2.077}, {"tier": "Platinum", "n_test": 203, "top20_n": 41, "base_rate": 0.1084, "model_top20_rate": 0.2439, "baseline_top20_rate": 0.0732, "model_no_macro_top20_rate": 0.1951, "ratio_vs_baseline": 3.333}, {"tier": "Cashback", "n_test": 1214, "top20_n": 243, "base_rate": 0.0577, "model_top20_rate": 0.0494, "baseline_top20_rate": 0.037, "model_no_macro_top20_rate": 0.0576, "ratio_vs_baseline": 1.333}], "pooled_model_top20_rate": 0.0983, "pooled_baseline_top20_rate": 0.0564, "pooled_ratio": 1.744, "tiers_at_or_above_baseline": 4, "auc_pooled": 0.5866, "auc_pooled_no_macro": 0.5728, "auc_gain_from_prices": 0.0138, "claims": {"beats_vendor_style_list": true, "cost_of_living_improves_targeting": true}, "fairness_flags": [{"attribute": "generation", "group_value": "boomer", "n_test_qualified": 750, "selected_top20": 53, "selection_share": 0.0707, "adverse_impact_ratio": 0.213, "flag_below_0_8": true}, {"attribute": "generation", "group_value": "gen_x", "n_test_qualified": 1213, "selected_top20": 244, "selection_share": 0.2012, "adverse_impact_ratio": 0.606, "flag_below_0_8": true}, {"attribute": "generation", "group_value": "gen_z", "n_test_qualified": 247, "selected_top20": 46, "selection_share": 0.1862, "adverse_impact_ratio": 0.561, "flag_below_0_8": true}, {"attribute": "generation", "group_value": "silent", "n_test_qualified": 369, "selected_top20": 11, "selection_share": 0.0298, "adverse_impact_ratio": 0.09, "flag_below_0_8": true}, {"attribute": "marital_status", "group_value": "widowed", "n_test_qualified": 144, "selected_top20": 25, "selection_share": 0.1736, "adverse_impact_ratio": 0.716, "flag_below_0_8": true}], "registered_model": "c360_bank.cards.cards_acceptance_model", "model_version": "3", "eval_run_id": "0d2ff8db8fb14361aaad1e507ca0f6fc", "targets_scored": 199198, "top20_targets": 39840, "reason_1_mix": {"city": 48771, "credit_score": 29376, "annual_income": 28392, "home": 20520, "avg6_total_balance": 18827, "tenure": 16178, "house_prices": 15029, "cost_of_living": 9209, "monthly_household_pmt": 7977, "employment": 3314, "mass_affluent": 831, "accounts": 774}, "features": ["annual_income", "credit_score", "monthly_household_pmt", "residence_year", "years_at_residence", "tenure_years", "n_accounts", "has_savings", "has_money_market", "avg6_total_balance", "mass_affluent", "urban_suburban", "low_cost_market", "food_at_home_3m_change", "gasoline_3m_change", "cpi_all_items_yoy", "used_vehicles_yoy", "new_vehicles_yoy", "gasoline_usd_per_gallon", "house_price_yoy", "city", "market_type", "own_rent_home", "employment_status", "preferred_channel", "campaign_region"]}
+
+## Target list for the next campaign (gold_target_scores)
+card_product  offer_code  targets  top20_targets  avg_score  avg_score_top20  model_version
+------------  ----------  -------  -------------  ---------  ---------------  -------------
+Cashback      CB_ALL3     65720    13144          0.0605     0.089            3            
+Gold          GLD_GROC5   40225    8045           0.0614     0.1057           3            
+Platinum      PLT_BT12    5277     2109           0.1165     0.2448           3            
+Platinum      PLT_TE5     5277     2              0.0013     0.1546           3            
+Silver        SIL_BT6     82699    16540          0.056      0.0816           3            
+
+## Top reason mix (reason_1_code)
+reason_1_code          targets
+---------------------  -------
+city                   48771  
+credit_score           29376  
+annual_income          28392  
+home                   20520  
+avg6_total_balance     18827  
+tenure                 16178  
+house_prices           15029  
+cost_of_living         9209   
+monthly_household_pmt  7977   
+employment             3314   
+mass_affluent          831    
+accounts               774    
+
+## Sample top targets (synthetic customers)
+target_id                                       card_product  offer_code  city           score   rank_in_tier  reason_1                                              reason_2                                  reason_3                               
+----------------------------------------------  ------------  ----------  -------------  ------  ------------  ----------------------------------------------------  ----------------------------------------  ---------------------------------------
+57d8135c-a342-4862-a126-4aee9f9d8cb1-CB_ALL3    Cashback      CB_ALL3     Greenville     0.204   1             lives in Greenville (fast growing mid size market)    credit score 652                          annual income $111,687                 
+d2330558-3c3f-4cd7-8528-9533f63911c3-CB_ALL3    Cashback      CB_ALL3     Winston-Salem  0.2032  2             lives in Winston-Salem (suburban style metro market)  annual income $75,015                     customer for 2 year(s)                 
+9b73f7d0-5345-43ab-913d-bc1b64c55a78-GLD_GROC5  Gold          GLD_GROC5   Winston-Salem  0.2241  1             lives in Winston-Salem (suburban style metro market)  monthly household payment $1,342          owns the home, 4 year(s) at the address
+9abe7a42-e85a-4e16-8a0b-eb3d562329ee-GLD_GROC5  Gold          GLD_GROC5   Winston-Salem  0.2209  2             lives in Winston-Salem (suburban style metro market)  owns the home, 3 year(s) at the address   monthly household payment $1,305       
+527701cd-c18f-4f64-81c4-8391de9715ad-PLT_BT12   Platinum      PLT_BT12    Charlotte      0.895   1             monthly household payment $1,995                      credit score 756                          annual income $280,226                 
+e38cb067-d327-4243-94c7-6a228d45c79e-PLT_BT12   Platinum      PLT_BT12    Charleston     0.8828  2             credit score 816                                      6-month average deposit balance $8,922    monthly household payment $1,758       
+d9e0d10e-c8af-412e-91c3-4856e60f55fe-SIL_BT6    Silver        SIL_BT6     Wilmington     0.2338  1             lives in Wilmington (urban core market)               credit score 850                          monthly household payment $1,748       
+c9fd5182-67bc-4bb3-9343-ef62b5147c12-SIL_BT6    Silver        SIL_BT6     Greenville     0.2304  2             lives in Greenville (fast growing mid size market)    rents the home, 5 year(s) at the address  customer for 2 year(s)                 
+
+## Row filter attached
+table_name          filter_name                          target_columns 
+------------------  -----------------------------------  ---------------
+gold_target_scores  c360_bank.cards.cards_region_filter  campaign_region
+
