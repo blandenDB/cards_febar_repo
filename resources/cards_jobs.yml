@@ -15,6 +15,13 @@ resources:
               - /Volumes/${var.catalog}/${var.schema}/${resources.volumes.raw.name}
               - --seed
               - "20261120"
+        - task_key: access_policies
+          depends_on:
+            - task_key: generate
+          sql_task:
+            warehouse_id: ${var.warehouse_id}
+            file:
+              path: ../src/governance/01_access_policies.sql
       environments:
         - environment_key: default
           spec:
@@ -37,11 +44,25 @@ resources:
               - /Volumes/${var.catalog}/${var.schema}/${resources.volumes.seed.name}
               - --raw_dir
               - /Volumes/${var.catalog}/${var.schema}/${resources.volumes.raw.name}
-        - task_key: pipeline
+        - task_key: access_policies
           depends_on:
             - task_key: land_files
+          sql_task:
+            warehouse_id: ${var.warehouse_id}
+            file:
+              path: ../src/governance/01_access_policies.sql
+        - task_key: pipeline
+          depends_on:
+            - task_key: access_policies
           pipeline_task:
             pipeline_id: ${resources.pipelines.cards_pipeline.id}
+        - task_key: views_and_tags
+          depends_on:
+            - task_key: pipeline
+          sql_task:
+            warehouse_id: ${var.warehouse_id}
+            file:
+              path: ../src/governance/02_views_and_tags.sql
       environments:
         - environment_key: default
           spec:

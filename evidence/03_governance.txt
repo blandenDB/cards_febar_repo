@@ -1,0 +1,96 @@
+# Evidence 03: Unity Catalog governance for c360_bank.cards
+# Captured 2026-11-21T00:54Z by tools/run_sql.py tools/queries/03_governance.sql (after job cards_daily tasks access_policies and views_and_tags)
+
+## Policy functions
+routine_name           has_body  comment                                                                                                                                               
+---------------------  --------  ------------------------------------------------------------------------------------------------------------------------------------------------------
+cards_current_persona  true      Persona of the calling principal from cards_entitlements; NULL if not entitled                                                                        
+cards_is_analyst       true      TRUE for data owners and D&A analysts (used by the model and fairness views)                                                                          
+cards_mask_identifier  true      Column mask for address and SSN tokens: data owners see the value; everyone else sees ***MASKED***                                                    
+cards_region_filter    true      Row filter: data owners and D&A analysts see all rows; the campaign team sees its assigned regions; the CDO and anyone else see no customer-level rows
+
+## Column masks
+table_name                   column_name      mask_name                            
+---------------------------  ---------------  -------------------------------------
+silver_customer_identifiers  address_token    c360_bank.cards.cards_mask_identifier
+silver_customer_identifiers  ssn_last4_token  c360_bank.cards.cards_mask_identifier
+
+## Row filters
+table_name                   filter_name                          target_columns 
+---------------------------  -----------------------------------  ---------------
+silver_customer_identifiers  c360_bank.cards.cards_region_filter  campaign_region
+
+## Column tags (PII and protected attributes)
+table_name                   column_name          tag_name                   tag_value     
+---------------------------  -------------------  -------------------------  --------------
+gold_features                age_at_solicitation  cards_protected_attribute  age           
+gold_features                gender               cards_protected_attribute  gender        
+gold_features                generation           cards_protected_attribute  age           
+gold_features                marital_status       cards_protected_attribute  marital_status
+silver_customer_identifiers  address_token        pii                        address       
+silver_customer_identifiers  ssn_last4_token      pii                        ssn           
+silver_customers             age                  cards_protected_attribute  age           
+silver_customers             date_of_birth        cards_protected_attribute  age           
+silver_customers             gender               cards_protected_attribute  gender        
+silver_customers             generation           cards_protected_attribute  age           
+silver_customers             marital_status       cards_protected_attribute  marital_status
+
+## Table tags
+table_name                   tag_name             tag_value     
+---------------------------  -------------------  --------------
+cards_entitlements           cards_sensitivity    access_control
+silver_customer_identifiers  data_classification  pii           
+
+## Fair lending: columns of the model input view (no age, generation, marital status, gender, date of birth)
+ordinal_position  column_name              data_type
+----------------  -----------------------  ---------
+0                 solicitation_id          STRING   
+1                 customer_id              STRING   
+2                 offer_code               STRING   
+3                 card_product             STRING   
+4                 sent_date                DATE     
+5                 sent_month               DATE     
+6                 campaign_month           DOUBLE   
+7                 qualified                BOOLEAN  
+8                 accepted                 BOOLEAN  
+9                 city                     STRING   
+10                state                    STRING   
+11                zip_code                 STRING   
+12                campaign_region          STRING   
+13                market_type              STRING   
+14                low_cost_market          BOOLEAN  
+15                urban_suburban           BOOLEAN  
+16                mass_affluent            BOOLEAN  
+17                annual_income            LONG     
+18                credit_score             INT      
+19                monthly_household_pmt    DECIMAL  
+20                own_rent_home            STRING   
+21                employment_status        STRING   
+22                residence_year           INT      
+23                years_at_residence       INT      
+24                tenure_years             DECIMAL  
+25                preferred_channel        STRING   
+26                channel                  STRING   
+27                n_accounts               LONG     
+28                has_savings              BOOLEAN  
+29                has_money_market         BOOLEAN  
+30                avg6_total_balance       DECIMAL  
+31                food_at_home_3m_change   DOUBLE   
+32                gasoline_3m_change       DOUBLE   
+33                cpi_all_items_yoy        DOUBLE   
+34                used_vehicles_yoy        DOUBLE   
+35                new_vehicles_yoy         DOUBLE   
+36                gasoline_usd_per_gallon  DOUBLE   
+37                cpi_interpolated         BOOLEAN  
+38                house_price_yoy          DOUBLE   
+
+## Protected columns present in the model view (expected 0)
+protected_columns
+-----------------
+0                
+
+## Entitlements (data owner identity redacted by the evidence collector)
+persona     regions
+----------  -------
+data_owner  NULL   
+

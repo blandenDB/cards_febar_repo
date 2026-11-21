@@ -1,0 +1,221 @@
+# Evidence 12: access test with a real non-admin identity
+# Captured 2026-11-21T00:53:19Z by tools/access_test.py. Synthetic data; user identities redacted.
+
+Principal: service principal 'cards-access-tester' (application ID 77758809-8131-4dd9-8d5d-6ffc54d4548a); workspace admin: False; workspace entitlements: ['databricks-sql-access']
+UC grants: USE CATALOG c360_bank, USE SCHEMA cards, SELECT on silver_customer_identifiers, v_model_features, v_fairness_features, v_cdo_summary, v_cohort_growth. SQL warehouse: CAN_USE.
+Personas are set by the data owner in cards_entitlements, not by the principal.
+
+==================== dna_analyst ====================
+
+## who am I
+principal                           
+------------------------------------
+77758809-8131-4dd9-8d5d-6ffc54d4548a
+
+## identifiers: rows, regions and sample (masks and region filter)
+rows_visible  regions                                                           address_token_sample  ssn_token_sample
+------------  ----------------------------------------------------------------  --------------------  ----------------
+180604        Charlotte,Coast,Mountains,SC Midlands and Upstate,Triad,Triangle  ***MASKED***          ***MASKED***    
+
+## model view: rows, and whether any protected column exists
+rows_visible  protected_columns_in_model_view
+------------  -------------------------------
+178790        0                              
+
+## fairness view rows (protected attributes, analysts only)
+rows_visible
+------------
+178790      
+
+## CDO totals view
+rows_visible  new_cards
+------------  ---------
+2015          10609    
+
+## CDO cohort growth view
+cohorts_visible  growing_cohorts
+---------------  ---------------
+260              8              
+
+## read gold_penetration_by_tier directly (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## target list rows by region
+DENIED/ERROR: [TABLE_OR_VIEW_NOT_FOUND] The table or view `c360_bank`.`cards`.`gold_target_scores` cannot be found. Verify the spelling and correctness of the schema and catalog.
+
+## read gold_features directly (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## read silver_customers directly (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## read the entitlement table (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## change own entitlement (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+==================== campaign_team (region Triangle) ====================
+
+## who am I
+principal                           
+------------------------------------
+77758809-8131-4dd9-8d5d-6ffc54d4548a
+
+## identifiers: rows, regions and sample (masks and region filter)
+rows_visible  regions   address_token_sample  ssn_token_sample
+------------  --------  --------------------  ----------------
+64540         Triangle  ***MASKED***          ***MASKED***    
+
+## model view: rows, and whether any protected column exists
+rows_visible  protected_columns_in_model_view
+------------  -------------------------------
+0             0                              
+
+## fairness view rows (protected attributes, analysts only)
+rows_visible
+------------
+0           
+
+## CDO totals view
+rows_visible  new_cards
+------------  ---------
+0             NULL     
+
+## CDO cohort growth view
+cohorts_visible  growing_cohorts
+---------------  ---------------
+0                0              
+
+## read gold_penetration_by_tier directly (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## target list rows by region
+DENIED/ERROR: [TABLE_OR_VIEW_NOT_FOUND] The table or view `c360_bank`.`cards`.`gold_target_scores` cannot be found. Verify the spelling and correctness of the schema and catalog.
+
+## read gold_features directly (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## read silver_customers directly (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## read the entitlement table (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## change own entitlement (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+==================== cdo ====================
+
+## who am I
+principal                           
+------------------------------------
+77758809-8131-4dd9-8d5d-6ffc54d4548a
+
+## identifiers: rows, regions and sample (masks and region filter)
+rows_visible  regions  address_token_sample  ssn_token_sample
+------------  -------  --------------------  ----------------
+0                      NULL                  NULL            
+
+## model view: rows, and whether any protected column exists
+rows_visible  protected_columns_in_model_view
+------------  -------------------------------
+0             0                              
+
+## fairness view rows (protected attributes, analysts only)
+rows_visible
+------------
+0           
+
+## CDO totals view
+rows_visible  new_cards
+------------  ---------
+2015          10609    
+
+## CDO cohort growth view
+cohorts_visible  growing_cohorts
+---------------  ---------------
+260              8              
+
+## read gold_penetration_by_tier directly (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## target list rows by region
+DENIED/ERROR: [TABLE_OR_VIEW_NOT_FOUND] The table or view `c360_bank`.`cards`.`gold_target_scores` cannot be found. Verify the spelling and correctness of the schema and catalog.
+
+## read gold_features directly (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## read silver_customers directly (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## read the entitlement table (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## change own entitlement (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+==================== no entitlement (row removed) ====================
+
+## who am I
+principal                           
+------------------------------------
+77758809-8131-4dd9-8d5d-6ffc54d4548a
+
+## identifiers: rows, regions and sample (masks and region filter)
+rows_visible  regions  address_token_sample  ssn_token_sample
+------------  -------  --------------------  ----------------
+0                      NULL                  NULL            
+
+## model view: rows, and whether any protected column exists
+rows_visible  protected_columns_in_model_view
+------------  -------------------------------
+0             0                              
+
+## fairness view rows (protected attributes, analysts only)
+rows_visible
+------------
+0           
+
+## CDO totals view
+rows_visible  new_cards
+------------  ---------
+0             NULL     
+
+## CDO cohort growth view
+cohorts_visible  growing_cohorts
+---------------  ---------------
+0                0              
+
+## read gold_penetration_by_tier directly (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## target list rows by region
+DENIED/ERROR: [TABLE_OR_VIEW_NOT_FOUND] The table or view `c360_bank`.`cards`.`gold_target_scores` cannot be found. Verify the spelling and correctness of the schema and catalog.
+
+## read gold_features directly (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## read silver_customers directly (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## read the entitlement table (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+## change own entitlement (not granted)
+DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
+
+==================== data owner check (expected counts) ====================
+campaign_region          customers
+-----------------------  ---------
+Charlotte                29417    
+Coast                    29644    
+Mountains                1322     
+SC Midlands and Upstate  24707    
+Triad                    30974    
+Triangle                 64540    
+owner_sees_address_token
+------------------------
+ADDR-00001CC233         
+
+Cleanup: test entitlement removed; the principal's OAuth secret was deleted after the test.

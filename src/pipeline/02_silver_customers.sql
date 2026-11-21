@@ -28,6 +28,17 @@ AS SELECT * FROM VALUES
   ('Asheville', 'mountain_tourism', false, 'Asheville')
 AS t(city, market_type, low_cost_market, metro_area);
 
+CREATE OR REFRESH MATERIALIZED VIEW silver_campaign_regions
+COMMENT 'City to campaign region (used for campaign team row-level access)'
+AS SELECT * FROM VALUES
+  ('Raleigh', 'Triangle'), ('Durham', 'Triangle'), ('Cary', 'Triangle'), ('Apex', 'Triangle'), ('Holly Springs', 'Triangle'), ('Chapel Hill', 'Triangle'),
+  ('Charlotte', 'Charlotte'), ('Salisbury', 'Charlotte'),
+  ('Greensboro', 'Triad'), ('Winston-Salem', 'Triad'), ('Burlington', 'Triad'), ('Mebane', 'Triad'),
+  ('Wilmington', 'Coast'), ('Charleston', 'Coast'), ('Myrtle Beach', 'Coast'), ('Hilton Head Island', 'Coast'), ('Pawleys Island', 'Coast'),
+  ('Columbia', 'SC Midlands and Upstate'), ('Greenville', 'SC Midlands and Upstate'), ('Florence', 'SC Midlands and Upstate'),
+  ('Asheville', 'Mountains')
+AS t(city, campaign_region);
+
 CREATE TEMPORARY VIEW customers_checked AS
 WITH typed AS (
   SELECT DISTINCT
@@ -61,14 +72,15 @@ SELECT
        WHEN floor(datediff(DATE'2026-11-01', t.date_of_birth) / 365) <= 58 THEN 'gen_x'
        WHEN floor(datediff(DATE'2026-11-01', t.date_of_birth) / 365) <= 68 THEN 'boomer'
        ELSE 'silent' END AS generation,
-  d.market_type, d.low_cost_market, d.metro_area,
+  d.market_type, d.low_cost_market, d.metro_area, cr.campaign_region,
   CASE WHEN d.low_cost_market THEN t.annual_income BETWEEN 50000 AND 150000
        ELSE t.annual_income BETWEEN 75000 AND 250000 END AS mass_affluent,
   d.market_type IN ('urban_core', 'suburban', 'suburban_style_metro') AS urban_suburban,
   CASE WHEN t.credit_score NOT BETWEEN 300 AND 850 THEN 'credit_score_out_of_range' END AS quarantine_reason
 FROM typed t
 LEFT JOIN raleigh r ON r.employment_status = t.employment_status
-LEFT JOIN silver_city_dim d ON d.city = t.city;
+LEFT JOIN silver_city_dim d ON d.city = t.city
+LEFT JOIN silver_campaign_regions cr ON cr.city = t.city;
 
 CREATE OR REFRESH MATERIALIZED VIEW silver_customers (
   CONSTRAINT employed_income_plausible EXPECT (NOT (employment_status = 'employed' AND annual_income < 10000)),
@@ -76,7 +88,17 @@ CREATE OR REFRESH MATERIALIZED VIEW silver_customers (
   CONSTRAINT known_city EXPECT (market_type IS NOT NULL)
 )
 COMMENT 'One row per customer: cleaned and conformed ecif profile with derived generation, market type and mass affluent flag'
-AS SELECT * EXCEPT (quarantine_reason) FROM customers_checked WHERE quarantine_reason IS NULL;
+AS SELECT * EXCEPT (quarantine_reason, address_token, ssn_last4_token) FROM customers_checked WHERE quarantine_reason IS NULL;
+
+CREATE OR REFRESH MATERIALIZED VIEW silver_customer_identifiers (
+  customer_id     STRING COMMENT 'ecif customer ID',
+  campaign_region STRING COMMENT 'Campaign region of the customer''s city',
+  address_token   STRING MASK c360_bank.cards.cards_mask_identifier COMMENT 'Generated street address token (PII stand-in; masked except for data owners)',
+  ssn_last4_token STRING MASK c360_bank.cards.cards_mask_identifier COMMENT 'Generated SSN last 4 (PII stand-in; masked except for data owners)'
+)
+WITH ROW FILTER c360_bank.cards.cards_region_filter ON (campaign_region)
+COMMENT 'Direct identifiers kept apart from the profile: masked tokens, filtered by campaign region'
+AS SELECT customer_id, campaign_region, address_token, ssn_last4_token FROM customers_checked WHERE quarantine_reason IS NULL;
 
 CREATE OR REFRESH MATERIALIZED VIEW silver_customers_quarantine
 COMMENT 'Customers held aside by a quality rule, with the rule that failed'

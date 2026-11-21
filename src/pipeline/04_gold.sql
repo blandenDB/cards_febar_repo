@@ -7,7 +7,7 @@ SELECT
   s.solicitation_id, s.customer_id, s.offer_code, s.card_product, s.sent_date, s.sent_month, s.campaign_month,
   s.qualified, s.accepted,
   -- profile (static ecif attributes)
-  c.city, c.state, c.zip_code, c.market_type, c.low_cost_market, c.urban_suburban, c.mass_affluent,
+  c.city, c.state, c.zip_code, c.campaign_region, c.market_type, c.low_cost_market, c.urban_suburban, c.mass_affluent,
   c.annual_income, c.credit_score, c.monthly_household_pmt, c.own_rent_home, c.employment_status,
   c.residence_year, year(s.sent_date) - c.residence_year AS years_at_residence,
   datediff(s.sent_date, c.customer_since) / 365.25 AS tenure_years,
