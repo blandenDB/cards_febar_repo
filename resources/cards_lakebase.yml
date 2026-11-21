@@ -1,0 +1,60 @@
+resources:
+  postgres_projects:
+    cards_lakebase:
+      project_id: cards-lakebase
+      display_name: cards lakebase (FE Bar card adoption by tier)
+      pg_version: 17
+
+  # The Postgres database "cards" is created by the synced tables.
+
+  postgres_synced_tables:
+    pg_target_list:
+      synced_table_id: ${var.catalog}.${resources.schemas.cards.name}.pg_target_list
+      source_table_full_name: ${var.catalog}.${resources.schemas.cards.name}.serving_target_list
+      branch: projects/cards-lakebase/branches/production
+      postgres_database: cards
+      primary_key_columns: [target_id]
+      scheduling_policy: SNAPSHOT
+      new_pipeline_spec:
+        storage_catalog: ${var.catalog}
+        storage_schema: ${resources.schemas.cards.name}
+    pg_campaign_roster:
+      synced_table_id: ${var.catalog}.${resources.schemas.cards.name}.pg_campaign_roster
+      source_table_full_name: ${var.catalog}.${resources.schemas.cards.name}.serving_campaign_roster
+      branch: projects/cards-lakebase/branches/production
+      postgres_database: cards
+      primary_key_columns: [reviewer_principal]
+      scheduling_policy: SNAPSHOT
+      new_pipeline_spec:
+        storage_catalog: ${var.catalog}
+        storage_schema: ${resources.schemas.cards.name}
+    pg_selection_mix:
+      synced_table_id: ${var.catalog}.${resources.schemas.cards.name}.pg_selection_mix
+      source_table_full_name: ${var.catalog}.${resources.schemas.cards.name}.serving_selection_mix
+      branch: projects/cards-lakebase/branches/production
+      postgres_database: cards
+      primary_key_columns: [mix_id]
+      scheduling_policy: SNAPSHOT
+      new_pipeline_spec:
+        storage_catalog: ${var.catalog}
+        storage_schema: ${resources.schemas.cards.name}
+    pg_city_summary:
+      synced_table_id: ${var.catalog}.${resources.schemas.cards.name}.pg_city_summary
+      source_table_full_name: ${var.catalog}.${resources.schemas.cards.name}.serving_city_summary
+      branch: projects/cards-lakebase/branches/production
+      postgres_database: cards
+      primary_key_columns: [summary_id]
+      scheduling_policy: SNAPSHOT
+      new_pipeline_spec:
+        storage_catalog: ${var.catalog}
+        storage_schema: ${resources.schemas.cards.name}
+    pg_cohort_growth:
+      synced_table_id: ${var.catalog}.${resources.schemas.cards.name}.pg_cohort_growth
+      source_table_full_name: ${var.catalog}.${resources.schemas.cards.name}.serving_cohort_growth
+      branch: projects/cards-lakebase/branches/production
+      postgres_database: cards
+      primary_key_columns: [cohort_id]
+      scheduling_policy: SNAPSHOT
+      new_pipeline_spec:
+        storage_catalog: ${var.catalog}
+        storage_schema: ${resources.schemas.cards.name}

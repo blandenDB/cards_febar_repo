@@ -1,0 +1,83 @@
+# Evidence 06: Lakebase serving (project cards-lakebase, database cards)
+# Job cards_daily run 949121827335233 (tasks serving_tables, refresh_synced_tables, postgres_setup, reviews_back); captured 2026-11-21T03:24Z
+
+## Synced table refresh (task stdout)
+{"step": "refresh_synced_tables", "status": "ok", "tables": {"pg_target_list": {"update": "COMPLETED", "synced_table_state": "SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE"}, "pg_campaign_roster": {"update": "COMPLETED", "synced_table_state": "SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE"}, "pg_selection_mix": {"update": "COMPLETED", "synced_table_state": "SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE"}, "pg_city_summary": {"update": "COMPLETED", "synced_table_state": "SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE"}, "pg_cohort_growth": {"update": "COMPLETED", "synced_table_state": "SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE"}}}
+
+## Postgres access checks with a temporary role holding exactly the app's grants (task stdout)
+{
+    "task": "postgres_setup",
+    "status": "ok",
+    "checks": {
+        "synced_targets_total": 40516,
+        "synced_regions": "Charlotte,Coast,Mountains,SC Midlands and Upstate,Triad,Triangle",
+        "roster_reviewer": {
+            "targets": 22154,
+            "regions": "Triad,Triangle",
+            "city_summary_rows": 12871
+        },
+        "not_in_roster": {
+            "targets": 0,
+            "regions": null,
+            "city_summary_rows": 0
+        },
+        "no_identity_set": {
+            "targets": 0,
+            "regions": null,
+            "city_summary_rows": 0
+        },
+        "synced_table_direct_access": "denied",
+        "review_insert_own_region": "allowed",
+        "review_insert_other_region": "rejected by row-level security"
+    }
+}
+
+## Review copy-back (task stdout)
+{"task": "reviews_to_uc", "status": "ok", "lakebase_rows": 0, "uc_rows_before": 0, "uc_rows_after": 0, "decisions": {}}
+
+## Serving copies in Unity Catalog (sources of the synced tables)
+t                        n    
+-----------------------  -----
+serving_target_list      40516
+serving_campaign_roster  1    
+serving_selection_mix    116  
+serving_city_summary     12871
+serving_cohort_growth    260  
+
+## Target list by region and tier (what the campaign team reviews)
+campaign_region          card_product  targets  with_explanation
+-----------------------  ------------  -------  ----------------
+Charlotte                Cashback      1403     78              
+Charlotte                Gold          54       3               
+Charlotte                Platinum      621      293             
+Charlotte                Silver        490      45              
+Coast                    Cashback      2503     435             
+Coast                    Gold          2331     286             
+Coast                    Platinum      310      113             
+Coast                    Silver        5720     344             
+Mountains                Cashback      20       0               
+Mountains                Gold          3        0               
+Mountains                Platinum      41       11              
+Mountains                Silver        32       1               
+SC Midlands and Upstate  Cashback      1616     52              
+SC Midlands and Upstate  Gold          562      0               
+SC Midlands and Upstate  Platinum      14       3               
+SC Midlands and Upstate  Silver        2642     128             
+Triad                    Cashback      2561     275             
+Triad                    Gold          2060     188             
+Triad                    Platinum      87       37              
+Triad                    Silver        6098     427             
+Triangle                 Cashback      5270     150             
+Triangle                 Gold          3263     522             
+Triangle                 Platinum      1026     533             
+Triangle                 Silver        1789     32              
+
+## Age-group selection mix shown on the review screen (Triangle, Gold)
+age_group   qualified  selected  share_of_qualified  share_of_selected  adverse_impact_ratio
+----------  ---------  --------  ------------------  -----------------  --------------------
+boomer      1789       43        0.119               0.013              0.067               
+gen_x       3969       745       0.265               0.228              0.522               
+gen_z       1107       21        0.074               0.006              0.053               
+millennial  6780       2436      0.452               0.747              1.0                 
+silent      1352       18        0.09                0.006              0.037               
+

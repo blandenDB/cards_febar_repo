@@ -90,6 +90,44 @@ resources:
             warehouse_id: ${var.warehouse_id}
             file:
               path: ../src/ai/02_explanations.sql
+        - task_key: serving_tables
+          depends_on:
+            - task_key: explanations
+          sql_task:
+            warehouse_id: ${var.warehouse_id}
+            file:
+              path: ../src/serve/01_serving_tables.sql
+        - task_key: refresh_synced_tables
+          depends_on:
+            - task_key: serving_tables
+          environment_key: serve
+          spark_python_task:
+            python_file: ../src/serve/refresh_synced_tables.py
+            parameters:
+              - --tables
+              - ${var.catalog}.${var.schema}.pg_target_list,${var.catalog}.${var.schema}.pg_campaign_roster,${var.catalog}.${var.schema}.pg_selection_mix,${var.catalog}.${var.schema}.pg_city_summary,${var.catalog}.${var.schema}.pg_cohort_growth
+        - task_key: postgres_setup
+          depends_on:
+            - task_key: refresh_synced_tables
+          environment_key: serve
+          spark_python_task:
+            python_file: ../src/serve/postgres_setup.py
+            parameters:
+              - --sql-file
+              - ${workspace.file_path}/src/serve/02_postgres_setup.sql
+              - --app-role
+              - ${var.app_postgres_role}
+        - task_key: reviews_back
+          depends_on:
+            - task_key: postgres_setup
+          environment_key: serve
+          spark_python_task:
+            python_file: ../src/serve/reviews_to_uc.py
+            parameters:
+              - --catalog
+              - ${var.catalog}
+              - --schema
+              - ${var.schema}
         - task_key: genai_judge
           depends_on:
             - task_key: explanations
@@ -120,3 +158,10 @@ resources:
             client: "2"
             dependencies:
               - mlflow[databricks]>=3.1
+        - environment_key: serve
+          spec:
+            client: "2"
+            dependencies:
+              - psycopg[binary]>=3.1
+              - databricks-sdk>=0.60
+              - pandas

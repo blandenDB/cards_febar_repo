@@ -17,6 +17,9 @@ variables:
   llm_endpoint:
     description: Foundation model endpoint for explanations
     default: databricks-claude-haiku-5-5
+  app_postgres_role:
+    description: Postgres role of the Databricks App service principal (its application ID); empty until the app exists
+    default: ""
   judge_endpoint:
     description: Foundation model endpoint for the GenAI judge
     default: databricks-claude-sonnet-5-5
