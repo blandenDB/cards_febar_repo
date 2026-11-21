@@ -1,40 +1,41 @@
-# Evidence 01: synthetic data generation (regenerated before run 2: planted segments without marital status)
-# Job cards_setup, 2026-11-21T01:22Z
+# Evidence 01: synthetic data generation (data as of run 4)
+# Job cards_setup, 2026-11-21T01:47Z
 
 {
   "source_customers": 175885,
   "adjusted_winston_salem": 81,
   "added_customers": {
+    "gold_segment_boost": 1491,
     "gold_suburb": 1300,
     "greensboro_homeowner_gold_fit": 300,
     "greensboro_homeowner_mixed": 700,
     "high_payer": 300,
     "platinum_bt": 2159
   },
-  "total_customers": 180644,
-  "calibration_factor": 0.584,
-  "acceptance_rate_overall": 0.0595,
-  "accounts": 238332,
-  "balance_rows": 5419320,
+  "total_customers": 182135,
+  "calibration_factor": 0.576,
+  "acceptance_rate_overall": 0.0588,
+  "accounts": 240280,
+  "balance_rows": 5464050,
   "balance_months": 30,
-  "solicitations": 180644,
+  "solicitations": 182135,
   "solicitation_files": 24,
   "late_file_held_back": "crm_solicitations_202603.csv",
-  "late_file_rows": 7378,
-  "resend_file_duplicate_rows": 7533,
-  "xref_unmapped_customers": 1813,
+  "late_file_rows": 7642,
+  "resend_file_duplicate_rows": 7577,
+  "xref_unmapped_customers": 1852,
   "bad_credit_scores": 40,
-  "qualified_solicitations": 78458,
-  "qualified_acceptance_rate": 0.0618,
+  "qualified_solicitations": 79931,
+  "qualified_acceptance_rate": 0.0625,
   "segments": {
-    "platinum_bt": 2913,
-    "gold": 2048,
-    "silver_coastal": 159
+    "platinum_bt": 2888,
+    "gold": 3459,
+    "silver_coastal": 155
   },
   "acceptance_by_card_qualified": {
-    "Silver": 0.0567,
-    "Gold": 0.0634,
-    "Platinum": 0.1073,
-    "Cashback": 0.0588
+    "Silver": 0.057,
+    "Gold": 0.0667,
+    "Platinum": 0.0992,
+    "Cashback": 0.0586
   }
 }

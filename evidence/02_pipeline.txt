@@ -1,92 +1,93 @@
-# Evidence 02: Lakeflow pipeline cards_pipeline (data regenerated 2026-11-20 before run 2)
-# Update 1: full refresh (March 2026 file not yet arrived): 61feb69a-8bee-4262-8dcf-c2cb70eb5ed3
-# Update 2: job cards_daily run 327540087511565 (land_files landed the late file, then pipeline refresh)
+# Evidence 02: Lakeflow pipeline cards_pipeline (data as of run 4)
+# Update 1: full refresh (March 2026 file not yet arrived): 5a526f12-f935-4e46-8804-51a00fe34d2e
+# Update 2: job cards_daily run 919224068017334 (land_files landed the late file, then pipeline refresh)
 
 =================== AFTER UPDATE 1 (before the late file) ===================
 ## Row counts by layer
 t                                n      
 -------------------------------  -------
-bronze_ecif_customers            180644 
-silver_customers                 180604 
+bronze_ecif_customers            182135 
+silver_customers                 182095 
 silver_customers_quarantine      40     
-bronze_ecif_accounts             238332 
-silver_accounts                  238332 
-bronze_ecif_balances             5419320
-silver_balances_monthly          5419320
-bronze_crm_solicitations         180799 
-silver_solicitations             171492 
-silver_solicitations_quarantine  1774   
-bronze_crm_xref                  178831 
+bronze_ecif_accounts             240280 
+silver_accounts                  240280 
+bronze_ecif_balances             5464050
+silver_balances_monthly          5464050
+bronze_crm_solicitations         182070 
+silver_solicitations             172674 
+silver_solicitations_quarantine  1819   
+bronze_crm_xref                  180283 
 silver_macro_monthly             1316   
-gold_features                    171492 
-gold_penetration_by_tier         12287  
-gold_cohort_growth               255    
+gold_features                    172674 
+gold_penetration_by_tier         12328  
+gold_cohort_growth               258    
 
 ## Solicitation files landed (resent June 2025 file present; March 2026 not yet arrived)
 file                                 rows
 -----------------------------------  ----
-crm_solicitations_202411.csv         7501
-crm_solicitations_202412.csv         7512
-crm_solicitations_202501.csv         7557
-crm_solicitations_202502.csv         7635
-crm_solicitations_202503.csv         7549
-crm_solicitations_202504.csv         7676
-crm_solicitations_202505.csv         7611
-crm_solicitations_202506.csv         7533
-crm_solicitations_202506_resend.csv  7533
-crm_solicitations_202507.csv         7533
-crm_solicitations_202508.csv         7541
-crm_solicitations_202509.csv         7714
-crm_solicitations_202510.csv         7498
-crm_solicitations_202511.csv         7497
-crm_solicitations_202512.csv         7442
-crm_solicitations_202601.csv         7409
-crm_solicitations_202602.csv         7375
-crm_solicitations_202604.csv         7587
-crm_solicitations_202605.csv         7623
-crm_solicitations_202606.csv         7569
-crm_solicitations_202607.csv         7496
-crm_solicitations_202608.csv         7495
-crm_solicitations_202609.csv         7422
-crm_solicitations_202610.csv         7491
+crm_solicitations_202411.csv         7608
+crm_solicitations_202412.csv         7480
+crm_solicitations_202501.csv         7636
+crm_solicitations_202502.csv         7676
+crm_solicitations_202503.csv         7709
+crm_solicitations_202504.csv         7632
+crm_solicitations_202505.csv         7525
+crm_solicitations_202506.csv         7577
+crm_solicitations_202506_resend.csv  7577
+crm_solicitations_202507.csv         7549
+crm_solicitations_202508.csv         7528
+crm_solicitations_202509.csv         7677
+crm_solicitations_202510.csv         7549
+crm_solicitations_202511.csv         7562
+crm_solicitations_202512.csv         7612
+crm_solicitations_202601.csv         7650
+crm_solicitations_202602.csv         7494
+crm_solicitations_202604.csv         7593
+crm_solicitations_202605.csv         7636
+crm_solicitations_202606.csv         7538
+crm_solicitations_202607.csv         7575
+crm_solicitations_202608.csv         7564
+crm_solicitations_202609.csv         7517
+crm_solicitations_202610.csv         7606
 
 ## Duplicates removed from the resent file
 solicitations_received_twice  duplicate_rows_dropped
 ----------------------------  ----------------------
-7448                          7448                  
+7501                          7501                  
 
 ## Quarantine by rule
 entity         quarantine_reason          n   
 -------------  -------------------------  ----
 customers      credit_score_out_of_range  40  
-solicitations  crm_key_not_in_xref        1736
-solicitations  customer_quarantined       38  
+solicitations  crm_key_not_in_xref        1780
+solicitations  customer_quarantined       39  
 
 ## Load checks (fail-the-update rules)
 solicitation_files  min_rows_per_file  rescued_rows  unmatched_pct
 ------------------  -----------------  ------------  -------------
-24                  7375               0             1.00         
+24                  7480               0             1.02         
 
 ## Cleanup: city spelling and Chapel Hill payment fill
 city_as_received  city           n    
 ----------------  -------------  -----
-Winston-salem     Winston-Salem  12085
+Winston-salem     Winston-Salem  12083
+Winston-Salem     Winston-Salem  120  
 
 ## SELECT employment_status, count(*) filled, min(monthly_household_pmt) low, percentile_approx(monthly
 employment_status  filled  low      median   high   
 -----------------  ------  -------  -------  -------
-employed           818     744.02   922.51   1113.63
+employed           818     744.15   922.67   1113.82
 retired            38      1112.32  1387.65  1651.09
-self_employed      167     767.99   955.97   1147.48
-student            1528    404.91   508.61   607.07 
+self_employed      166     768.11   952.75   1147.66
+student            1530    404.91   508.73   607.07 
 unemployed         99      1078.23  1316.46  1609.75
 
 ## Customers by record origin
 record_origin    n     
 ---------------  ------
-added_synthetic  4757  
+added_synthetic  6249  
 adjusted         81    
-source           175766
+source           175765
 
 ## Public price data: interpolated month and coverage
 first_month  last_month  metros  interpolated_months  interpolated_month
@@ -96,22 +97,22 @@ first_month  last_month  metros  interpolated_months  interpolated_month
 ## Qualified solicitations and acceptance (metric inputs)
 solicitations  qualified  acceptance_all  penetration_rate_qualified
 -------------  ---------  --------------  --------------------------
-171492         74509      0.0594          0.0617                    
+172674         75693      0.059           0.0626                    
 
 ## Card Product Penetration Rate by Tier (accepted / qualified targeted)
 tier      qualified_targeted  accepted  penetration_rate
 --------  ------------------  --------  ----------------
-Cashback  22980               1349      0.0587          
-Gold      20679               1317      0.0637          
-Platinum  3915                415       0.106           
-Silver    26935               1515      0.0562          
+Cashback  22779               1329      0.0583          
+Gold      22219               1481      0.0667          
+Platinum  3836                381       0.0993          
+Silver    26859               1548      0.0576          
 
 ## Expectation results from the pipeline event log (latest update)
 dataset                             expectation                passed  failed
 ----------------------------------  -------------------------  ------  ------
-c360_bank.cards.silver_customers    employed_income_plausible  180604  0     
-c360_bank.cards.silver_customers    known_city                 180604  0     
-c360_bank.cards.silver_customers    payment_present            180604  0     
+c360_bank.cards.silver_customers    employed_income_plausible  182095  0     
+c360_bank.cards.silver_customers    known_city                 182095  0     
+c360_bank.cards.silver_customers    payment_present            182095  0     
 c360_bank.cards.silver_load_checks  layout_unchanged           1       0     
 c360_bank.cards.silver_load_checks  no_empty_files             1       0     
 c360_bank.cards.silver_load_checks  xref_match_rate            1       0     
@@ -119,95 +120,96 @@ c360_bank.cards.silver_load_checks  xref_match_rate            1       0
 ## Reconciliation with generator ground truth (seed volume; never read by the pipeline)
 planted_unmapped_xref  quarantined_unmapped_xref  planted_bad_credit_scores  quarantined_customers  qualified_flag_agrees  solicitations_compared  accepted_flag_agrees
 ---------------------  -------------------------  -------------------------  ---------------------  ---------------------  ----------------------  --------------------
-1813                   1736                       40                         40                     171492                 171492                  171492              
+1852                   1780                       40                         40                     172674                 172674                  172674              
 
 
 =================== AFTER UPDATE 2 (late file processed) ===================
 ## Row counts by layer
 t                                n      
 -------------------------------  -------
-bronze_ecif_customers            180644 
-silver_customers                 180604 
+bronze_ecif_customers            182135 
+silver_customers                 182095 
 silver_customers_quarantine      40     
-bronze_ecif_accounts             238332 
-silver_accounts                  238332 
-bronze_ecif_balances             5419320
-silver_balances_monthly          5419320
-bronze_crm_solicitations         188177 
-silver_solicitations             178792 
-silver_solicitations_quarantine  1852   
-bronze_crm_xref                  178831 
+bronze_ecif_accounts             240280 
+silver_accounts                  240280 
+bronze_ecif_balances             5464050
+silver_balances_monthly          5464050
+bronze_crm_solicitations         189712 
+silver_solicitations             180243 
+silver_solicitations_quarantine  1892   
+bronze_crm_xref                  180283 
 silver_macro_monthly             1316   
-gold_features                    178792 
-gold_penetration_by_tier         12814  
-gold_cohort_growth               257    
+gold_features                    180243 
+gold_penetration_by_tier         12871  
+gold_cohort_growth               260    
 
 ## Solicitation files landed (resent June 2025 file present; March 2026 not yet arrived)
 file                                 rows
 -----------------------------------  ----
-crm_solicitations_202411.csv         7501
-crm_solicitations_202412.csv         7512
-crm_solicitations_202501.csv         7557
-crm_solicitations_202502.csv         7635
-crm_solicitations_202503.csv         7549
-crm_solicitations_202504.csv         7676
-crm_solicitations_202505.csv         7611
-crm_solicitations_202506.csv         7533
-crm_solicitations_202506_resend.csv  7533
-crm_solicitations_202507.csv         7533
-crm_solicitations_202508.csv         7541
-crm_solicitations_202509.csv         7714
-crm_solicitations_202510.csv         7498
-crm_solicitations_202511.csv         7497
-crm_solicitations_202512.csv         7442
-crm_solicitations_202601.csv         7409
-crm_solicitations_202602.csv         7375
-crm_solicitations_202603.csv         7378
-crm_solicitations_202604.csv         7587
-crm_solicitations_202605.csv         7623
-crm_solicitations_202606.csv         7569
-crm_solicitations_202607.csv         7496
-crm_solicitations_202608.csv         7495
-crm_solicitations_202609.csv         7422
-crm_solicitations_202610.csv         7491
+crm_solicitations_202411.csv         7608
+crm_solicitations_202412.csv         7480
+crm_solicitations_202501.csv         7636
+crm_solicitations_202502.csv         7676
+crm_solicitations_202503.csv         7709
+crm_solicitations_202504.csv         7632
+crm_solicitations_202505.csv         7525
+crm_solicitations_202506.csv         7577
+crm_solicitations_202506_resend.csv  7577
+crm_solicitations_202507.csv         7549
+crm_solicitations_202508.csv         7528
+crm_solicitations_202509.csv         7677
+crm_solicitations_202510.csv         7549
+crm_solicitations_202511.csv         7562
+crm_solicitations_202512.csv         7612
+crm_solicitations_202601.csv         7650
+crm_solicitations_202602.csv         7494
+crm_solicitations_202603.csv         7642
+crm_solicitations_202604.csv         7593
+crm_solicitations_202605.csv         7636
+crm_solicitations_202606.csv         7538
+crm_solicitations_202607.csv         7575
+crm_solicitations_202608.csv         7564
+crm_solicitations_202609.csv         7517
+crm_solicitations_202610.csv         7606
 
 ## Duplicates removed from the resent file
 solicitations_received_twice  duplicate_rows_dropped
 ----------------------------  ----------------------
-7448                          7448                  
+7501                          7501                  
 
 ## Quarantine by rule
 entity         quarantine_reason          n   
 -------------  -------------------------  ----
 customers      credit_score_out_of_range  40  
-solicitations  crm_key_not_in_xref        1813
-solicitations  customer_quarantined       39  
+solicitations  crm_key_not_in_xref        1852
+solicitations  customer_quarantined       40  
 
 ## Load checks (fail-the-update rules)
 solicitation_files  min_rows_per_file  rescued_rows  unmatched_pct
 ------------------  -----------------  ------------  -------------
-25                  7375               0             1.00         
+25                  7480               0             1.02         
 
 ## Cleanup: city spelling and Chapel Hill payment fill
 city_as_received  city           n    
 ----------------  -------------  -----
-Winston-salem     Winston-Salem  12085
+Winston-salem     Winston-Salem  12083
+Winston-Salem     Winston-Salem  120  
 
 ## SELECT employment_status, count(*) filled, min(monthly_household_pmt) low, percentile_approx(monthly
 employment_status  filled  low      median   high   
 -----------------  ------  -------  -------  -------
-employed           818     744.02   922.51   1113.63
+employed           818     744.15   922.67   1113.82
 retired            38      1112.32  1387.65  1651.09
-self_employed      167     767.99   955.97   1147.48
-student            1528    404.91   508.61   607.07 
+self_employed      166     768.11   952.75   1147.66
+student            1530    404.91   508.73   607.07 
 unemployed         99      1078.23  1316.46  1609.75
 
 ## Customers by record origin
 record_origin    n     
 ---------------  ------
-added_synthetic  4757  
+added_synthetic  6249  
 adjusted         81    
-source           175766
+source           175765
 
 ## Public price data: interpolated month and coverage
 first_month  last_month  metros  interpolated_months  interpolated_month
@@ -217,22 +219,22 @@ first_month  last_month  metros  interpolated_months  interpolated_month
 ## Qualified solicitations and acceptance (metric inputs)
 solicitations  qualified  acceptance_all  penetration_rate_qualified
 -------------  ---------  --------------  --------------------------
-178792         77656      0.0596          0.0619                    
+180243         79075      0.059           0.0626                    
 
 ## Card Product Penetration Rate by Tier (accepted / qualified targeted)
 tier      qualified_targeted  accepted  penetration_rate
 --------  ------------------  --------  ----------------
-Cashback  23967               1412      0.0589          
-Gold      21565               1373      0.0637          
-Platinum  4067                436       0.1072          
-Silver    28057               1589      0.0566          
+Cashback  23782               1395      0.0587          
+Gold      23195               1549      0.0668          
+Platinum  4012                398       0.0992          
+Silver    28086               1612      0.0574          
 
 ## Expectation results from the pipeline event log (latest update)
 dataset                             expectation                passed  failed
 ----------------------------------  -------------------------  ------  ------
-c360_bank.cards.silver_customers    employed_income_plausible  180604  0     
-c360_bank.cards.silver_customers    known_city                 180604  0     
-c360_bank.cards.silver_customers    payment_present            180604  0     
+c360_bank.cards.silver_customers    employed_income_plausible  182095  0     
+c360_bank.cards.silver_customers    known_city                 182095  0     
+c360_bank.cards.silver_customers    payment_present            182095  0     
 c360_bank.cards.silver_load_checks  layout_unchanged           1       0     
 c360_bank.cards.silver_load_checks  no_empty_files             1       0     
 c360_bank.cards.silver_load_checks  xref_match_rate            1       0     
@@ -240,19 +242,19 @@ c360_bank.cards.silver_load_checks  xref_match_rate            1       0
 ## Reconciliation with generator ground truth (seed volume; never read by the pipeline)
 planted_unmapped_xref  quarantined_unmapped_xref  planted_bad_credit_scores  quarantined_customers  qualified_flag_agrees  solicitations_compared  accepted_flag_agrees
 ---------------------  -------------------------  -------------------------  ---------------------  ---------------------  ----------------------  --------------------
-1813                   1813                       40                         40                     178792                 178792                  178792              
+1852                   1852                       40                         40                     180243                 180243                  180243              
 
 
 ## Featured segments and generations: acceptance by campaign year (pipeline tables)
 segment                                 n       year1   year1_mar_sep  year2 
 --------------------------------------  ------  ------  -------------  ------
-Platinum 0% balance transfer segment    1873    0.1872  0.1936         0.2007
-Same segment, travel and entertainment  889     0.0302  NULL           0.0022
-Gold grocery segment                    1748    0.1594  NULL           0.1642
-Generation: gen_z                       24975   0.0469  NULL           0.0506
-Generation: boomer                      29376   0.0433  NULL           0.0411
-Generation: silent                      13444   0.0243  NULL           0.0227
-Generation: gen_x                       50367   0.0661  NULL           0.0708
-Generation: millennial                  60630   0.0713  NULL           0.0748
-All solicitations                       178792  0.0582  NULL           0.0609
+Platinum 0% balance transfer segment    1785    0.1831  0.1903         0.1777
+Same segment, travel and entertainment  949     0.0212  NULL           0.0   
+Gold grocery segment                    3017    0.148   NULL           0.1852
+Generation: gen_z                       24973   0.0457  NULL           0.0478
+Generation: boomer                      29335   0.0422  NULL           0.0402
+Generation: silent                      13453   0.0263  NULL           0.0283
+Generation: gen_x                       50687   0.0675  NULL           0.0649
+Generation: millennial                  61795   0.0719  NULL           0.0746
+All solicitations                       180243  0.0588  NULL           0.0591
 

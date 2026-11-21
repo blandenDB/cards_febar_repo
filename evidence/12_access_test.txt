@@ -1,5 +1,5 @@
 # Evidence 12: access test with a real non-admin identity
-# Captured 2026-11-21T01:23:11Z by tools/access_test.py. Synthetic data; user identities redacted.
+# Captured 2026-11-21T01:48:23Z by tools/access_test.py. Synthetic data; user identities redacted.
 
 Principal: service principal 'cards-access-tester' (application ID 77758809-8131-4dd9-8d5d-6ffc54d4548a); workspace admin: False; workspace entitlements: ['databricks-sql-access']
 UC grants: USE CATALOG c360_bank, USE SCHEMA cards, SELECT on silver_customer_identifiers, v_model_features, v_fairness_features, v_cdo_summary, v_cohort_growth, gold_target_scores. SQL warehouse: CAN_USE.
@@ -15,27 +15,27 @@ principal
 ## identifiers: rows, regions and sample (masks and region filter)
 rows_visible  regions                                                           address_token_sample  ssn_token_sample
 ------------  ----------------------------------------------------------------  --------------------  ----------------
-180604        Charlotte,Coast,Mountains,SC Midlands and Upstate,Triad,Triangle  ***MASKED***          ***MASKED***    
+182095        Charlotte,Coast,Mountains,SC Midlands and Upstate,Triad,Triangle  ***MASKED***          ***MASKED***    
 
 ## model view: rows, and whether any protected column exists
 rows_visible  protected_columns_in_model_view
 ------------  -------------------------------
-178792        0                              
+180243        0                              
 
 ## fairness view rows (protected attributes, analysts only)
 rows_visible
 ------------
-178792      
+180243      
 
 ## CDO totals view
 rows_visible  new_cards
 ------------  ---------
-2016          10649    
+2016          10626    
 
 ## CDO cohort growth view
 cohorts_visible  growing_cohorts
 ---------------  ---------------
-257              8              
+260              5              
 
 ## read gold_penetration_by_tier directly (not granted)
 DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
@@ -43,12 +43,12 @@ DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
 ## target list rows by region
 campaign_region          rows_visible
 -----------------------  ------------
-Charlotte                35712       
-Coast                    41731       
-Mountains                3321        
-SC Midlands and Upstate  18301       
-Triad                    29682       
-Triangle                 69339       
+Charlotte                35684       
+Coast                    41800       
+Mountains                3326        
+SC Midlands and Upstate  18275       
+Triad                    30455       
+Triangle                 73043       
 
 ## read gold_features directly (not granted)
 DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
@@ -72,7 +72,7 @@ principal
 ## identifiers: rows, regions and sample (masks and region filter)
 rows_visible  regions   address_token_sample  ssn_token_sample
 ------------  --------  --------------------  ----------------
-64532         Triangle  ***MASKED***          ***MASKED***    
+65796         Triangle  ***MASKED***          ***MASKED***    
 
 ## model view: rows, and whether any protected column exists
 rows_visible  protected_columns_in_model_view
@@ -100,7 +100,7 @@ DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
 ## target list rows by region
 campaign_region  rows_visible
 ---------------  ------------
-Triangle         69339       
+Triangle         73043       
 
 ## read gold_features directly (not granted)
 DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
@@ -139,12 +139,12 @@ rows_visible
 ## CDO totals view
 rows_visible  new_cards
 ------------  ---------
-2016          10649    
+2016          10626    
 
 ## CDO cohort growth view
 cohorts_visible  growing_cohorts
 ---------------  ---------------
-257              8              
+260              5              
 
 ## read gold_penetration_by_tier directly (not granted)
 DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
@@ -219,12 +219,12 @@ DENIED/ERROR: [INSUFFICIENT_PERMISSIONS] Insufficient privileges:
 ==================== data owner check (expected counts) ====================
 campaign_region          customers
 -----------------------  ---------
-Charlotte                29400    
-Coast                    29661    
-Mountains                1322     
+Charlotte                29405    
+Coast                    29646    
+Mountains                1323     
 SC Midlands and Upstate  24711    
-Triad                    30978    
-Triangle                 64532    
+Triad                    31214    
+Triangle                 65796    
 owner_sees_address_token
 ------------------------
 ADDR-00001CC233         
