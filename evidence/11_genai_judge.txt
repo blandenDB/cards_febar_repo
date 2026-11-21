@@ -1,0 +1,44 @@
+# Evidence 11: GenAI judge, run 5 (final; one retry for incomplete replies). Runs 1 to 4 kept in 11_genai_judge_run1..4.txt
+# Captured 2026-11-21T03:17Z
+
+{
+    "task": "genai_judge",
+    "sample": 200,
+    "generator": "databricks-claude-haiku-5-5",
+    "judge": "databricks-claude-sonnet-5-5",
+    "pass_rates": {
+        "grounded": 0.99,
+        "no_protected_attributes": 1.0,
+        "relevant": 1.0
+    },
+    "bar": 0.95,
+    "met": {
+        "grounded": true,
+        "no_protected_attributes": true,
+        "relevant": true
+    },
+    "claim": "explanations meet the protocol bar",
+    "examples_of_failures": [
+        {
+            "card": "Platinum",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer meets the published Platinum card requirements and ranks among the customers most likely to respond to Platinum offers, driven mainly by a monthly household payment of $2,758 and a 6-month average deposit balance of $7,502. Home prices in the area have risen 5.2% over the last year, which is context only and not a factor in the ranking.",
+            "rationale": {
+                "grounded": "Most of the response matches the given facts: the customer meets the published Platinum requirements, ranks among those most likely to respond, has a monthly household payment of $2,758, a 6-month average deposit balance of $7,502, and local home prices up 5.2% over the last year. No fees, rates or "
+            }
+        },
+        {
+            "card": "Silver",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer meets the published Silver card requirements (credit score of 850, income of $40,000+, and 6-month average deposits of $1,000+) and ranks in the top 1% of qualified customers most likely to respond to Silver offers, with a credit score of 850 and a Charlotte urban core location among the main factors behind that ranking. Prices have risen in the area (South region figures show gr",
+            "rationale": {
+                "grounded": "The guideline requires the response to state only facts that appear in the offer and customer facts, with no invented numbers, rates, fees, promotions, life events, or other details. The customer facts say the customer meets the published Silver card requirements, listed as credit score 650+, income"
+            }
+        }
+    ],
+    "mlflow_run_id": "db40c7c821514bd98dbcfc849cac2ea2"
+}
