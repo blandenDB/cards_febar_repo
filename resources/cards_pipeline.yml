@@ -1,0 +1,23 @@
+resources:
+  pipelines:
+    cards_pipeline:
+      name: cards_pipeline
+      catalog: ${var.catalog}
+      schema: ${resources.schemas.cards.name}
+      serverless: true
+      channel: CURRENT
+      event_log:
+        catalog: ${var.catalog}
+        schema: ${resources.schemas.cards.name}
+        name: cards_pipeline_event_log
+      configuration:
+        raw_root: /Volumes/${var.catalog}/${var.schema}/${resources.volumes.raw.name}
+      libraries:
+        - file:
+            path: ../src/pipeline/01_bronze.sql
+        - file:
+            path: ../src/pipeline/02_silver_customers.sql
+        - file:
+            path: ../src/pipeline/03_silver_campaigns.sql
+        - file:
+            path: ../src/pipeline/04_gold.sql

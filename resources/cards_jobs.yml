@@ -19,3 +19,30 @@ resources:
         - environment_key: default
           spec:
             client: "2"
+
+    cards_daily:
+      name: cards_daily
+      description: Daily run after the 12:01 am source file drop (schedule paused outside evidence runs)
+      schedule:
+        quartz_cron_expression: "0 30 0 * * ?"
+        timezone_id: America/New_York
+        pause_status: PAUSED
+      tasks:
+        - task_key: land_files
+          environment_key: default
+          spark_python_task:
+            python_file: ../src/data/land_files.py
+            parameters:
+              - --seed_dir
+              - /Volumes/${var.catalog}/${var.schema}/${resources.volumes.seed.name}
+              - --raw_dir
+              - /Volumes/${var.catalog}/${var.schema}/${resources.volumes.raw.name}
+        - task_key: pipeline
+          depends_on:
+            - task_key: land_files
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.cards_pipeline.id}
+      environments:
+        - environment_key: default
+          spec:
+            client: "2"
