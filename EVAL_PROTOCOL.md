@@ -64,4 +64,9 @@ A result below any bar means no claim for that question. The result is recorded 
 
 ## Change notes
 
-(none)
+### 2026-11-20: change before run 2 (run 1 results kept)
+
+- **Run 1 result (kept):** cost-of-living claim not met (test ROC AUC 0.6044 with price features, 0.6053 without). Evidence: `evidence/10_eval_protocol_run1.txt`, `evidence/04_model_run1.txt`, `evidence/13_fairness_run1.txt`.
+- **Change:** for run 2, calendar month of year is removed from the features of both models (with and without price data). Reason: the price series are region-wide, so in a 6-month test window month of year identifies each month as well as the prices do, and the comparison in section 7 cannot separate them.
+- **Also changed before run 2:** the synthetic data's planted segments no longer use marital status (fair lending review); see `DATA_DESIGN.md`. The bars in sections 6 to 10 are unchanged.
+- Any cost-of-living claim from run 2 is reported as a follow-up test added after run 1, next to the run 1 result.
