@@ -1,10 +1,9 @@
-# Evidence 01: synthetic data generation (regenerated 2026-11-20 with overall acceptance about 6%)
-# Job cards_setup, 2026-11-21T00:38Z
+# Evidence 01: synthetic data generation (regenerated before run 2: planted segments without marital status)
+# Job cards_setup, 2026-11-21T01:22Z
 
-## Run summary (generator stdout)
 {
   "source_customers": 175885,
-  "adjusted_winston_salem": 226,
+  "adjusted_winston_salem": 81,
   "added_customers": {
     "gold_suburb": 1300,
     "greensboro_homeowner_gold_fit": 300,
@@ -14,98 +13,28 @@
   },
   "total_customers": 180644,
   "calibration_factor": 0.584,
-  "acceptance_rate_overall": 0.0594,
-  "accounts": 238256,
+  "acceptance_rate_overall": 0.0595,
+  "accounts": 238332,
   "balance_rows": 5419320,
   "balance_months": 30,
   "solicitations": 180644,
   "solicitation_files": 24,
   "late_file_held_back": "crm_solicitations_202603.csv",
-  "late_file_rows": 7380,
+  "late_file_rows": 7378,
   "resend_file_duplicate_rows": 7533,
-  "xref_unmapped_customers": 1814,
+  "xref_unmapped_customers": 1813,
   "bad_credit_scores": 40,
-  "qualified_solicitations": 78404,
-  "qualified_acceptance_rate": 0.0624,
+  "qualified_solicitations": 78458,
+  "qualified_acceptance_rate": 0.0618,
   "segments": {
-    "platinum_bt": 2889,
-    "gold": 1991,
-    "silver_coastal": 154
+    "platinum_bt": 2913,
+    "gold": 2048,
+    "silver_coastal": 159
   },
   "acceptance_by_card_qualified": {
-    "Silver": 0.0569,
-    "Gold": 0.0638,
-    "Platinum": 0.1077,
-    "Cashback": 0.06
+    "Silver": 0.0567,
+    "Gold": 0.0634,
+    "Platinum": 0.1073,
+    "Cashback": 0.0588
   }
 }
-## Files landed in /Volumes/c360_bank/cards/raw
-### ecif_customers
-36003187 ecif_customers_20261031.csv
-### ecif_accounts
-24298058 ecif_accounts_20261031.csv
-### ecif_balances
-15446575 ecif_balances_202405.csv
-15447816 ecif_balances_202406.csv
-15447119 ecif_balances_202407.csv
-15445424 ecif_balances_202408.csv
-15443119 ecif_balances_202409.csv
-15440637 ecif_balances_202410.csv
-15438501 ecif_balances_202411.csv
-15437797 ecif_balances_202412.csv
-15438816 ecif_balances_202501.csv
-15441013 ecif_balances_202502.csv
-15443586 ecif_balances_202503.csv
-15446404 ecif_balances_202504.csv
-15447845 ecif_balances_202505.csv
-15448792 ecif_balances_202506.csv
-15448232 ecif_balances_202507.csv
-15446515 ecif_balances_202508.csv
-15443864 ecif_balances_202509.csv
-15441634 ecif_balances_202510.csv
-15439587 ecif_balances_202511.csv
-15438732 ecif_balances_202512.csv
-15439497 ecif_balances_202601.csv
-15441501 ecif_balances_202602.csv
-15444253 ecif_balances_202603.csv
-15446903 ecif_balances_202604.csv
-15448566 ecif_balances_202605.csv
-15449325 ecif_balances_202606.csv
-15449063 ecif_balances_202607.csv
-15447005 ecif_balances_202608.csv
-15444779 ecif_balances_202609.csv
-15442390 ecif_balances_202610.csv
-### crm_campaigns
-519 crm_campaigns_20261031.csv
-### crm_customer_xref
-10551016 crm_customer_xref_20261031.csv
-### crm_solicitations
-639736 crm_solicitations_202411.csv
-641027 crm_solicitations_202412.csv
-644804 crm_solicitations_202501.csv
-651149 crm_solicitations_202502.csv
-643797 crm_solicitations_202503.csv
-654878 crm_solicitations_202504.csv
-649233 crm_solicitations_202505.csv
-642545 crm_solicitations_202506.csv
-642545 crm_solicitations_202506_resend.csv
-642415 crm_solicitations_202507.csv
-643506 crm_solicitations_202508.csv
-657915 crm_solicitations_202509.csv
-639917 crm_solicitations_202510.csv
-639521 crm_solicitations_202511.csv
-634950 crm_solicitations_202512.csv
-631797 crm_solicitations_202601.csv
-629495 crm_solicitations_202602.csv
-629714 crm_solicitations_202603.csv
-647609 crm_solicitations_202604.csv
-650182 crm_solicitations_202605.csv
-645662 crm_solicitations_202606.csv
-639332 crm_solicitations_202607.csv
-639101 crm_solicitations_202608.csv
-633171 crm_solicitations_202609.csv
-639258 crm_solicitations_202610.csv
-### macro_prices
-88002 bls_cpi_south.csv
-11228 eia_gasoline_lower_atlantic.csv
-38832 fhfa_hpi_metros.csv

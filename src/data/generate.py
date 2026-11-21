@@ -128,8 +128,8 @@ def main(a):
     zips = src.groupby("city")["zip_code"].agg(lambda s: sorted(set(s))).to_dict()
     summary = {"source_customers": len(src)}
 
-    # Adjusted: Winston-Salem married homeowners 30-50, $50k-$125k, score <= 700 -> 45% raised (DATA_DESIGN 1)
-    m = ((src.city == "Winston-salem") & (src.marital_status == "married") & (src.own_rent_home == "own")
+    # Adjusted: Winston-Salem homeowners who moved in 0-5 years ago, 30-50, $50k-$125k, score <= 700 -> 45% raised (DATA_DESIGN 1)
+    m = ((src.city == "Winston-salem") & src.residency_duration_yrs.between(0, 5) & (src.own_rent_home == "own")
          & src.age.between(30, 50) & src.annual_income.between(50_000, 125_000) & (src.credit_score <= 700))
     pick = src[m].sample(frac=0.45, random_state=a.seed).index
     src.loc[pick, "credit_score"] = rng.integers(701, 761, len(pick))
@@ -150,14 +150,14 @@ def main(a):
                             (1450, 3500), (2015, 2025)))
     n_fit = 300
     groups.append(added(rng, n_fit, "greensboro_homeowner_gold_fit", "Greensboro", "NC", zips["Greensboro"], (30, 50),
-                        (50_000, 125_000), (700, 800), (["married"], [1.0]), (["own"], [1.0]), gso_pmt, (2021, 2025)))
+                        (50_000, 125_000), (700, 800), (["married", "single", "divorced", "widowed"], [0.55, 0.30, 0.12, 0.03]), (["own"], [1.0]), gso_pmt, (2021, 2025)))
     groups.append(added(rng, 1000 - n_fit, "greensboro_homeowner_mixed", "Greensboro", "NC", zips["Greensboro"], (25, 80),
                         (35_000, 160_000), (600, 820), (["married", "single", "divorced", "widowed"], [0.45, 0.3, 0.15, 0.1]),
                         (["own"], [1.0]), gso_pmt, (2021, 2025),
                         employment=(["employed", "self_employed", "retired"], [0.7, 0.15, 0.15])))
     for city, n in (("Apex", 700), ("Holly Springs", 600)):
         groups.append(added(rng, n, "gold_suburb", city, "NC", zips[city], (30, 50), (75_000, 125_000), (700, 800),
-                            (["married"], [1.0]), (["own"], [1.0]), (1050, 2200), (2016, 2025)))
+                            (["married", "single", "divorced", "widowed"], [0.55, 0.30, 0.12, 0.03]), (["own"], [1.0]), (1050, 2200), (2020, 2025)))
     hp_zip = {"27609": ("Raleigh", "NC"), "28211": ("Charlotte", "NC"), "28207": ("Charlotte", "NC"),
               "28405": ("Wilmington", "NC"), "28411": ("Wilmington", "NC"), "29401": ("Charleston", "SC"), "29407": ("Charleston", "SC")}
     hz = rng.choice(list(hp_zip), 300)
@@ -235,7 +235,7 @@ def main(a):
     gen = cust.generation.values
     mg = np.isin(gen, ["millennial", "gen_x"])
     seg_plat = mg & np.isin(city, PLAT_BT_CITIES) & qual["Platinum"] & (pm > 1400)
-    seg_gold = ((cust.marital_status.values == "married") & (cust.own_rent_home.values == "own") & (age_at >= 30) & (age_at <= 50)
+    seg_gold = ((cust.residency_duration_yrs.values <= 5) & (cust.own_rent_home.values == "own") & (age_at >= 30) & (age_at <= 50)
                 & (ic >= 50_000) & (ic <= 125_000) & (sc >= 700) & (pm > 1000) & np.isin(city, GOLD_CITIES))
     seg_silv = (cust.own_rent_home.values == "rent") & (age_at >= 28) & (age_at <= 35) & (sc >= 680) & (sc <= 740) & np.isin(city, SILVER_CITIES)
     offer = np.empty(n, object)

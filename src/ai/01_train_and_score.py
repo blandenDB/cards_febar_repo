@@ -29,7 +29,7 @@ OFFERS = ["SIL_BT6", "GLD_GROC5", "PLT_BT12", "PLT_TE5", "CB_ALL3"]
 TIERS = ["Silver", "Gold", "Platinum", "Cashback"]
 NUM = ["annual_income", "credit_score", "monthly_household_pmt", "residence_year", "years_at_residence", "tenure_years",
        "n_accounts", "has_savings", "has_money_market", "avg6_total_balance", "mass_affluent", "urban_suburban",
-       "low_cost_market", "month_of_year"]
+       "low_cost_market"]  # month of year removed before run 2 (EVAL_PROTOCOL.md change note)
 MACRO = ["food_at_home_3m_change", "gasoline_3m_change", "cpi_all_items_yoy", "used_vehicles_yoy", "new_vehicles_yoy",
          "gasoline_usd_per_gallon", "house_price_yoy"]
 CAT = ["city", "market_type", "own_rent_home", "employment_status", "preferred_channel", "campaign_region"]

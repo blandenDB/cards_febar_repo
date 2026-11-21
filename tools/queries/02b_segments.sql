@@ -3,7 +3,7 @@ WITH f AS (
   SELECT g.*, CASE WHEN g.campaign_month <= 12 THEN 1 ELSE 2 END AS yr,
     (g.generation IN ('millennial','gen_x') AND g.city IN ('Cary','Raleigh','Charlotte','Greenville','Durham','Wilmington','Charleston')
       AND g.card_product = 'Platinum' AND g.qualified AND g.monthly_household_pmt > 1400) AS plat_seg,
-    (g.marital_status = 'married' AND g.own_rent_home = 'own' AND g.age_at_solicitation BETWEEN 30 AND 50 AND g.annual_income BETWEEN 50000 AND 125000
+    (g.years_at_residence BETWEEN 0 AND 6 AND g.residence_year >= 2020 AND g.own_rent_home = 'own' AND g.age_at_solicitation BETWEEN 30 AND 50 AND g.annual_income BETWEEN 50000 AND 125000
       AND g.credit_score >= 700 AND g.monthly_household_pmt > 1000 AND g.city IN ('Apex','Holly Springs','Greensboro','Winston-Salem')
       AND g.offer_code = 'GLD_GROC5' AND g.qualified) AS gold_seg
   FROM c360_bank.cards.gold_features g
