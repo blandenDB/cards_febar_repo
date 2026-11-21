@@ -1,0 +1,40 @@
+# Evidence 00: setup and one end-to-end run
+# Captured 2026-11-21T04:12Z
+
+## Bundle cards_febar (target febar), deployed resources
+apps                     cards_app              cards-campaigns
+experiments              cards_acceptance       /Users/<user>/cards_acceptance
+genie_spaces             cards_cdo              Card adoption by tier (CDO and Data & Analytics)
+jobs                     cards_daily            cards_daily
+jobs                     cards_setup            cards_setup
+pipelines                cards_pipeline         cards_pipeline
+postgres_projects        cards_lakebase         cards-lakebase
+postgres_synced_tables   pg_campaign_roster     c360_bank.cards.pg_campaign_roster
+postgres_synced_tables   pg_city_summary        c360_bank.cards.pg_city_summary
+postgres_synced_tables   pg_cohort_growth       c360_bank.cards.pg_cohort_growth
+postgres_synced_tables   pg_selection_mix       c360_bank.cards.pg_selection_mix
+postgres_synced_tables   pg_target_list         c360_bank.cards.pg_target_list
+schemas                  cards                  cards
+volumes                  raw                    raw
+volumes                  seed                   seed
+
+## Job cards_daily: one end-to-end run (all tasks)
+run 970134640367409 SUCCESS start 2026-11-21T03:55:26+00:00 duration_min 15.5
+  land_files               SUCCESS  0.3 min
+  access_policies          SUCCESS  0.1 min
+  pipeline                 SUCCESS  1.4 min
+  views_and_tags           SUCCESS  0.2 min
+  train_and_score          SUCCESS  1.7 min
+  target_scores_policy     SUCCESS  0.1 min
+  explanations             SUCCESS  8.9 min
+  genai_judge              SUCCESS  2.8 min
+  serving_tables           SUCCESS  0.3 min
+  refresh_synced_tables    SUCCESS  1.1 min
+  postgres_setup           SUCCESS  0.7 min
+  reviews_back             SUCCESS  0.6 min
+
+## Schedule (paused outside evidence runs)
+{'pause_status': 'PAUSED', 'quartz_cron_expression': '0 30 0 * * ?', 'timezone_id': 'America/New_York'}
+
+## One-time setup job cards_setup (generator; last run)
+run 915462889791541 SUCCESS
