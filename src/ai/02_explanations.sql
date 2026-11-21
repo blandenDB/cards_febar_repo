@@ -12,7 +12,7 @@ WITH t AS (
            concat('meets the published ', s.card_product, ' card requirements (credit score ', r.min_credit_score, '+, income $',
                   format_number(r.min_income, 0), '+', IF(r.min_avg6_deposit > 0, concat(', 6-month average deposits $', format_number(r.min_avg6_deposit, 0), '+'), ''), ')'),
            concat('ranked in the top ', CAST(ceil(100.0 * s.rank_in_tier / s.tier_size) AS INT), '% of qualified customers most likely to respond to ', s.card_product, ' offers'),
-           s.reason_1, s.reason_2, s.reason_3) AS facts
+           concat('main factors behind that ranking: ', concat_ws(', ', s.reason_1, s.reason_2, s.reason_3))) AS facts
   FROM c360_bank.cards.gold_target_scores s
   JOIN c360_bank.cards.silver_campaigns c ON c.offer_code = s.offer_code
   JOIN c360_bank.cards.silver_card_rules r ON r.card_product = s.card_product
@@ -40,7 +40,7 @@ gen AS (
   FROM prompts
 )
 SELECT target_id, campaign_region, card_product, offer_code, facts,
-       NULLIF(TRIM(regexp_extract(response.result, '(Why:[^\\n]*)', 1)), '') AS explanation, response.errorMessage AS generation_error,
+       NULLIF(TRIM(regexp_replace(split(response.result, 'Rules:')[0], '\\s+', ' ')), '') AS explanation, response.errorMessage AS generation_error,
        'databricks-claude-haiku-5-5' AS llm_endpoint, current_timestamp() AS generated_at
 FROM gen;
 

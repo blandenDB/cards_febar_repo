@@ -1,0 +1,104 @@
+# Evidence 11: GenAI judge, run 3 (requirements and rank added to the facts)
+# Captured 2026-11-21T02:49Z
+
+{
+    "task": "genai_judge",
+    "sample": 200,
+    "generator": "databricks-claude-haiku-5-5",
+    "judge": "databricks-claude-sonnet-5-5",
+    "pass_rates": {
+        "grounded": 0.895,
+        "no_protected_attributes": 1.0,
+        "relevant": 0.975
+    },
+    "bar": 0.95,
+    "met": {
+        "grounded": false,
+        "no_protected_attributes": true,
+        "relevant": true
+    },
+    "claim": "explanations do NOT meet the protocol bar",
+    "examples_of_failures": [
+        {
+            "card": "Gold",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer meets the published Gold card requirements (credit score of 700+, income of $50,000+, and 6-month average deposits of $2,500+) and ranks among the most likely to respond to Gold offers. Other facts on record include an annual income of $200,000, a monthly household payment of $2,824, and residence in Charleston, an urban core market.",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response does use the customer facts. It states that the customer meets the published Gold card requirements and ranks among the most likely to respond to Gold offers. This is a "
+            }
+        },
+        {
+            "card": "Cashback",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer meets the published Cashback card requirements and ranks in the top 1% of qualified customers most likely to respond to Cashback offers, which reflects their 23 years as a bank customer and their location in Charleston's urban core market. For context only, home prices in the area have risen 5.2% over the last year.",
+            "rationale": {
+                "grounded": "The guideline says the response may only state facts from the offer and customer facts and must not invent details. The response says the customer meets the published requirements, which is in the facts. It says the customer ranks in the top 1% of qualified customers most likely to respond to Cashba"
+            }
+        },
+        {
+            "card": "Silver",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer meets the published Silver card requirements (credit score 650+, income $40,000+, 6-month average deposits $1,000+) and ranks in the top 1% of qualified customers most likely to respond to Silver offers, with the ranking reflecting facts such as living in Wilmington's urban core, renting the home for 4 years at the address, and an annual income of $94,779.",
+            "rationale": {
+                "grounded": "The guideline says the response may only state facts that appear in the offer and customer facts, and may not invent details. The response repeats the published Silver card requirements (credit score 650+, income $40,000+, 6-month average deposits $1,000+) and the top 1% ranking, both of which are i"
+            }
+        },
+        {
+            "card": "Silver",
+            "failed": [
+                "relevant"
+            ],
+            "explanation": "Why: The customer meets the published Silver card requirements (credit score of 650+, income of",
+            "rationale": {
+                "relevant": "The guideline requires the response to explain why the offer fits this particular customer, using the customer facts. The response is truncated. It begins with \"Why: The customer meets the published Silver card requirements (credit score of 650+, income of\" and then stops. It cites only the start of"
+            }
+        },
+        {
+            "card": "Silver",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer meets the published Silver card requirements, with a credit score of 650 or higher, income of $40,000 or more, and 6-month average deposits of $1,000 or more, and ranks in the top 1% of qualified customers most likely to respond to Silver offers. The customer's 6-month average deposit balance of $2,063, home ownership, and 27 years at the same Winston-Salem address, a suburban-st",
+            "rationale": {
+                "grounded": "The guideline requires that the response state only facts from the offer and customer facts, with no invented numbers, rates, fees, promotions, life events or other details. The response restates the Silver card requirements (credit score 650+, income $40,000+, 6-month average deposits $1,000+), the"
+            }
+        },
+        {
+            "card": "Gold",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer meets the published Gold card requirements for credit score, income, and 6-month average deposits, and ranks in the top 3% of qualified customers most likely to respond to Gold offers. The customer's annual income of $115,126 and residence in the suburban market of Apex are the facts behind that ranking.",
+            "rationale": {
+                "grounded": "The guideline requires that the response only states facts found in the offer and customer facts, with no invented details. The response says the customer meets the published Gold card requirements for credit score, income, and 6-month average deposits, and ranks in the top 3% of qualified customers"
+            }
+        },
+        {
+            "card": "Cashback",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer meets the published Cashback card requirements (credit score of 650+ and income of $50,000+) and ranks in the top 1% of qualified customers most likely to respond to Cashback offers, a ranking reflecting facts such as 19 years as a customer and residence in the Apex suburban market. Prices have risen in the area (groceries +0.3% and gasoline +6.2% over the last 3 months, South re",
+            "rationale": {
+                "grounded": "The guideline says the response may only state facts from the offer and customer facts, and may not invent details. Most of the response matches the inputs: the requirements (credit score 650+, income $50,000+), the top 1% ranking, 19 years as a customer, Apex suburban market, and the price changes "
+            }
+        },
+        {
+            "card": "Platinum",
+            "failed": [
+                "grounded"
+            ],
+            "explanation": "Why: The customer meets the published Platinum card requirements and ranks in the top 3% of customers most likely to respond to Platinum offers, with an annual income of $222,941 and a 6-month average deposit balance of $10,424.",
+            "rationale": {
+                "grounded": "The guideline requires the response to state only facts that appear in the offer and customer facts, with no invented numbers, rates, fees, promotions, or life events. The response says the customer meets the published Platinum card requirements, which matches the customer facts. It says the custome"
+            }
+        }
+    ],
+    "mlflow_run_id": "61a7b9c1ca824e68922c26a680413028"
+}
